@@ -29,10 +29,12 @@ def save_last_processed_line(file_path, line_number):
     with open(file_path, 'w') as file:
         file.write(str(line_number))
 
-substructure = Chem.MolFromSmarts('[c]')
+substructure = Chem.MolFromSmarts('[a]')
 
 last_processed_line = read_last_processed_line(last_line_file) # Read the last processed line
 write_mode = "w" if last_processed_line == 0 else "a"
+
+# print(f"last processed line {last_processed_line}")
 
 print(f"Reading {filename}")
 
