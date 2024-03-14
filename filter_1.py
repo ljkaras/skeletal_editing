@@ -1,10 +1,28 @@
 import csv
 from rdkit import Chem
 
-filename = "test.cxsmiles"
-csv_aromatic = "aromatics.csv"
-csv_others = "others.csv"
+filename = "../real350.cxsmiles"
+csv_aromatic = "../aromatics.csv"
+csv_others = "../others.csv"
 substructure = Chem.MolFromSmarts('[c]')
+last_line_file = "../last_line.txt"
+
+      
+def read_last_processed_line(file_path):
+    try:
+        with open(file_path, 'r') as file:
+            last_line = int(file.read().strip())
+        return last_line
+    except FileNotFoundError:
+        return 0
+
+read_last_processed_line(last_line_file)
+
+# def save_last_processed_line(file_path, line_number):
+#     with open(file_path, 'w') as file:
+#         file.write(str(line_number))
+
+# print(f"Reading {filename}")
 
 # Step 1: Determine the total number of lines (minus the header)
 with open(filename, 'r') as file:
@@ -12,31 +30,34 @@ with open(filename, 'r') as file:
 
 print(f"There are {total_lines} molecules in the file")
 
-# Calculate the number of lines that correspond to each 1%
-one_percent_lines = total_lines / 100
+one_percent_lines = total_lines / 100 # Calculate the number of lines that correspond to each 1%
+last_processed_line = read_last_processed_line(last_line.txt)  # Read the last processed line
+progress_lines = last_processed_line % one_percent_lines  # Reset progress lines to track progress within the current percentage
+percentage = (last_processed_line / total_lines) * 100  # Calculate starting percentage
 
-# Open the .cxsmiles file and new .csv files for writing
+
 with open(filename, 'r') as file, open(csv_aromatic, 'w', newline='') as aromatics, open(csv_others, 'w', newline='') as others:
     writer_aromatics = csv.writer(aromatics)
     writer_others = csv.writer(others)
-    # Write the header row in the CSV file
+    
     writer_aromatics.writerow(['SMILES', 'ID'])
     writer_others.writerow(['SMILES', "ID"])
 
-    # Skip the first line (header)
-    next(file)
-
-    # Counter for processed lines
-    processed_lines = 0
-    percentage = 0
-
-    for line in file:
-        processed_lines += 1
-        # Print progress every 1%
-        if processed_lines > one_percent_lines - 1:
-            percentage += 1
-            print(f"Processed {percentage}% of compounds.")
-            processed_lines = 0
+    next(file)  # Skip header
+    
+    # Skip lines up to the last processed line
+    for _ in range(last_processed_line):
+        next(file)
+    
+    for line_number, line in enumerate(file, start=last_processed_line + 1):
+        # Process line logic goes here...
+        progress_lines += 1
+        save_last_processed_line(last_line_file, line_number)  # Update to use line_number
+        
+        if progress_lines >= one_percent_lines:
+            percentage += (progress_lines / total_lines) * 100
+            print(f"Processed {percentage:.2f}% of compounds.")
+            progress_lines = 0  # Reset progress_lines after each percentage increment
 
         # Split the line by whitespace and extract the SMILES string and idnumber
         components = line.strip().split()
@@ -77,8 +98,8 @@ def count_csv_rows(csv_file_path):
     return row_count
 
 # Use the function to count rows in both files
-aromatics_row_count = count_csv_rows("aromatics.csv")
-others_row_count = count_csv_rows("others.csv")
+aromatics_row_count = count_csv_rows("../aromatics.csv")
+others_row_count = count_csv_rows("../others.csv")
 
 print(f"The aromatics.csv file has {aromatics_row_count} rows.")
 print(f"The others.csv file has {others_row_count} rows.")
