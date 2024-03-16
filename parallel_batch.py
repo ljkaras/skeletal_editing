@@ -71,20 +71,5 @@ if __name__ == '__main__':
     failed_csv = base_filename + "_failed.csv"
     aromatic_csv = base_filename + "_aromatic.csv"
     nonaromatic_csv = base_filename + "_nonaromatic.csv"
-    
+
     main(lines, substructure, failed_csv, aromatic_csv, nonaromatic_csv)
-
-# if __name__ == '__main__':
-#     filename = "../test.cxsmiles"
-#     print(f"Reading {filename}")
-#     with open(filename, 'r') as infile:
-#         lines = infile.readlines()
-#     print(f'Found {len(lines)} SMILES strings')
-#     substructure = Chem.MolFromSmarts('[a]')
-#     failed_csv = "../failed.csv"
-#     aromatic_csv = "../aromatic.csv"
-#     nonaromatic_csv = "../nonaromatic.csv"
-    
-#     main(lines, substructure, failed_csv, aromatic_csv, nonaromatic_csv)
-
-#81.54567885398865 seconds
