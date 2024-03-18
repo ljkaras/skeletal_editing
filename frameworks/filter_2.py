@@ -9,6 +9,9 @@ def process_line(line, sub_pyridine, sub_pyridine14H, sub_pyrimidine14, sub_test
     smiles, mol_id = line[0], line[1]
     mol = Chem.MolFromSmiles(smiles)
     mol = Chem.AddHs(mol)
+    if mol.HasSubstructMatch(sub_test):
+        print(smiles)
+        return smiles, mol_id, False, 4
     if mol.HasSubstructMatch(sub_pyridine):
         if mol.HasSubstructMatch(sub_pyridine14H):
             return smiles, mol_id, True, 2
@@ -16,8 +19,7 @@ def process_line(line, sub_pyridine, sub_pyridine14H, sub_pyrimidine14, sub_test
             return smiles, mol_id, True, 1
     elif mol.HasSubstructMatch(sub_pyrimidine14):
         return smiles, mol_id, False, 3
-    elif mol.HasSubstructMatch(sub_test):
-        return smiles, mol_id, False, 4
+
     else:
         return smiles, mol_id, False, 0
  
@@ -81,7 +83,7 @@ if __name__ == '__main__':
     # sub_pyridine13H = Chem.MolFromSmarts("c1c[cH]c[n;D2]c1")
     # sub_pyrimidine13 = Chem.MolFromSmarts("c1[n;D2]c[n;D2]cc1")
     sub_pyrimidine14 = Chem.MolFromSmarts("c1[n;D2]cc[n;D2]c1")
-    sub_test = Chem.MolFromSmarts("C1=CC=CNC=C1")     
+    sub_test = Chem.MolFromSmarts("[*!R]c1c([*!R])c([H])c([*!R])c([*!R])[n;D2]1")     
     pyridine_csv = base_filename + "_pyridine.csv"
     pyridine14H_csv = base_filename + "_pyridine14H.csv"
     pyrimidine14_csv = base_filename + "_pyrimidine14.csv"
