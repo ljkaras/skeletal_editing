@@ -3,6 +3,7 @@ from rdkit.Chem import AllChem
 import multiprocessing
 import csv
 import time
+import sys
 
 def process_line(line, smarts_dict):
     smiles, mol_id = line.strip().split(',')
@@ -18,6 +19,7 @@ def process_line(line, smarts_dict):
                     product_smiles = Chem.MolToSmiles(first_product)
                     # Chem.SanitizeMol(first_product)
                     product_smiles = Chem.MolToSmiles(first_product)
+                    # MAYBE CHECK FOR MACROCYCLE SIZE?
                     results.append((product_smiles, mol_id, name))
     return results
 
@@ -55,8 +57,6 @@ def main(lines, smarts_dict, output_files, batch_size=1000):
     # Close output files
     for file in files.values():
         file.close()
-
-import sys
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
