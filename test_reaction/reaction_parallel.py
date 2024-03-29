@@ -76,7 +76,7 @@ if __name__ == '__main__':
     print(f'Found {len(frameworks)} frameworks')
 
     for framework in frameworks:
-        filename = framework + ".csv"
+        filename = framework + ".txt"
         print(f"\n------Working on {filename}------\n")
         with open(filename, 'r') as infile:
             lines = infile.readlines()
