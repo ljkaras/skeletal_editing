@@ -1,5 +1,0 @@
-﻿NAME,SMARTS
-pyrazine2pyridine,[n:1]1[c:2][c:3][n:4][c:5][c:6]1>>[n:1]1[c:2][c:3][c][c:5][c:6]1.[n:4]
-pyrazine2pyridazine,[n:1]1[c:2][c:3][n:4][c:5][c:6]1>>[n:1]1[n:4][c:3][c:2][c:5][c:6]1
-pyrazine2pyrimidine,[n:1]1[c:2][c:3][n:4][c:5][c:6]1>>[n:1]1[c:2][n:4][c:3][c:5][c:6]1
-pyrazine2pyrrole,[n:1]1[c:2][c:3][n:4][c:5][c:6]1>>[nH:1]1[c:2][c:3][c:5][c:6]1.[n:4]

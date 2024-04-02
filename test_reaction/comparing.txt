@@ -1,1 +1,1 @@
-pyridine_pyridine2pyridazine.csv,pyridazine.db
+pyridine_pyridine2pyridazine.csv,pyridazine.txt
