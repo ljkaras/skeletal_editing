@@ -26,8 +26,8 @@ def compare_files(original_file, compare_file):
     # Change the ID column of new_molecules_df1
     new_molecules_df1_copy = new_molecules_df1.copy()
     new_molecules_df1_copy['ID'] = [f"{new_mols_ids}_{'{:010d}'.format(i)}" for i in range(1, len(new_molecules_df1_copy) + 1)]
+    new_molecules_df1_copy.drop('ID_df1', axis=1, inplace=True)
     new_molecules_df1 = new_molecules_df1_copy
-    
     # Save only the 'ID_df2' and 'SMILES' columns from common_molecules
     common_molecules[['SMILES','ID']].to_csv(f"common_molecules_{original_file_name}.csv", index=False)
     new_molecules_df1.to_csv(f"new_molecules_{original_file_name}.csv", index=False)

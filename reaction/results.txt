@@ -254,3 +254,19 @@ Number of common molecules: 14
 Number of new molecules in pyridine_pyridine2pyridazine.csv: 2260
 Processing time: 0.02 s
 
+------------------------------------------------------
+Comparison between pyridine_pyridine2pyridazine.csv and pyridazine.txt:
+Number of pyridine_pyridine2pyridazine.csv molecules: 32
+Number of pyridazine.txt molecules: 14
+Number of common molecules: 14
+Number of new molecules in pyridine_pyridine2pyridazine.csv: 2260
+Processing time: 0.02 s
+
+------------------------------------------------------
+Comparison between pyridine_pyridine2pyridazine.csv and pyridazine.txt:
+Number of pyridine_pyridine2pyridazine.csv molecules: 32
+Number of pyridazine.txt molecules: 14
+Number of common molecules: 14
+Number of new molecules in pyridine_pyridine2pyridazine.csv: 2260
+Processing time: 0.02 s
+
