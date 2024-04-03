@@ -2,6 +2,7 @@ import time
 import multiprocessing
 import pandas as pd
 import csv
+import sys
 from rdkit import Chem
 from rdkit.Chem import Descriptors
 from rdkit.ML.Descriptors import MoleculeDescriptors
@@ -16,7 +17,7 @@ def compute_descriptors(line):
     mol = Chem.AddHs(mol)
     calc = MoleculeDescriptors.MolecularDescriptorCalculator([desc[0] for desc in Descriptors._descList])
     descriptors = calc.CalcDescriptors(mol)
-    return mol_id, smiles, descriptors
+    return smiles, mol_id, descriptors
 
 def process_batch(batch):
     with multiprocessing.Pool() as pool:
@@ -31,7 +32,7 @@ def main(lines, batch_size=10000):
 
         total_batches = (len(lines) - 1) // batch_size + 1
 
-        for batch_num, i in enumerate(range(0, len(lines), batch_size), start=1):
+        for batch_num, i in enumerate(range(1, len(lines), batch_size), start=1):
             time_start = time.time()
             print(f"Processing batch {batch_num} of {total_batches}.")
             
@@ -40,27 +41,34 @@ def main(lines, batch_size=10000):
 
             for result in results:
                 if result is not None:
-                    mol_id, smiles, descriptors = result
-                    descriptors_writer.writerow([mol_id, smiles] + list(descriptors))
+                    smiles, mol_id, descriptors = result
+                    descriptors_writer.writerow([smiles,mol_id] + list(descriptors))
             
             time_end = time.time()
             print(f"Processing time: {time_end - time_start:.2f} s for batch {batch_num} of {total_batches}")
 
-import sys
-
 if __name__ == '__main__':
     if len(sys.argv) != 2:
-        print("Usage: python compute_descriptors.py <filename>")
+        print("Usage: python reaction_parallel.py <filename>")
         sys.exit(1)
 
     filename = sys.argv[1]
     print(f"Reading {filename}")
-    
+
     with open(filename, 'r') as infile:
-        lines = infile.readlines()
+        files_to_read = [line.strip() for line in infile.readlines()]
+    print(f'Found {len(files_to_read)} files to compute descriptors')
 
-    print(f'Found {len(lines)} lines')
-    base_filename = filename.rsplit('.', 1)[0]
-    descriptors_csv = base_filename + "_descriptors.csv"
+    for file in files_to_read:
+        filename = file
+        print(f"\n------Working on {filename}------\n")
 
-    main(lines)
+        with open(filename, 'r') as infile:
+            lines = infile.readlines()
+
+        print(f'Found {len(lines)} SMILES strings')
+
+        base_filename = filename.rsplit('.', 1)[0]
+        descriptors_csv = base_filename + "_descriptors.csv"
+
+        main(lines)
