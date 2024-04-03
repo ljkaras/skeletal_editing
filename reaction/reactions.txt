@@ -1,5 +1,0 @@
-pyridine
-pyrazine
-pyridazine
-pyrimidine
-pyrrole

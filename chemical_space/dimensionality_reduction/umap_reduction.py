@@ -7,6 +7,7 @@ from sklearn.preprocessing import StandardScaler
 
 def main(dataframe, output_filename):
     time_start = time.time()
+
     # Keep the SMILES and ID columns
     smiles_id = dataframe.iloc[:, :2]
 
@@ -16,8 +17,13 @@ def main(dataframe, output_filename):
     # Normalize the data
     scaler = StandardScaler()
     scaled_data = scaler.fit_transform(data_for_umap)
+    
+    time_end = time.time()
+    print(f"Normalization time: {time_end - time_start:.2f} s")
 
-    reducer = umap.UMAP(n_components=2, n_neighbors=15, random_state=42, n_jobs=1)
+    time_start = time.time()
+
+    reducer = umap.UMAP(n_components=2, n_neighbors=15, n_jobs=-1)#random_state=42, n_jobs=1)
     embedding = reducer.fit_transform(scaled_data)
 
     reduced_df = pd.DataFrame(embedding, columns=['UMAP1', 'UMAP2'])
@@ -26,8 +32,7 @@ def main(dataframe, output_filename):
     final_df = pd.concat([smiles_id, reduced_df], axis=1)
     
     time_end = time.time()
-    print(f"Processing time: {time_end - time_start:.2f} s")
-    
+    print(f"Dimensionality reduction time: {time_end - time_start:.2f} s")
     # Save the final_df to a CSV file in the script's directory
     final_df.to_csv(output_filename, index=False)
     print(f"UMAP reduced data saved to {output_filename}")

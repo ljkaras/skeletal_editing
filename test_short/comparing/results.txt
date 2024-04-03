@@ -1,0 +1,320 @@
+------------------------------------------------------
+Comparison between pyridine_pyridine2pyridazine_unique.csv and pyridazine.csv:
+Number of pyridine_pyridine2pyridazine_unique.csv molecules: 3358
+Number of pyridazine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyridine_pyridine2pyridazine_unique.csv: 3358
+Processing time: 0.02 s
+
+------------------------------------------------------
+Comparison between pyridine_pyridine2pyrimidine_unique.csv and pyrimidine.csv:
+Number of pyridine_pyridine2pyrimidine_unique.csv molecules: 3423
+Number of pyrimidine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyridine_pyridine2pyrimidine_unique.csv: 3423
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridine_pyridine2pyrazine_unique.csv and pyrazine.csv:
+Number of pyridine_pyridine2pyrazine_unique.csv molecules: 1703
+Number of pyrazine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyridine_pyridine2pyrazine_unique.csv: 1703
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridine_pyridine2pyrrole_unique.csv and pyrrole.csv:
+Number of pyridine_pyridine2pyrrole_unique.csv molecules: 3353
+Number of pyrrole.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyridine_pyridine2pyrrole_unique.csv: 3353
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridazine_pyridazine2pyrimidine_unique.csv and pyrimidine.csv:
+Number of pyridazine_pyridazine2pyrimidine_unique.csv molecules: 4006
+Number of pyrimidine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyridazine_pyridazine2pyrimidine_unique.csv: 4006
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridazine_pyridazine2pyrazine_unique.csv and pyrazine.csv:
+Number of pyridazine_pyridazine2pyrazine_unique.csv molecules: 2003
+Number of pyrazine.csv molecules: 2000
+Number of common molecules: 2
+Number of new molecules in pyridazine_pyridazine2pyrazine_unique.csv: 2001
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridazine_pyridazine2pyrrole_unique.csv and pyrrole.csv:
+Number of pyridazine_pyridazine2pyrrole_unique.csv molecules: 2002
+Number of pyrrole.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyridazine_pyridazine2pyrrole_unique.csv: 2002
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridazine_pyridazine2pyridine_unique.csv and pyridine.csv:
+Number of pyridazine_pyridazine2pyridine_unique.csv molecules: 4005
+Number of pyridine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyridazine_pyridazine2pyridine_unique.csv: 4005
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrimidine_pyrimidine2pyridazine_unique.csv and pyridazine.csv:
+Number of pyrimidine_pyrimidine2pyridazine_unique.csv molecules: 3311
+Number of pyridazine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyrimidine_pyrimidine2pyridazine_unique.csv: 3311
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrimidine_pyrimidine2pyrazine_unique.csv and pyrazine.csv:
+Number of pyrimidine_pyrimidine2pyrazine_unique.csv molecules: 3029
+Number of pyrazine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyrimidine_pyrimidine2pyrazine_unique.csv: 3029
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrimidine_pyrimidine2pyrrole_unique.csv and pyrrole.csv:
+Number of pyrimidine_pyrimidine2pyrrole_unique.csv molecules: 3305
+Number of pyrrole.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyrimidine_pyrimidine2pyrrole_unique.csv: 3305
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrimidine_pyrimidine2pyridine_unique.csv and pyridine.csv:
+Number of pyrimidine_pyrimidine2pyridine_unique.csv molecules: 3307
+Number of pyridine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyrimidine_pyrimidine2pyridine_unique.csv: 3307
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrazine_pyrazine2pyridazine_unique.csv and pyridazine.csv:
+Number of pyrazine_pyrazine2pyridazine_unique.csv molecules: 4007
+Number of pyridazine.csv molecules: 2000
+Number of common molecules: 1
+Number of new molecules in pyrazine_pyrazine2pyridazine_unique.csv: 4006
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrazine_pyrazine2pyrimidine_unique.csv and pyrimidine.csv:
+Number of pyrazine_pyrazine2pyrimidine_unique.csv molecules: 6936
+Number of pyrimidine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyrazine_pyrazine2pyrimidine_unique.csv: 6936
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrazine_pyrazine2pyrrole_unique.csv and pyrrole.csv:
+Number of pyrazine_pyrazine2pyrrole_unique.csv molecules: 4008
+Number of pyrrole.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyrazine_pyrazine2pyrrole_unique.csv: 4008
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrazine_pyrazine2pyridine_unique.csv and pyridine.csv:
+Number of pyrazine_pyrazine2pyridine_unique.csv molecules: 4008
+Number of pyridine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyrazine_pyrazine2pyridine_unique.csv: 4008
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrrole_pyrrole2pyridazine_unique.csv and pyridazine.csv:
+Number of pyrrole_pyrrole2pyridazine_unique.csv molecules: 1192
+Number of pyridazine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyrrole_pyrrole2pyridazine_unique.csv: 1192
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrrole_pyrrole2pyrimidine_unique.csv and pyrimidine.csv:
+Number of pyrrole_pyrrole2pyrimidine_unique.csv molecules: 2383
+Number of pyrimidine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyrrole_pyrrole2pyrimidine_unique.csv: 2383
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrrole_pyrrole2pyrazine_unique.csv and pyrazine.csv:
+Number of pyrrole_pyrrole2pyrazine_unique.csv molecules: 1192
+Number of pyrazine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyrrole_pyrrole2pyrazine_unique.csv: 1192
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrrole_pyrrole2pyridine_unique.csv and pyridine.csv:
+Number of pyrrole_pyrrole2pyridine_unique.csv molecules: 2383
+Number of pyridine.csv molecules: 2000
+Number of common molecules: 0
+Number of new molecules in pyrrole_pyrrole2pyridine_unique.csv: 2383
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridine_pyridine2pyridazine_unique.csv and pyridazine.csv:
+Number of pyridine_pyridine2pyridazine_unique.csv molecules: 39
+Number of pyridazine.csv molecules: 14
+Number of common molecules: 0
+Number of new molecules in pyridine_pyridine2pyridazine_unique.csv: 3358
+Processing time: 0.03 s
+
+------------------------------------------------------
+Comparison between pyridine_pyridine2pyrimidine_unique.csv and pyrimidine.csv:
+Number of pyridine_pyridine2pyrimidine_unique.csv molecules: 39
+Number of pyrimidine.csv molecules: 14
+Number of common molecules: 0
+Number of new molecules in pyridine_pyridine2pyrimidine_unique.csv: 3423
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridine_pyridine2pyrazine_unique.csv and pyrazine.csv:
+Number of pyridine_pyridine2pyrazine_unique.csv molecules: 37
+Number of pyrazine.csv molecules: 12
+Number of common molecules: 0
+Number of new molecules in pyridine_pyridine2pyrazine_unique.csv: 1703
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridine_pyridine2pyrrole_unique.csv and pyrrole.csv:
+Number of pyridine_pyridine2pyrrole_unique.csv molecules: 36
+Number of pyrrole.csv molecules: 11
+Number of common molecules: 0
+Number of new molecules in pyridine_pyridine2pyrrole_unique.csv: 3353
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridazine_pyridazine2pyrimidine_unique.csv and pyrimidine.csv:
+Number of pyridazine_pyridazine2pyrimidine_unique.csv molecules: 43
+Number of pyrimidine.csv molecules: 14
+Number of common molecules: 0
+Number of new molecules in pyridazine_pyridazine2pyrimidine_unique.csv: 4006
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridazine_pyridazine2pyrazine_unique.csv and pyrazine.csv:
+Number of pyridazine_pyridazine2pyrazine_unique.csv molecules: 41
+Number of pyrazine.csv molecules: 12
+Number of common molecules: 2
+Number of new molecules in pyridazine_pyridazine2pyrazine_unique.csv: 2001
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridazine_pyridazine2pyrrole_unique.csv and pyrrole.csv:
+Number of pyridazine_pyridazine2pyrrole_unique.csv molecules: 40
+Number of pyrrole.csv molecules: 11
+Number of common molecules: 0
+Number of new molecules in pyridazine_pyridazine2pyrrole_unique.csv: 2002
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridazine_pyridazine2pyridine_unique.csv and pyridine.csv:
+Number of pyridazine_pyridazine2pyridine_unique.csv molecules: 41
+Number of pyridine.csv molecules: 12
+Number of common molecules: 0
+Number of new molecules in pyridazine_pyridazine2pyridine_unique.csv: 4005
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrimidine_pyrimidine2pyridazine_unique.csv and pyridazine.csv:
+Number of pyrimidine_pyrimidine2pyridazine_unique.csv molecules: 43
+Number of pyridazine.csv molecules: 14
+Number of common molecules: 0
+Number of new molecules in pyrimidine_pyrimidine2pyridazine_unique.csv: 3311
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrimidine_pyrimidine2pyrazine_unique.csv and pyrazine.csv:
+Number of pyrimidine_pyrimidine2pyrazine_unique.csv molecules: 41
+Number of pyrazine.csv molecules: 12
+Number of common molecules: 0
+Number of new molecules in pyrimidine_pyrimidine2pyrazine_unique.csv: 3029
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrimidine_pyrimidine2pyrrole_unique.csv and pyrrole.csv:
+Number of pyrimidine_pyrimidine2pyrrole_unique.csv molecules: 40
+Number of pyrrole.csv molecules: 11
+Number of common molecules: 0
+Number of new molecules in pyrimidine_pyrimidine2pyrrole_unique.csv: 3305
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrimidine_pyrimidine2pyridine_unique.csv and pyridine.csv:
+Number of pyrimidine_pyrimidine2pyridine_unique.csv molecules: 41
+Number of pyridine.csv molecules: 12
+Number of common molecules: 0
+Number of new molecules in pyrimidine_pyrimidine2pyridine_unique.csv: 3307
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrazine_pyrazine2pyridazine_unique.csv and pyridazine.csv:
+Number of pyrazine_pyrazine2pyridazine_unique.csv molecules: 39
+Number of pyridazine.csv molecules: 14
+Number of common molecules: 1
+Number of new molecules in pyrazine_pyrazine2pyridazine_unique.csv: 4006
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrazine_pyrazine2pyrimidine_unique.csv and pyrimidine.csv:
+Number of pyrazine_pyrazine2pyrimidine_unique.csv molecules: 39
+Number of pyrimidine.csv molecules: 14
+Number of common molecules: 0
+Number of new molecules in pyrazine_pyrazine2pyrimidine_unique.csv: 6936
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrazine_pyrazine2pyrrole_unique.csv and pyrrole.csv:
+Number of pyrazine_pyrazine2pyrrole_unique.csv molecules: 36
+Number of pyrrole.csv molecules: 11
+Number of common molecules: 0
+Number of new molecules in pyrazine_pyrazine2pyrrole_unique.csv: 4008
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrazine_pyrazine2pyridine_unique.csv and pyridine.csv:
+Number of pyrazine_pyrazine2pyridine_unique.csv molecules: 37
+Number of pyridine.csv molecules: 12
+Number of common molecules: 0
+Number of new molecules in pyrazine_pyrazine2pyridine_unique.csv: 4008
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrrole_pyrrole2pyridazine_unique.csv and pyridazine.csv:
+Number of pyrrole_pyrrole2pyridazine_unique.csv molecules: 37
+Number of pyridazine.csv molecules: 14
+Number of common molecules: 0
+Number of new molecules in pyrrole_pyrrole2pyridazine_unique.csv: 1192
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrrole_pyrrole2pyrimidine_unique.csv and pyrimidine.csv:
+Number of pyrrole_pyrrole2pyrimidine_unique.csv molecules: 37
+Number of pyrimidine.csv molecules: 14
+Number of common molecules: 0
+Number of new molecules in pyrrole_pyrrole2pyrimidine_unique.csv: 2383
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrrole_pyrrole2pyrazine_unique.csv and pyrazine.csv:
+Number of pyrrole_pyrrole2pyrazine_unique.csv molecules: 35
+Number of pyrazine.csv molecules: 12
+Number of common molecules: 0
+Number of new molecules in pyrrole_pyrrole2pyrazine_unique.csv: 1192
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyrrole_pyrrole2pyridine_unique.csv and pyridine.csv:
+Number of pyrrole_pyrrole2pyridine_unique.csv molecules: 35
+Number of pyridine.csv molecules: 12
+Number of common molecules: 0
+Number of new molecules in pyrrole_pyrrole2pyridine_unique.csv: 2383
+Processing time: 0.01 s
+
