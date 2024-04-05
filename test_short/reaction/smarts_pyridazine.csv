@@ -3,3 +3,9 @@ pyridazine2pyridine,[n:1]1[n:2][c:3][c:4][c:5][c:6]1>>[n:1]1[c][c:3][c:4][c:5][c
 pyridazine2pyrimidine,[n:1]1[n:2][c:3][c:4][c:5][c:6]1>>[n:1]1[c:3][n:2][c:4][c:5][c:6]1
 pyridazine2pyrazine,[n:1]1[n:2][c:3][c:4][c:5][c:6]1>>[n:1]1[c:3][c:4][n:2][c:5][c:6]1
 pyridazine2pyrrole,[n:1]1[n:2][c:3][c:4][c:5][c:6]1>>[nH:1]1[c:3][c:4][c:5][c:6]1.[n:2]
+pyridazine2pyrazole,[n:1]1[n:2][c:3][c:4][c:5][c:6]1>>[nH:1]1[n:3][c:4][c:5][c:6]1.[n:2]
+pyridazine2imidazole,[n:1]1[n:2][c:3][c:4][c:5][c:6]1>>[nH:1]1[c:3][n:4][c:5][c:6]1.[n:2]
+pyridazine2thiazole,[n:1]1[n:2][c:3][c:4][c:5][c:6]1>>[nH:1]1[c:3][s:4][c:5][c:6]1.[n:2]
+pyridazine2oxazole,[n:1]1[n:2][c:3][c:4][c:5][c:6]1>>[nH:1]1[c:3][o:4][c:5][c:6]1.[n:2]
+pyridazine2isoxazole,[n:1]1[n:2][c:3][c:4][c:5][c:6]1>>[nH:1]1[o:3][c:4][c:5][c:6]1.[n:2]
+pyridazine2furan,[n:1]1[n:2][c:3][c:4][c:5][c:6]1>>[o:1]1[c:3][c:4][c:5][c:6]1.[n:2]
