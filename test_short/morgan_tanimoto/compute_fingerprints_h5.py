@@ -6,27 +6,27 @@ from rdkit import Chem
 from rdkit.Chem import AllChem
 import h5py
 
-def compute_descriptors(line):
+def compute_descriptors(line, fp_size=512):
     smiles, mol_id = line.strip().split(',')
     
     mol = Chem.MolFromSmiles(smiles)
     if mol is None:
         print(f"Warning: Could not parse SMILES {smiles}")
-        return smiles, mol_id, ([0] * 1024)
+        return smiles, mol_id, ([0] * fp_size)
 
-    fp = AllChem.GetMorganFingerprintAsBitVect(mol, 2, nBits=1024)
+    fp = AllChem.GetMorganFingerprintAsBitVect(mol, 3, nBits=fp_size)
     return smiles, mol_id, list(fp)
 
 def process_batch(batch):
-    with multiprocessing.Pool(processes=4) as pool:
+    with multiprocessing.Pool(processes=None) as pool:
         return pool.map(compute_descriptors, batch)
 
-def main(lines, output_filename, batch_size=10000):
+def main(lines, output_filename, fp_size=512, batch_size=10000):
     with h5py.File(output_filename + '.h5', 'w') as h5_file:
         dt = h5py.special_dtype(vlen=str)
         smiles_ds = h5_file.create_dataset('smiles', (len(lines),), dtype=dt)
         ids_ds = h5_file.create_dataset('ids', (len(lines),), dtype=dt)
-        fps_ds = h5_file.create_dataset('fingerprints', (len(lines), 1024), dtype='i1')
+        fps_ds = h5_file.create_dataset('fingerprints', (len(lines), fp_size), dtype='i1')
 
         index = 0
         total_batches = (len(lines) - 1) // batch_size + 1

@@ -4,6 +4,7 @@ from rdkit import DataStructs
 from rdkit.Chem import AllChem
 import numpy as np
 import sys
+import time
 
 def load_hdf5_to_dataframe(file_path):
     with h5py.File(file_path, 'r') as h5_file:
@@ -45,8 +46,11 @@ if __name__ == '__main__':
 
     for file1, file2 in pairs:
         print(f"Processing pair: {file1}, {file2}")
+        start_time = time.time()
         similarity_df = process_pair(file1, file2)
         output_filename = f"{file1.split('.')[0]}_{file2.split('.')[0]}_similarity.h5"
         with h5py.File(output_filename, 'w') as hf:
             hf.create_dataset('similarity_matrix', data=similarity_df.to_numpy())
+        end_time = time.time()
         print(f"Saved similarity matrix to {output_filename}")
+        print(f"Processing time: {end_time - start_time:.2f} s")
