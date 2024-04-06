@@ -3,3 +3,9 @@ pyrazine
 pyridazine
 pyrimidine
 pyrrole
+pyrazole
+imidazole
+thiazole
+oxazole
+isoxazole
+furan

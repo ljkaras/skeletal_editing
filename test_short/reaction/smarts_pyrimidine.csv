@@ -3,3 +3,9 @@ pyrimidine2pyridine,[n:1]1[c:2][n:3][c:4][c:5][c:6]1>>[n:1]1[c:2][c][c:4][c:5][c
 pyrimidine2pyridazine,[n:1]1[c:2][n:3][c:4][c:5][c:6]1>>[n:1]1[n:3][c:2][c:4][c:5][c:6]1
 pyrimidine2pyrazine,[n:1]1[c:2][n:3][c:4][c:5][c:6]1>>[n:1]1[c:2][c:4][n:3][c:5][c:6]1
 pyrimidine2pyrrole,[n:1]1[c:2][n:3][c:4][c:5][c:6]1>>[nH:1]1[c:2][c:4][c:5][c:6]1.[n:3]
+pyrimidine2pyrazole,[n:1]1[c:2][n:3][c:4][c:5][c:6]1>>[nH:1]1[n:2][c:4][c:5][c:6]1.[n:3]
+pyrimidine2imidazole,[n:1]1[c:2][n:3][c:4][c:5][c:6]1>>[nH:1]1[c:2][n:4][c:5][c:6]1.[n:3]
+pyrimidine2thiazole,[n:1]1[c:2][n:3][c:4][c:5][c:6]1>>[n:1]1[c:2][s:4][c:5][c:6]1.[n:3]
+pyrimidine2oxazole,[n:1]1[c:2][n:3][c:4][c:5][c:6]1>>[n:1]1[c:2][o:4][c:5][c:6]1.[n:3]
+pyrimidine2isoxazole,[n:1]1[c:2][n:3][c:4][c:5][c:6]1>>[n:1]1[o:2][s:4][c:5][c:6]1.[n:3]
+pyrimidine2furan,[n:1]1[c:2][n:3][c:4][c:5][c:6]1>>[o:1]1[c:2][c:4][c:5][c:6]1.[n:3]
