@@ -1,49 +1,41 @@
+from multiprocessing import Pool
 import h5py
 import pandas as pd
 import numpy as np
 import sys
 import time
 
-def load_hdf5_to_dataframe(file_path, start=0, end=None):
+def load_hdf5_to_dataframe(file_path, start=0, end=-1):
     with h5py.File(file_path, 'r') as h5_file:
         smiles = h5_file['smiles'][start:end]
         ids = h5_file['ids'][start:end]
         fingerprints = h5_file['fingerprints'][start:end]
 
-    fp_arrays = [np.unpackbits(np.frombuffer(fp, dtype=np.uint8)).astype(bool) for fp in fingerprints]
-    df = pd.DataFrame({'SMILES': smiles, 'ID': ids, 'Fingerprint': fp_arrays})
-    return df
+    df = pd.DataFrame({'SMILES': smiles, 'ID': ids})
+    df['Fingerprint'] = list(fingerprints)
+    return df['Fingerprint']
 
-def compute_tanimoto_similarity(fp_array1, fp_array2):
-    # Ensure fingerprints are boolean arrays
-    fp_array1 = np.array(fp_array1, dtype=bool)
-    fp_array2 = np.array(fp_array2, dtype=bool)
+def tanimoto(v1, v2):
+    return np.bitwise_and(v1, v2).sum() / np.bitwise_or(v1, v2).sum()
 
-    # Compute the denominator for the Tanimoto similarity
-    denominator = np.logical_or(fp_array1[:, None, :], fp_array2).sum(axis=2)
+def compute_similarity(args):
+    i, j, fp1, fp2 = args
+    similarity = tanimoto(fp1[i], fp2[j])
+    return similarity
+   
+def process_pair(file1, file2, output_name):
+    fp1 = load_hdf5_to_dataframe(file1)
+    fp2 = load_hdf5_to_dataframe(file2)
+    start_time_1 = time.time()
+    pairs = [(i, j, fp1, fp2) for i in range(len(fp1)) for j in range(len(fp2))]
+    end_time_1 = time.time()
+    print(f"Processing time: {end_time_1 - start_time_1:.2f} s")
+    print(len(pairs))
+    with Pool() as pool:
+        similarities = pool.map(compute_similarity, pairs)
 
-    # Compute the numerator for the Tanimoto similarity
-    numerator = np.logical_and(fp_array1[:, None, :], fp_array2).sum(axis=2)
-
-    # Compute the Tanimoto similarity
-    similarity_matrix = numerator / denominator
-
-    return similarity_matrix
-
-def process_pair(file1, file2):
-    df1 = load_hdf5_to_dataframe(file1)
-    df2 = load_hdf5_to_dataframe(file2)
-
-    fingerprints1 = np.array(df1['Fingerprint'].tolist())
-    fingerprints2 = np.array(df2['Fingerprint'].tolist())
-
-    similarity_matrix = compute_tanimoto_similarity(fingerprints1, fingerprints2)
-
-    output_filename = f"{file1.split('.')[0]}_{file2.split('.')[0]}_similarity.h5"
-    with h5py.File(output_filename, 'w') as hf:
-        hf.create_dataset('similarity_matrix', data=similarity_matrix)
-
-    print(f"Saved similarity matrix to {file1.split('.')[0]}_{file2.split('.')[0]}_similarity.h5")
+    similarities_array = np.array(similarities, dtype=np.float16)  # Convert to NumPy array with reduced precision
+    np.save(output_name, similarities_array)
 
 if __name__ == '__main__':
     if len(sys.argv) != 2:
@@ -56,5 +48,9 @@ if __name__ == '__main__':
 
     for file1, file2 in pairs:
         print(f"Processing pair: {file1}, {file2}")
-        process_pair(file1, file2)
-        print(f"Saved similarity matrix to {file1.split('.')[0]}_{file2.split('.')[0]}_similarity.h5")
+        output_name = f"{file1.split('.')[0]}_{file2.split('.')[0]}_similarity.npy"
+        start_time = time.time()
+        process_pair(file1, file2, output_name)
+        end_time = time.time()
+        print(f"Saved similarity scores to {output_name}")
+        print(f"Processing time: {end_time - start_time:.2f} s")
