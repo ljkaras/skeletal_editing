@@ -1,0 +1,1 @@
+pyridine2pyrazine: 10
