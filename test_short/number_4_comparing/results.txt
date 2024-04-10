@@ -1,0 +1,64 @@
+------------------------------------------------------
+Comparison between unique and pyrazine:
+Number of unique molecules: 49
+Number of pyrazine molecules: 44
+Number of common molecules: 0
+Number of new molecules in unique: 1495
+Processing time: 0.02 s
+
+------------------------------------------------------
+Comparison between pyridine2pyrazine and pyrazine:
+Number of pyridine2pyrazine molecules: 49
+Number of pyrazine molecules: 44
+Number of common molecules: 0
+Number of new molecules in pyridine2pyrazine: 1495
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridine2pyrazine and aromatic:
+Number of pyridine2pyrazine molecules: 49
+Number of aromatic molecules: 44
+Number of common molecules: 0
+Number of new molecules in pyridine2pyrazine: 1495
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridine2pyrazine and pyrazine:
+Number of pyridine2pyrazine molecules: 49
+Number of pyrazine molecules: 44
+Number of common molecules: 0
+Number of new molecules in pyridine2pyrazine: 1495
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridine2pyrazine and pyrazine:
+Number of pyridine2pyrazine molecules: 49
+Number of pyrazine molecules: 44
+Number of common molecules: 0
+Number of new molecules in pyridine2pyrazine: 1495
+Processing time: 0.02 s
+
+------------------------------------------------------
+Comparison between pyridine2pyrazine and pyrazine:
+Number of pyridine2pyrazine molecules: 49
+Number of pyrazine molecules: 44
+Number of common molecules: 0
+Number of new molecules in pyridine2pyrazine: 1495
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridine2pyrazine and pyrazine:
+Number of pyridine2pyrazine molecules: 49
+Number of pyrazine molecules: 44
+Number of common molecules: 0
+Number of new molecules in pyridine2pyrazine: 1495
+Processing time: 0.01 s
+
+------------------------------------------------------
+Comparison between pyridine2pyrazine and pyrazine:
+Number of pyridine2pyrazine molecules: 49
+Number of pyrazine molecules: 44
+Number of common molecules: 0
+Number of new molecules in pyridine2pyrazine: 1495
+Processing time: 0.01 s
+
