@@ -1,0 +1,11 @@
+NAME,SMARTS
+furan2pyridine,[o:1]1[c:2][c:3][c:4][c:5]1>>[nH0:1]1[c:2][c:3][c:4][c:5][c]1
+furan2pyridazine,[o:1]1[c:2][c:3][c:4][c:5]1>>[nH0:1]1[n][c:2][c:3][c:4][c:5]1
+furan2pyrimidine,[o:1]1[c:2][c:3][c:4][c:5]1>>[nH0:1]1[c:2][n][c:3][c:4][c:5]1
+furan2pyrazine,[o:1]1[c:2][c:3][c:4][c:5]1>>[nH0:1]1[c:2][c:3][n][c:4][c:5]1
+furan2pyrazole,[o:1]1[c:2][c:3][c:4][c:5]1>>[nH:1]1[n:2][c:3][c:4][c:5]1
+furan2imidazole,[o:1]1[c:2][c:3][c:4][c:5]1>>[nH:1]1[c:2][n:3][c:4][c:5]1
+furan2thiazole,[o:1]1[c:2][c:3][c:4][c:5]1>>[n:1]1[c:2][s:3][c:4][c:5]1
+furan2oxazole,[o:1]1[c:2][c:3][c:4][c:5]1>>[n:1]1[c:2][o:3][c:4][c:5]1
+furan2isoxazole,[o:1]1[c:2][c:3][c:4][c:5]1>>[n:1]1[o:2][s:3][c:4][c:5]1
+furan2pyrrole,[o:1]1[c:2][c:3][c:4][c:5]1>>[nH:1]1[c:2][c:3][c:4][c:5]1
