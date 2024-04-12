@@ -1,0 +1,7 @@
+../number_1_frameworks/aromatic_imidazole
+../number_1_frameworks/aromatic_isoxazole
+../number_1_frameworks/aromatic_oxazole
+../number_1_frameworks/aromatic_pyrazine
+../number_1_frameworks/aromatic_pyridazine
+../number_1_frameworks/aromatic_pyrimidine
+../number_1_frameworks/aromatic_thiazole

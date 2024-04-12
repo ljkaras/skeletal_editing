@@ -1,0 +1,4 @@
+../number_1_frameworks/aromatic_furan
+../number_1_frameworks/aromatic_pyrazole
+../number_1_frameworks/aromatic_pyrrole
+../number_1_frameworks/aromatic_pyridine

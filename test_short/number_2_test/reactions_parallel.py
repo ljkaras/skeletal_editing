@@ -11,8 +11,9 @@ RDLogger.DisableLog('rdApp.*')
 def process_line(line, smarts_dict):
     smiles, mol_id = line.strip().split(',')
     mol = Chem.MolFromSmiles(smiles)
-    mol = Chem.AddHs(mol)
+    # mol = Chem.AddHs(mol)
     results = []
+    # symmetric_molecules_count = {}  # Initialize a dictionary to store counts
     symmetric_molecules_count = {name: 0 for name in smarts_dict.keys()}
 
     for name, rxn_smarts in smarts_dict.items():
@@ -24,7 +25,7 @@ def process_line(line, smarts_dict):
                 for product in product_set:
                     try:
                         Chem.SanitizeMol(product)
-                        product = Chem.RemoveHs(product)
+                        # product = Chem.RemoveHs(product)
                         product_smiles = Chem.MolToSmiles(product)
                         unique_products.add((product_smiles, mol_id, name))
                     except:
