@@ -193,8 +193,6 @@ def count_symmetric_molecules(frameworks, symmetric_filename):
 
 
 def GenerateHeatmap(dataframe, title):
-    print(f'Generating heatmap entitled "{title}"')
-    
     # Define figure size
     plt.figure(figsize=(12, 12), dpi=300)
 
@@ -215,9 +213,6 @@ def GenerateHeatmap(dataframe, title):
 
     # Save the plot as a file
     plt.savefig(f'{title}.png', dpi=300)
-    
-    print(f'Heatmap entitled {title} generated successfully.')
-    print('\n')
 
 
 frameworks = ['pyridine',
@@ -265,8 +260,22 @@ symmetry_results_arr = symmetry_results[0]
 symmetry_results_df = symmetry_results[1]
 
 # exports data to .csv files
-sm_count_df.to_csv('sm_count.csv', index=True)
+sm_count_df.to_csv('sm_count.csv', index=False)
 unique_count_df.to_csv('unique_count.csv', index=True)
 new_count_df.to_csv('new_count.csv', index=True)
 common_count_df.to_csv('common_count.csv', index=True)
 symmetry_results_df.to_csv('symmetry_results.csv', index=True)
+
+# exports data to .xlsx files
+sm_count_df.to_excel('sm_count.xlsx', index=False)
+unique_count_df.to_excel('unique_count.xlsx', index=True)
+new_count_df.to_excel('new_count.xlsx', index=True)
+common_count_df.to_excel('common_count.xlsx', index=True)
+symmetry_results_df.to_excel('symmetry_results.xlsx', index=True)
+
+# generates heatmaps for each dataframe
+GenerateHeatmap(sm_count_df, '# of Starting Molecules')
+GenerateHeatmap(unique_count_df, '# of Unique Molecules Generated')
+GenerateHeatmap(new_count_df, '# of Unknown Molecules Generated')
+GenerateHeatmap(common_count_df, '# of Common Molecules Between Starting and New Datasets')
+GenerateHeatmap(symmetry_results_df, '# of Symmetric Molecules over # of Total Molecules Generated')
