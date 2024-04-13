@@ -183,7 +183,7 @@ def count_symmetric_molecules(frameworks, symmetric_filename):
                         if int(symmetric_number) == 0:
                             symmetric_metric = 1
                         elif int(symmetric_number) != 0:
-                            symmetric_metric = ((int(symmetric_number) / int(total_molecules_number)) / 2)
+                            symmetric_metric = ((int(symmetric_number) / int(total_molecules_number)) * 2)
 
                         # add to array
                         symmetric_count_arr[idx1, idx2] = symmetric_metric
@@ -290,7 +290,7 @@ GenerateHeatmap(sm_count_df, '# of Starting Molecules', filename = 'sm_count.png
 GenerateHeatmap(unique_count_df, '# of Unique Molecules Generated', filename = 'unique_count.png')
 GenerateHeatmap(new_count_df, '# of Unknown Molecules Generated', filename = 'new_count.png')
 GenerateHeatmap(common_count_df, '# of Common Molecules Between Starting Molecules and Products', filename = 'common_count.png')
-GenerateHeatmap(symmetry_results_df, '(# of Symmetric Products Generated over # of Total Products) over 2', filename = 'symmetry_results.png')
+GenerateHeatmap(symmetry_results_df, '(# of Symmetric Products Generated over # of Total Products) times 2', filename = 'symmetry_results.png')
 
 
 # calculates results normalized to # of starting molecules
