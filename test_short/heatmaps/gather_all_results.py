@@ -287,7 +287,7 @@ GenerateHeatmap(sm_count_df, '# of Starting Molecules', filename = 'sm_count.png
 GenerateHeatmap(unique_count_df, '# of Unique Molecules Generated', filename = 'unique_count.png')
 GenerateHeatmap(new_count_df, '# of Unknown Molecules Generated', filename = 'new_count.png')
 GenerateHeatmap(common_count_df, '# of Common Molecules Between Starting Molecules and Products', filename = 'common_count.png')
-GenerateHeatmap(symmetry_results_df, '(# of Symmetric Products Generated over # of Total Products) times 2', filename = 'symmetry_results.png')
+GenerateHeatmap(symmetry_results_df, 'Symmetry Metric for Each Transformation', filename = 'symmetry_results.png')
 
 # calculates results normalized to # of starting molecules
 normalized_unique_count_arr = unique_count_arr / sm_count_arr
