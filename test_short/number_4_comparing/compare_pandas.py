@@ -1,6 +1,8 @@
 import pandas as pd
 import time
 import os 
+import sys 
+from filelock import FileLock
 
 def compare_files(original_file, compare_file):
     time_start = time.time()
@@ -36,20 +38,21 @@ def compare_files(original_file, compare_file):
     common_molecules[['SMILES','ID']].to_csv(f"common_molecules_{original_file_name}.csv", index=False)
     new_molecules_df1.to_csv(f"new_molecules_{original_file_name}.csv", index=False)
 
-    # Save results to results.txt
-    with open('results.txt', 'a') as results_file:
-        results_file.write(f"------------------------------------------------------\n")
-        results_file.write(f"Comparison between {original_file_name} and {compare_file_name}:\n")
-        results_file.write(f"Number of {original_file_name} molecules: {len(original_file)}\n")
-        results_file.write(f"Number of {compare_file_name} molecules: {len(compare_file)}\n")
-        results_file.write(f"Number of common molecules: {len(common_molecules)}\n")
-        results_file.write(f"Number of new molecules in {original_file_name}: {len(new_molecules_df1)}\n")
-        results_file.write(f"Processing time: {processing_time:.2f} s\n\n")
+    # Save results to results.txt using file locking
+    with FileLock("results.lock"):
+        with open('results.txt', 'a') as results_file:
+            results_file.write(f"------------------------------------------------------\n")
+            results_file.write(f"Comparison between {original_file_name} and {compare_file_name}:\n")
+            results_file.write(f"Number of {original_file_name} molecules: {len(df1)}\n")
+            results_file.write(f"Number of {compare_file_name} molecules: {len(df2)}\n")
+            results_file.write(f"Number of common molecules: {len(common_molecules)}\n")
+            results_file.write(f"Number of new molecules in {original_file_name}: {len(new_molecules_df1)}\n")
+            results_file.write(f"Processing time: {processing_time:.2f} s\n\n")
 
     print(f"Processing time: {processing_time:.2f} s")
 
-def main():
-    with open('comparing.txt', 'r') as file:
+def main(filename):
+    with open(filename, 'r') as file:
         num_lines = sum(1 for _ in file)  # Count the number of lines
         file.seek(0)  # Reset file pointer to the beginning
         for i, line in enumerate(file, 1):  # Start counting from 1
@@ -59,4 +62,10 @@ def main():
                 compare_files(original_file, compare_file)
 
 if __name__ == '__main__':
-    main()
+    if len(sys.argv) != 2:
+        print("Usage: python compare_pandas.py <filename>")
+        sys.exit(1)
+
+    filename = sys.argv[1]
+    print(f"Reading {filename}")
+    main(filename)

@@ -1,64 +1,24 @@
 ------------------------------------------------------
-Comparison between unique and pyrazine:
-Number of unique molecules: 49
-Number of pyrazine molecules: 44
+Comparison between isoxazole2pyridazine and pyridazine:
+Number of isoxazole2pyridazine molecules: 443
+Number of pyridazine molecules: 121
 Number of common molecules: 0
-Number of new molecules in unique: 1495
+Number of new molecules in isoxazole2pyridazine: 443
 Processing time: 0.02 s
 
 ------------------------------------------------------
-Comparison between pyridine2pyrazine and pyrazine:
-Number of pyridine2pyrazine molecules: 49
-Number of pyrazine molecules: 44
+Comparison between pyrimidine2pyridazine and pyridazine:
+Number of pyrimidine2pyridazine molecules: 750
+Number of pyridazine molecules: 121
 Number of common molecules: 0
-Number of new molecules in pyridine2pyrazine: 1495
-Processing time: 0.01 s
+Number of new molecules in pyrimidine2pyridazine: 750
+Processing time: 0.00 s
 
 ------------------------------------------------------
-Comparison between pyridine2pyrazine and aromatic:
-Number of pyridine2pyrazine molecules: 49
-Number of aromatic molecules: 44
+Comparison between imidazole2pyridazine and pyridazine:
+Number of imidazole2pyridazine molecules: 252
+Number of pyridazine molecules: 121
 Number of common molecules: 0
-Number of new molecules in pyridine2pyrazine: 1495
-Processing time: 0.01 s
-
-------------------------------------------------------
-Comparison between pyridine2pyrazine and pyrazine:
-Number of pyridine2pyrazine molecules: 49
-Number of pyrazine molecules: 44
-Number of common molecules: 0
-Number of new molecules in pyridine2pyrazine: 1495
-Processing time: 0.01 s
-
-------------------------------------------------------
-Comparison between pyridine2pyrazine and pyrazine:
-Number of pyridine2pyrazine molecules: 49
-Number of pyrazine molecules: 44
-Number of common molecules: 0
-Number of new molecules in pyridine2pyrazine: 1495
-Processing time: 0.02 s
-
-------------------------------------------------------
-Comparison between pyridine2pyrazine and pyrazine:
-Number of pyridine2pyrazine molecules: 49
-Number of pyrazine molecules: 44
-Number of common molecules: 0
-Number of new molecules in pyridine2pyrazine: 1495
-Processing time: 0.01 s
-
-------------------------------------------------------
-Comparison between pyridine2pyrazine and pyrazine:
-Number of pyridine2pyrazine molecules: 49
-Number of pyrazine molecules: 44
-Number of common molecules: 0
-Number of new molecules in pyridine2pyrazine: 1495
-Processing time: 0.01 s
-
-------------------------------------------------------
-Comparison between pyridine2pyrazine and pyrazine:
-Number of pyridine2pyrazine molecules: 49
-Number of pyrazine molecules: 44
-Number of common molecules: 0
-Number of new molecules in pyridine2pyrazine: 1495
-Processing time: 0.01 s
+Number of new molecules in imidazole2pyridazine: 252
+Processing time: 0.00 s
 

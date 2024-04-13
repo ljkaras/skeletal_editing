@@ -1,10 +1,3 @@
-../number_3_cleaning/furan2pyrazine_unique.csv,../number_1_frameworks/aromatic_pyrazine.csv
-../number_3_cleaning/imidazole2pyrazine_unique.csv,../number_1_frameworks/aromatic_pyrazine.csv
-../number_3_cleaning/isoxazole2pyrazine_unique.csv,../number_1_frameworks/aromatic_pyrazine.csv
-../number_3_cleaning/oxazole2pyrazine_unique.csv,../number_1_frameworks/aromatic_pyrazine.csv
-../number_3_cleaning/pyrazole2pyrazine_unique.csv,../number_1_frameworks/aromatic_pyrazine.csv
-../number_3_cleaning/pyridazine2pyrazine_unique.csv,../number_1_frameworks/aromatic_pyrazine.csv
-../number_3_cleaning/pyridine2pyrazine_unique.csv,../number_1_frameworks/aromatic_pyrazine.csv
-../number_3_cleaning/pyrimidine2pyrazine_unique.csv,../number_1_frameworks/aromatic_pyrazine.csv
-../number_3_cleaning/pyrrole2pyrazine_unique.csv,../number_1_frameworks/aromatic_pyrazine.csv
-../number_3_cleaning/thiazole2pyrazine_unique.csv,../number_1_frameworks/aromatic_pyrazine.csv
+../number_3_cleaning/isoxazole2pyridazine_unique.csv,../number_1_frameworks/aromatic_pyridazine.csv
+../number_3_cleaning/pyrimidine2pyridazine_unique.csv,../number_1_frameworks/aromatic_pyridazine.csv
+../number_3_cleaning/imidazole2pyridazine_unique.csv,../number_1_frameworks/aromatic_pyridazine.csv
