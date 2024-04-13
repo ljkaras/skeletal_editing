@@ -17,6 +17,7 @@ import os
 path = str(__file__)
 os.chdir(os.path.dirname(os.path.abspath(path)))
 
+
 def load_file_as_list(filename):
     with open(filename, 'r') as file:
         all_lines = file.readlines()
@@ -77,7 +78,9 @@ def count_unique_molecules(frameworks, unique_filenames):
                     if filename  == filename_match:
                         opened_file = load_file_as_list(filename)
                         unique_count_arr[idx1, idx2] = len(opened_file)
+                        
             else:
+                unique_count_arr[idx1, idx2] = None
                 continue
 
     # converts unique molecule count array to df
@@ -108,6 +111,7 @@ def count_new_molecules(frameworks, new_filenames):
                         opened_file = load_file_as_list(filename)
                         new_count_arr[idx1, idx2] = len(opened_file)
             else:
+                new_count_arr[idx1, idx2] = None
                 continue
 
     # converts new molecule count array to df
@@ -138,6 +142,7 @@ def count_common_molecules(frameworks, common_filenames):
                         opened_file = load_file_as_list(filename)
                         common_count_arr[idx1, idx2] = len(opened_file)
             else:
+                common_count_arr[idx1, idx2] = None
                 continue
 
     # converts new molecule count array to df
@@ -162,26 +167,31 @@ def count_symmetric_molecules(frameworks, symmetric_filename):
     
     for idx1, framework1 in enumerate(frameworks):
         for idx2, framework2 in enumerate(frameworks):
+            if framework1 != framework2:
+                line_prefix_match = f'{framework1}2{framework2}'
+                
+                for line in symmetric_file_lines:
+                    line_prefix = line.split(':')
 
-            line_prefix_match = f'{framework1}2{framework2}'
-            
-            for line in symmetric_file_lines:
-                line_prefix = line.split(':')
+                    if line_prefix[0] == line_prefix_match:
+                        # Split the string by '/' and extract the number of symmetric molecules
+                        parts = line.split('/')
+                        symmetric_number = parts[0].split(': ')[-1].strip()
+                        total_molecules_number = parts[1].strip()
 
-                if line_prefix[0] == line_prefix_match:
-                    # Split the string by '/' and extract the number of symmetric molecules
-                    parts = line.split('/')
-                    symmetric_number = parts[0].split(': ')[-1].strip()
-                    total_molecules_number = parts[1].strip()
+                        # calculate symmetry metric
+                        if int(symmetric_number) == 0:
+                            symmetric_metric = 1
+                        elif int(symmetric_number) != 0:
+                            symmetric_metric = ((int(symmetric_number) / int(total_molecules_number)) / 2)
 
-                    # calculate symmetry metric
-                    symmetric_metric = int(symmetric_number) / int(total_molecules_number)
+                        # add to array
+                        symmetric_count_arr[idx1, idx2] = symmetric_metric
 
-                    # add to array
-                    symmetric_count_arr[idx1, idx2] = symmetric_metric
-
-                else:
-                    continue
+                    else:
+                        continue
+            else:
+                symmetric_count_arr[idx1, idx2] = None
 
     # converts symmetry metric array to df
     # SMs are listed on left side column, products are listed across the top
@@ -192,7 +202,7 @@ def count_symmetric_molecules(frameworks, symmetric_filename):
     return symmetric_count_arr, symmetric_count_df
 
 
-def GenerateHeatmap(dataframe, title):
+def GenerateHeatmap(dataframe, title, filename):
     # Define figure size
     plt.figure(figsize=(12, 12), dpi=300)
 
@@ -212,7 +222,8 @@ def GenerateHeatmap(dataframe, title):
     plt.ylabel('SM Substructure', fontsize=14)  # Add label for the y-axis
 
     # Save the plot as a file
-    plt.savefig(f'{title}.png', dpi=300)
+    plt.savefig(filename, dpi=300)
+    plt.close()  # Close the plot to release memory
 
 
 frameworks = ['pyridine',
@@ -259,6 +270,7 @@ symmetry_results = count_symmetric_molecules(frameworks, symmetric_filename)
 symmetry_results_arr = symmetry_results[0]
 symmetry_results_df = symmetry_results[1]
 
+
 # exports data to .csv files
 sm_count_df.to_csv('sm_count.csv', index=False)
 unique_count_df.to_csv('unique_count.csv', index=True)
@@ -274,8 +286,38 @@ common_count_df.to_excel('common_count.xlsx', index=True)
 symmetry_results_df.to_excel('symmetry_results.xlsx', index=True)
 
 # generates heatmaps for each dataframe
-GenerateHeatmap(sm_count_df, '# of Starting Molecules')
-GenerateHeatmap(unique_count_df, '# of Unique Molecules Generated')
-GenerateHeatmap(new_count_df, '# of Unknown Molecules Generated')
-GenerateHeatmap(common_count_df, '# of Common Molecules Between Starting and New Datasets')
-GenerateHeatmap(symmetry_results_df, '# of Symmetric Molecules over # of Total Molecules Generated')
+GenerateHeatmap(sm_count_df, '# of Starting Molecules', filename = 'sm_count.png')
+GenerateHeatmap(unique_count_df, '# of Unique Molecules Generated', filename = 'unique_count.png')
+GenerateHeatmap(new_count_df, '# of Unknown Molecules Generated', filename = 'new_count.png')
+GenerateHeatmap(common_count_df, '# of Common Molecules Between Starting Molecules and Products', filename = 'common_count.png')
+GenerateHeatmap(symmetry_results_df, '(# of Symmetric Products Generated over # of Total Products) over 2', filename = 'symmetry_results.png')
+
+
+# calculates results normalized to # of starting molecules
+normalized_unique_count_arr = unique_count_arr / sm_count_arr
+normalized_new_count_arr = new_count_arr / sm_count_arr
+normalized_common_count_arr = common_count_arr / sm_count_arr
+
+# adjusts arrays based on symmetry metric
+adjusted_unique_count_arr = normalized_unique_count_arr * symmetry_results_arr # unsure if this one is meaningful
+adjusted_new_count_arr = normalized_new_count_arr * symmetry_results_arr # want to be absolutely certain this is valid (duplicates already removed...?)
+adjusted_common_count_arr = normalized_common_count_arr * symmetry_results_arr # unsure if this one is necessary
+
+# generates symmetry adjusted, normalized new molecules heatmap
+adjusted_new_count_df = pd.DataFrame(adjusted_new_count_arr, 
+                                      index = frameworks,
+                                      columns = frameworks)
+GenerateHeatmap(new_count_df, 'Symmetry-Adjusted, Normalized # of New Molecules',  filename = 'adjusted_new_count.png')
+
+# below is commented out because of zero issue (no common molecules found, currently)
+'''
+# calculates ratio of new molecules generated to common molecules found with symmetry adjustment
+new_to_common_ratio_arr = adjusted_new_count_arr/adjusted_common_count_arr
+
+# converts arrays used for easy calculations to dataframes for graphical representation
+new_to_common_ratio_df = pd.DataFrame(new_to_common_ratio_arr, 
+                                      index = frameworks,
+                                      columns = frameworks)
+# GenerateHeatmap(new_to_common_ratio_df, 'Symmetry-Adjusted, Normalized Ratio of New to Common Molecules')
+'''
+
