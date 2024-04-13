@@ -248,7 +248,7 @@ unique_count_results = count_unique_molecules(frameworks, unique_filenames)
 unique_count_arr = unique_count_results[0]
 unique_count_df = unique_count_results[1]
 
-new_count_results = count_unique_molecules(frameworks, new_filenames)
+new_count_results = count_new_molecules(frameworks, new_filenames)
 new_count_arr = new_count_results[0]
 new_count_df = new_count_results[1]
 
@@ -265,8 +265,8 @@ symmetry_results_arr = symmetry_results[0]
 symmetry_results_df = symmetry_results[1]
 
 # exports data to .csv files
-sm_count_df.to_csv('sm_count.csv', index=False)
-unique_count_df.to_csv('unique_count.csv', index=False)
-new_count_df.to_csv('new_count.csv', index=False)
-common_count_df.to_csv('common_count.csv', index=False)
-symmetry_results_df.to_csv('symmetry_results.csv', index=False)
+sm_count_df.to_csv('sm_count.csv', index=True)
+unique_count_df.to_csv('unique_count.csv', index=True)
+new_count_df.to_csv('new_count.csv', index=True)
+common_count_df.to_csv('common_count.csv', index=True)
+symmetry_results_df.to_csv('symmetry_results.csv', index=True)
