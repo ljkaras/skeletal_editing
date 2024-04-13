@@ -176,14 +176,11 @@ def count_symmetric_molecules(frameworks, symmetric_filename):
                     if line_prefix[0] == line_prefix_match:
                         # Split the string by '/' and extract the number of symmetric molecules
                         parts = line.split('/')
-                        symmetric_number = parts[0].split(': ')[-1].strip()
+                        symmetric_molecules_number = parts[0].split(': ')[-1].strip()
                         total_molecules_number = parts[1].strip()
 
                         # calculate symmetry metric
-                        if int(symmetric_number) == 0:
-                            symmetric_metric = 1
-                        elif int(symmetric_number) != 0:
-                            symmetric_metric = ((int(symmetric_number) / int(total_molecules_number)) * 2)
+                        symmetric_metric = ((int(symmetric_molecules_number) / int(total_molecules_number))+ 1)
 
                         # add to array
                         symmetric_count_arr[idx1, idx2] = symmetric_metric
@@ -292,16 +289,15 @@ GenerateHeatmap(new_count_df, '# of Unknown Molecules Generated', filename = 'ne
 GenerateHeatmap(common_count_df, '# of Common Molecules Between Starting Molecules and Products', filename = 'common_count.png')
 GenerateHeatmap(symmetry_results_df, '(# of Symmetric Products Generated over # of Total Products) times 2', filename = 'symmetry_results.png')
 
-
 # calculates results normalized to # of starting molecules
 normalized_unique_count_arr = unique_count_arr / sm_count_arr
 normalized_new_count_arr = new_count_arr / sm_count_arr
 normalized_common_count_arr = common_count_arr / sm_count_arr
 
 # adjusts arrays based on symmetry metric
-adjusted_unique_count_arr = normalized_unique_count_arr * symmetry_results_arr # unsure if this one is meaningful
-adjusted_new_count_arr = normalized_new_count_arr * symmetry_results_arr # want to be absolutely certain this is valid (duplicates already removed...?)
-adjusted_common_count_arr = normalized_common_count_arr * symmetry_results_arr # unsure if this one is necessary
+adjusted_unique_count_arr = normalized_unique_count_arr / symmetry_results_arr # unsure if this one is meaningful
+adjusted_new_count_arr = normalized_new_count_arr / symmetry_results_arr # want to be absolutely certain this is valid (duplicates already removed...?)
+adjusted_common_count_arr = normalized_common_count_arr / symmetry_results_arr # unsure if this one is necessary
 
 # generates symmetry adjusted, normalized new molecules heatmap
 adjusted_new_count_df = pd.DataFrame(adjusted_new_count_arr, 
