@@ -50,12 +50,12 @@ def count_sm_molecules(frameworks, sm_filenames):
 
             if filename  == filename_match:
                 opened_file = load_file_as_list(filename)
-                sm_count_arr[0:, idx] = len(opened_file)
+                sm_count_arr[idx, 0:] = len(opened_file)
 
     # converts SM count array to df
     sm_count_df = pd.DataFrame(sm_count_arr,
-                    index = None, 
-                    columns = frameworks)
+                    index = frameworks, 
+                    columns = None)
     
     return sm_count_arr, sm_count_df
 
