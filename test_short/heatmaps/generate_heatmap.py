@@ -7,6 +7,10 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+# import seaborn and matplotlib for heatmap generation
+import seaborn as sns
+import matplotlib.pyplot as plt
+
 # changes the working directory to the Results subdirectory of the 
 # directory this script is located in
 import os
@@ -28,20 +32,6 @@ def load_file_as_list(filename):
                 lines.append(line)
 
     return lines
-
-
-frameworks = ['pyridine',
-        'pyridazine',
-        'pyrimidine',
-        'pyrazine',
-        'pyrrole',
-        'pyrazole',
-        'imidazole',
-        'thiazole',
-        'oxazole',
-        'isoxazole',
-        'furan'
-        ]
 
 
 def count_sm_molecules(frameworks, sm_filenames):
@@ -158,17 +148,125 @@ def count_common_molecules(frameworks, common_filenames):
     
     return common_count_arr, common_count_df
 
+
+def count_symmetric_molecules(frameworks, symmetric_filename):
+    # get the number of molecules classes
+    num_frameworks = len(frameworks)
+
+    # initiate blank array for collecting results
+    symmetric_count_arr = np.zeros((num_frameworks, num_frameworks), 
+                        dtype = float, 
+                        order = 'C')
+    
+    symmetric_file_lines = load_file_as_list(symmetric_filename)
+    
+    for idx1, framework1 in enumerate(frameworks):
+        for idx2, framework2 in enumerate(frameworks):
+
+            line_prefix_match = f'{framework1}2{framework2}'
+            
+            for line in symmetric_file_lines:
+                line_prefix = line.split(':')
+
+                if line_prefix[0] == line_prefix_match:
+                    # Split the string by '/' and extract the number of symmetric molecules
+                    parts = line.split('/')
+                    symmetric_number = parts[0].split(': ')[-1].strip()
+                    total_molecules_number = parts[1].strip()
+
+                    # calculate symmetry metric
+                    symmetric_metric = int(symmetric_number) / int(total_molecules_number)
+
+                    # add to array
+                    symmetric_count_arr[idx1, idx2] = symmetric_metric
+
+                else:
+                    continue
+
+    # converts symmetry metric array to df
+    # SMs are listed on left side column, products are listed across the top
+    symmetric_count_df = pd.DataFrame(symmetric_count_arr,
+                    index = frameworks, 
+                    columns = frameworks)
+    
+    return symmetric_count_arr, symmetric_count_df
+
+
+def GenerateHeatmap(dataframe, title):
+    print(f'Generating heatmap entitled "{title}"')
+    
+    # Define figure size
+    plt.figure(figsize=(12, 12), dpi=300)
+
+    # Create heatmap
+    sns.heatmap(dataframe, 
+                annot=True, 
+                cmap='viridis', 
+                linewidths=0.5, 
+                fmt=".2f", 
+                annot_kws={"size": 8})
+
+    # Add title
+    plt.title(title)
+    
+    # Add labels to the x-axis and y-axis
+    plt.xlabel('PDT Substructure', fontsize=14)  # Add label for the x-axis
+    plt.ylabel('SM Substructure', fontsize=14)  # Add label for the y-axis
+
+    # Save the plot as a file
+    plt.savefig(f'{title}.png', dpi=300)
+    
+    print(f'Heatmap entitled {title} generated successfully.')
+    print('\n')
+
+
+frameworks = ['pyridine',
+        'pyridazine',
+        'pyrimidine',
+        'pyrazine',
+        'pyrrole',
+        'pyrazole',
+        'imidazole',
+        'thiazole',
+        'oxazole',
+        'isoxazole',
+        'furan'
+        ]
+
+# loads in filename repositories
 sm_filenames = load_file_as_list('sm_molecules_filenames.txt')
 unique_filenames = load_file_as_list('unique_molecules_filenames.txt')
 new_filenames = load_file_as_list('new_molecules_filenames.txt')
 common_filenames = load_file_as_list('common_molecules_filenames.txt')
 
+# gathers count for each subtype of result
+sm_count_results = count_sm_molecules(frameworks, sm_filenames)
+sm_count_arr = sm_count_results[0]
+sm_count_df = sm_count_results[1]
 
+unique_count_results = count_unique_molecules(frameworks, unique_filenames)
+unique_count_arr = unique_count_results[0]
+unique_count_df = unique_count_results[1]
 
+new_count_results = count_unique_molecules(frameworks, new_filenames)
+new_count_arr = new_count_results[0]
+new_count_df = new_count_results[1]
 
+common_count_results = count_common_molecules(frameworks, common_filenames)
+common_count_arr = common_count_results[0]
+common_count_df = common_count_results[1]
 
+# specifies the file containing symmetry data
+symmetric_filename = '../number_2_reactions/symmetric_molecules.txt'
 
+# counts up and calculates symmetry metrics for each transformation
+symmetry_results = count_symmetric_molecules(frameworks, symmetric_filename)
+symmetry_results_arr = symmetry_results[0]
+symmetry_results_df = symmetry_results[1]
 
-
-
-
+# exports data to .csv files
+sm_count_df.to_csv('sm_count.csv', index=False)
+unique_count_df.to_csv('unique_count.csv', index=False)
+new_count_df.to_csv('new_count.csv', index=False)
+common_count_df.to_csv('common_count.csv', index=False)
+symmetry_results_df.to_csv('symmetry_results.csv', index=False)
