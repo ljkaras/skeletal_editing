@@ -303,7 +303,7 @@ adjusted_common_count_arr = normalized_common_count_arr / symmetry_results_arr #
 adjusted_new_count_df = pd.DataFrame(adjusted_new_count_arr, 
                                       index = frameworks,
                                       columns = frameworks)
-GenerateHeatmap(new_count_df, 'Symmetry-Adjusted, Normalized # of New Molecules',  filename = 'adjusted_new_count.png')
+GenerateHeatmap(adjusted_new_count_df, 'Symmetry-Adjusted, Normalized # of New Molecules',  filename = 'adjusted_new_count.png')
 
 # below is commented out because of zero issue (no common molecules found, currently)
 '''
