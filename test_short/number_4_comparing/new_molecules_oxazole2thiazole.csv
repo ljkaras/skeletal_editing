@@ -212,8 +212,8 @@ CCc1ncsc1C(=O)NCCN(C)C(=O)C1CN2CCC1C2,oxazole2thiazole_0000000210
 Cc1scnc1C(=O)N(C)CC1CCCN(C(=O)CC2(C)CCC2)C1,oxazole2thiazole_0000000211
 Cc1scnc1C(=O)NC1(CO)CN(C(=O)CC2(CO)CC2)C1,oxazole2thiazole_0000000212
 C[C@H](CNC(=O)Cc1cccc(C#N)c1)NC(=O)c1csc(Cl)n1,oxazole2thiazole_0000000213
-Cc1scnc1C(=O)NC[C@@H]1CC[C@H]1NC(=O)c1coc(C2CC2)n1,oxazole2thiazole_0000000214
-Cc1ocnc1C(=O)NC[C@@H]1CC[C@H]1NC(=O)c1csc(C2CC2)n1,oxazole2thiazole_0000000215
+Cc1ocnc1C(=O)NC[C@@H]1CC[C@H]1NC(=O)c1csc(C2CC2)n1,oxazole2thiazole_0000000214
+Cc1scnc1C(=O)NC[C@@H]1CC[C@H]1NC(=O)c1coc(C2CC2)n1,oxazole2thiazole_0000000215
 Cc1ncc(C(=O)N2CCC3(CC2)CC(NC(=O)CC2CC2)C3)s1,oxazole2thiazole_0000000216
 Cc1nc(C(=O)N2CC(C)CC(NC(=O)C34CCC(CC3)O4)C2)cs1,oxazole2thiazole_0000000217
 COCC(=O)NC[C@H]1C[C@H]1NC(=O)c1sc(C(F)(F)F)nc1C,oxazole2thiazole_0000000218
