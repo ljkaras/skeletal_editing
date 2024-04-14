@@ -59,7 +59,7 @@ def count_sm_molecules(frameworks, sm_filenames):
     
     return sm_count_arr, sm_count_df
 
-
+'''
 def count_unique_molecules(frameworks, unique_filenames):
     # get the number of molecules classes
     num_frameworks = len(frameworks)
@@ -90,6 +90,47 @@ def count_unique_molecules(frameworks, unique_filenames):
                     columns = frameworks)
     
     return unique_count_arr, unique_count_df
+
+    # converts unique molecule count array to df
+    # SMs are listed on left side column, products are listed across the top
+    unique_count_df = pd.DataFrame(unique_count_arr,
+                    index = frameworks, 
+                    columns = frameworks)
+    
+    return unique_count_arr, unique_count_df
+'''
+
+
+def count_unique_molecules(frameworks, unique_filenames):
+    # get the number of molecules classes
+    num_frameworks = len(frameworks)
+
+    # initiate blank array for collecting results
+    product_count_arr = np.zeros((num_frameworks, num_frameworks), 
+                        dtype = float, 
+                        order = 'C')
+    
+    for idx1, framework1 in enumerate(frameworks):
+        for idx2, framework2 in enumerate(frameworks):
+            if framework1 != framework2:
+                for filename in unique_filenames:
+                    filename_match = f'../number_2_reactions/{framework1}_{framework1}2{framework2}.csv'
+
+                    if filename  == filename_match:
+                        opened_file = load_file_as_list(filename)
+                        product_count_arr[idx1, idx2] = len(opened_file)
+                        
+            else:
+                product_count_arr[idx1, idx2] = None
+                continue
+
+    # converts product molecule count array to df
+    # SMs are listed on left side column, products are listed across the top
+    product_count_df = pd.DataFrame(product_count_arr,
+                    index = frameworks, 
+                    columns = frameworks)
+    
+    return product_count_arr, product_count_df
 
 
 def count_new_molecules(frameworks, new_filenames):
@@ -238,7 +279,7 @@ frameworks = ['pyridine',
 
 # loads in filename repositories
 sm_filenames = load_file_as_list('sm_molecules_filenames.txt')
-unique_filenames = load_file_as_list('unique_molecules_filenames.txt')
+unique_filenames = load_file_as_list('product_molecules_filenames.txt') # change back to unique_molecules_filenames.txt eventually
 new_filenames = load_file_as_list('new_molecules_filenames.txt')
 common_filenames = load_file_as_list('common_molecules_filenames.txt')
 
@@ -267,7 +308,6 @@ symmetry_results = count_symmetric_molecules(frameworks, symmetric_filename)
 symmetry_results_arr = symmetry_results[0]
 symmetry_results_df = symmetry_results[1]
 
-
 # exports data to .csv files
 sm_count_df.to_csv('sm_count.csv', index=False)
 unique_count_df.to_csv('unique_count.csv', index=True)
@@ -291,7 +331,7 @@ GenerateHeatmap(symmetry_results_df, 'Symmetry Metric for Each Transformation', 
 
 # calculates results normalized to # of starting molecules
 normalized_unique_count_arr = unique_count_arr / sm_count_arr
-normalized_new_count_arr = new_count_arr / sm_count_arr
+normalized_new_count_arr = unique_count_arr / sm_count_arr # change this back to new_count_arr instead of unique_count_arr when fixed
 normalized_common_count_arr = common_count_arr / sm_count_arr
 
 # adjusts arrays based on symmetry metric
@@ -304,6 +344,9 @@ adjusted_new_count_df = pd.DataFrame(adjusted_new_count_arr,
                                       index = frameworks,
                                       columns = frameworks)
 GenerateHeatmap(adjusted_new_count_df, 'Symmetry-Adjusted, Normalized # of New Molecules',  filename = 'adjusted_new_count.png')
+
+# exports ^^ as csv
+adjusted_new_count_df.to_csv('adjusted_new_count.csv', index=True)
 
 # below is commented out because of zero issue (no common molecules found, currently)
 '''
