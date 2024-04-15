@@ -59,7 +59,7 @@ def count_sm_molecules(frameworks, sm_filenames):
     
     return sm_count_arr, sm_count_df
 
-'''
+
 def count_unique_molecules(frameworks, unique_filenames):
     # get the number of molecules classes
     num_frameworks = len(frameworks)
@@ -98,9 +98,10 @@ def count_unique_molecules(frameworks, unique_filenames):
                     columns = frameworks)
     
     return unique_count_arr, unique_count_df
+
+
+# commented out because it's deprecated but might be useful in the futre
 '''
-
-
 def count_unique_molecules(frameworks, unique_filenames):
     # get the number of molecules classes
     num_frameworks = len(frameworks)
@@ -131,6 +132,7 @@ def count_unique_molecules(frameworks, unique_filenames):
                     columns = frameworks)
     
     return product_count_arr, product_count_df
+'''
 
 
 def count_new_molecules(frameworks, new_filenames):
@@ -279,7 +281,7 @@ frameworks = ['pyridine',
 
 # loads in filename repositories
 sm_filenames = load_file_as_list('sm_molecules_filenames.txt')
-unique_filenames = load_file_as_list('product_molecules_filenames.txt') # change back to unique_molecules_filenames.txt eventually
+unique_filenames = load_file_as_list('unique_molecules_filenames.txt')
 new_filenames = load_file_as_list('new_molecules_filenames.txt')
 common_filenames = load_file_as_list('common_molecules_filenames.txt')
 
@@ -331,7 +333,7 @@ GenerateHeatmap(symmetry_results_df, 'Symmetry Metric for Each Transformation', 
 
 # calculates results normalized to # of starting molecules
 normalized_unique_count_arr = unique_count_arr / sm_count_arr
-normalized_new_count_arr = unique_count_arr / sm_count_arr # change this back to new_count_arr instead of unique_count_arr when fixed
+normalized_new_count_arr = new_count_arr  / sm_count_arr
 normalized_common_count_arr = common_count_arr / sm_count_arr
 
 # adjusts arrays based on symmetry metric

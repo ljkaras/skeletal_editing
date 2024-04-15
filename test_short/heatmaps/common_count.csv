@@ -1,5 +1,5 @@
 ,pyridine,pyridazine,pyrimidine,pyrazine,pyrrole,pyrazole,imidazole,thiazole,oxazole,isoxazole,furan
-pyridine,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
+pyridine,,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0
 pyridazine,0.0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
 pyrimidine,0.0,0.0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0
 pyrazine,0.0,0.0,0.0,,0.0,0.0,0.0,0.0,0.0,0.0,0.0
