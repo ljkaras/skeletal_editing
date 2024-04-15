@@ -23,11 +23,6 @@ def group_files_by_pattern(folder_path, output_file_path):
                 comparison_file_path = os.path.join('../number_1_frameworks/', 'aromatic_' + comparison_name + ".csv")
                 outfile.write(f"{file_path},{comparison_file_path}\n")
 
-# Example usage
-# folder_path = ''
-# output_file_path = 'output_file.txt'
-# group_files_by_pattern(folder_path, output_file_path)
-
 if __name__ == '__main__':
     if len(sys.argv) != 2:
         print("Usage: python script.py <folder_path>")
