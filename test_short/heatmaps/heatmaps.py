@@ -41,7 +41,7 @@ def count_sm(frameworks, results_lines):
 
     # initiate blank arrays for collecting results
     sm_count_arr = np.zeros((num_frameworks, num_frameworks), 
-                        dtype = float, 
+                        dtype = int, 
                         order = 'C')
     
     # count # of unique molecules generated in each transformation
@@ -58,7 +58,7 @@ def count_sm(frameworks, results_lines):
                 sm_molecules_number = line_count
 
                 # add to array
-                sm_count_arr[idx, 0:] = sm_molecules_number
+                sm_count_arr[idx, 0:] = int(sm_molecules_number)
 
             else:
                 continue
@@ -97,7 +97,7 @@ def count_unique(frameworks, results_lines):
                         unique_molecules_number = line_count
 
                         # add to array
-                        unique_count_arr[idx1, idx2] = unique_molecules_number
+                        unique_count_arr[idx1, idx2] = int(unique_molecules_number)
 
                     else:
                         continue
@@ -138,7 +138,7 @@ def count_common(frameworks, results_lines):
                         common_molecules_number = line_count
 
                         # add to array
-                        common_count_arr[idx1, idx2] = common_molecules_number
+                        common_count_arr[idx1, idx2] = int(common_molecules_number)
 
                     else:
                         continue
@@ -179,7 +179,7 @@ def count_new(frameworks, results_lines):
                         new_molecules_number = line_count
 
                         # add to array
-                        new_count_arr[idx1, idx2] = new_molecules_number
+                        new_count_arr[idx1, idx2] = int(new_molecules_number)
 
                     else:
                         continue
@@ -242,27 +242,34 @@ def count_symmetric(frameworks, symmetric_filename):
 
 def GenerateHeatmap(dataframe, title, filename):
     # Define figure size
-    plt.figure(figsize=(12, 12), dpi=300)
+    plt.figure(figsize=(16, 12))
 
     # Create heatmap
     sns.heatmap(dataframe, 
                 annot=True, 
-                cmap='viridis', 
+                cmap='plasma', 
                 linewidths=0.5, 
                 fmt=".2f", 
-                annot_kws={"size": 8})
+                annot_kws={"size": 10})
 
     # Add title
-    plt.title(title)
+    plt.title(title, fontsize=16)
     
+    # Rotate the x-axis and y-axis labels for better readability
+    plt.xticks(rotation=45)
+    plt.yticks(rotation=0)
+    
+
     # Add labels to the x-axis and y-axis
-    plt.xlabel('PDT Substructure', fontsize=14)  # Add label for the x-axis
-    plt.ylabel('SM Substructure', fontsize=14)  # Add label for the y-axis
+    plt.xlabel('PDT Substructure', fontsize=14)
+    plt.ylabel('SM Substructure', fontsize=14)
+
+    # Adjust the layout to prevent cutoff of labels
+    plt.tight_layout()
 
     # Save the plot as a file
     plt.savefig(filename, dpi=300)
     plt.close()  # Close the plot to release memory
-
 
 results_filepath = '../chpc_results/results.txt'
 results_lines = load_file_as_list(results_filepath)
