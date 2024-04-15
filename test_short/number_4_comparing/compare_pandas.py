@@ -46,6 +46,7 @@ def compare_files(original_file, compare_file):
             results_file.write(f"Number of {original_file_name} molecules: {len(df1)}\n")
             results_file.write(f"Number of {compare_file_name} molecules: {len(df2)}\n")
             results_file.write(f"Number of common molecules: {len(common_molecules)}\n")
+            # results_file.write(f"Number of common molecules in {original_file_name}: {len(common_molecules)}\n")
             results_file.write(f"Number of new molecules in {original_file_name}: {len(new_molecules_df1)}\n")
             results_file.write(f"Processing time: {processing_time:.2f} s\n\n")
 
