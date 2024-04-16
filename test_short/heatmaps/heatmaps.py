@@ -315,23 +315,36 @@ normalized_new_count_arr = new_count_arr  / sm_count_arr
 normalized_common_count_arr = common_count_arr / sm_count_arr
 
 # adjusts arrays based on symmetry metric
-adjusted_unique_count_arr = normalized_unique_count_arr / symmetric_count_arr # unsure if this one is meaningful
-adjusted_new_count_arr = normalized_new_count_arr / symmetric_count_arr # want to be absolutely certain this is valid (duplicates already removed...?)
-adjusted_common_count_arr = normalized_common_count_arr / symmetric_count_arr # unsure if this one is necessary
+adjusted_unique_count_arr = normalized_unique_count_arr / symmetric_count_arr
+adjusted_new_count_arr = normalized_new_count_arr / symmetric_count_arr
+adjusted_common_count_arr = normalized_common_count_arr / symmetric_count_arr
 
-# generates heatmaps for each dataframe
+# generates heatmaps for each basic dataframe
 GenerateHeatmap(sm_count_df, '# of Starting Molecules', filename = 'sm_count.png')
 GenerateHeatmap(unique_count_df, '# of Unique Molecules Generated', filename = 'unique_count.png')
 GenerateHeatmap(new_count_df, '# of Unknown Molecules Generated', filename = 'new_count.png')
 GenerateHeatmap(common_count_df, '# of Common Molecules Between Starting Molecules and Products', filename = 'common_count.png')
 GenerateHeatmap(symmetric_count_df, 'Symmetry Metric for Each Transformation', filename = 'symmetry_results.png')
 
-# generates symmetry adjusted, normalized new molecules heatmap
+# normalized dataframes 
+normalized_new_count_df = pd.DataFrame(normalized_new_count_arr, 
+                                      index = frameworks,
+                                      columns = frameworks)
+GenerateHeatmap(normalized_new_count_df, 'Normalized # of New Molecules Generated', filename = 'normalized_new_count.png')
+
+normalized_common_count_df = pd.DataFrame(normalized_common_count_arr, 
+                                      index = frameworks,
+                                      columns = frameworks)
+GenerateHeatmap(normalized_common_count_df, 'Normalized # of Common Molecules Generated', filename = 'normalized_common_count.png')
+
+# generates symmetry adjusted, normalized common and new molecules heatmaps
+adjusted_common_count_df = pd.DataFrame(adjusted_common_count_arr, 
+                                      index = frameworks,
+                                      columns = frameworks)
+GenerateHeatmap(adjusted_common_count_df, 'Symmetry-Adjusted, Normalized # of Common Molecules',  filename = 'adjusted_common_count.png')
+
 adjusted_new_count_df = pd.DataFrame(adjusted_new_count_arr, 
                                       index = frameworks,
                                       columns = frameworks)
 GenerateHeatmap(adjusted_new_count_df, 'Symmetry-Adjusted, Normalized # of New Molecules',  filename = 'adjusted_new_count.png')
-
-# exports ^^ as csv
-adjusted_new_count_df.to_csv('adjusted_new_count.csv', index=True)
 
