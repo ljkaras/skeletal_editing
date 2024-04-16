@@ -68,8 +68,8 @@ pyrazole2thiazole: 56452381 / 58270837
 pyrazole2oxazole: 56452381 / 58270837
 pyrazole2isoxazole: 56452381 / 58270837
 pyrazole2furan: 56449684 / 58270837
-pyrimidine2pyrazole: 0 / 18027495
-pyrimidine2isoxazole: 0 / 18027495
+pyrimidine2pyrazole: 1612463 / 18027495
+pyrimidine2isoxazole: 1612463 / 18027495
 pyrimidine2pyridine: 5375816 / 18027495
 pyrimidine2pyridazine: 5375816 / 18027495
 pyrimidine2pyrazine: 8028977 / 18027495
