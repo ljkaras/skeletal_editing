@@ -233,8 +233,8 @@ def count_symmetric(frameworks, symmetric_filename):
                         total_molecules_number = parts[1].strip()
 
                         # calculate symmetry metric specific to pyrazines (which can generate 4 molecules in each transformation, not just 2)
-                        symmetric_metric = ((int(symmetric_molecules_number) / int(total_molecules_number))+ 1)
-                        symmetric_metric = symmetric_metric * 2
+                        symmetric_metric_1 = ((int(symmetric_molecules_number) / int(total_molecules_number))+ 1)
+                        symmetric_metric = symmetric_metric_1 * 2
 
                         # add to array
                         symmetric_count_arr[idx1, idx2] = symmetric_metric
@@ -338,7 +338,12 @@ GenerateHeatmap(new_count_df, '# of Unknown Molecules Generated', filename = 'ne
 GenerateHeatmap(common_count_df, '# of Common Molecules Between Starting Molecules and Products', filename = 'common_count.png')
 GenerateHeatmap(symmetric_count_df, 'Symmetry Metric for Each Transformation', filename = 'symmetry_results.png')
 
-# normalized dataframes 
+# normalized dataframes
+normalized_unique_count_df = pd.DataFrame(normalized_unique_count_arr, 
+                                      index = frameworks,
+                                      columns = frameworks)
+GenerateHeatmap(normalized_unique_count_df, 'Normalized # of Unique Molecules Generated', filename = 'normalized_unique_count.png')
+
 normalized_new_count_df = pd.DataFrame(normalized_new_count_arr, 
                                       index = frameworks,
                                       columns = frameworks)
