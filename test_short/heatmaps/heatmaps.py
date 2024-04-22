@@ -214,14 +214,27 @@ def count_symmetric(frameworks, symmetric_filename):
                 for line in symmetric_file_lines:
                     line_prefix = line.split(':')
 
-                    if line_prefix[0] == line_prefix_match:
+                    if line_prefix[0] == line_prefix_match and line_prefix[0] != f'pyrazine2{framework2}':
                         # Split the string by '/' and extract the number of symmetric molecules
                         parts = line.split('/')
                         symmetric_molecules_number = parts[0].split(': ')[-1].strip()
                         total_molecules_number = parts[1].strip()
 
-                        # calculate symmetry metric
+                        # calculate symmetry metric (since some heterocycle types generate 2 identical products)
                         symmetric_metric = ((int(symmetric_molecules_number) / int(total_molecules_number))+ 1)
+
+                        # add to array
+                        symmetric_count_arr[idx1, idx2] = symmetric_metric
+
+                    elif line_prefix[0] == f'pyrazine2{framework2}':
+                        # Split the string by '/' and extract the number of symmetric molecules
+                        parts = line.split('/')
+                        symmetric_molecules_number = parts[0].split(': ')[-1].strip()
+                        total_molecules_number = parts[1].strip()
+
+                        # calculate symmetry metric specific to pyrazines (which can generate 4 molecules in each transformation, not just 2)
+                        symmetric_metric = ((int(symmetric_molecules_number) / int(total_molecules_number))+ 1)
+                        symmetric_metric = symmetric_metric * 2
 
                         # add to array
                         symmetric_count_arr[idx1, idx2] = symmetric_metric
@@ -242,7 +255,7 @@ def count_symmetric(frameworks, symmetric_filename):
 
 def GenerateHeatmap(dataframe, title, filename):
     # Define figure size
-    plt.figure(figsize=(16, 12))
+    plt.figure(figsize=(32, 12))
 
     # Create heatmap
     sns.heatmap(dataframe, 
@@ -250,19 +263,18 @@ def GenerateHeatmap(dataframe, title, filename):
                 cmap='plasma', 
                 linewidths=0.5, 
                 fmt=".2f", 
-                annot_kws={"size": 10})
+                annot_kws={"size": 14})
 
     # Add title
-    plt.title(title, fontsize=16)
+    plt.title(title, fontsize = 20)
     
     # Rotate the x-axis and y-axis labels for better readability
-    plt.xticks(rotation=45)
-    plt.yticks(rotation=0)
-    
+    plt.xticks(rotation=45, fontsize = 16)
+    plt.yticks(rotation=0, fontsize = 16)
 
     # Add labels to the x-axis and y-axis
-    plt.xlabel('PDT Substructure', fontsize=14)
-    plt.ylabel('SM Substructure', fontsize=14)
+    plt.xlabel('PDT Substructure', fontsize = 18)
+    plt.ylabel('SM Substructure', fontsize = 18)
 
     # Adjust the layout to prevent cutoff of labels
     plt.tight_layout()
