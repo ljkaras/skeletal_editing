@@ -365,3 +365,17 @@ adjusted_new_count_df = pd.DataFrame(adjusted_new_count_arr,
                                       columns = frameworks)
 GenerateHeatmap(adjusted_new_count_df, 'Symmetry-Adjusted, Normalized # of New Molecules',  filename = 'adjusted_new_count.png')
 
+# %new dataframe
+percent_new_arr = new_count_arr / unique_count_arr
+percent_new_df = pd.DataFrame(percent_new_arr,
+                              index = frameworks,
+                              columns = frameworks)
+GenerateHeatmap(percent_new_df, 'Percentage of Unique Compounds that are New', filename = 'percent_new_count.png')
+
+# %common dataframe
+percent_common_arr = common_count_arr / unique_count_arr
+percent_common_df = pd.DataFrame(percent_common_arr,
+                              index = frameworks,
+                              columns = frameworks)
+GenerateHeatmap(percent_common_df, 'Percentage of Unique Compounds that are Known', filename = 'percent_common_count.png')
+
