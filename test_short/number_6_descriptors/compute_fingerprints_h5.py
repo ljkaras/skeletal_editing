@@ -41,10 +41,12 @@ def main(lines, output_filename, fp_size=256, batch_size=1000000):
             for result in results:
                 if result is not None:
                     smiles, mol_id, fp = result
-                    smiles_ds[index] = smiles
-                    ids_ds[index] = mol_id
-                    fps_ds[index] = fp
-                    index += 1
+                    print(smiles)
+                    if mol_id is not None:
+                        smiles_ds[index] = smiles
+                        ids_ds[index] = mol_id
+                        fps_ds[index] = fp
+                        index += 1
             
             time_end = time.time()
             print(f"Processing time: {time_end - time_start:.2f} s for batch {batch_num} of {total_batches}")
