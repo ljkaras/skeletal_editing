@@ -1,0 +1,38 @@
+Packages you need:
+
+pandas
+rdkit 
+seaborn
+matplotlib
+
+* some scripts will run in parallel. They are set to run with all avail processors, make sure to change that if needed. 
+
+HOW TO RUN SCRIPTS:
+
+1. script_1_filterframeworks.py library.csv
+<filename.csv> is your .csv file with the chemical structures (SMILES) as the first column and ID as the second column.
+This script run over all molecules and sort them into new .csv files to each framweork in "/smarts_files/smarts_frameworks.csv".
+
+I recommend naming your library file as "library.csv". 
+This it will create a folder called "frameworks" and the files: "library_pyridine.csv", "library_furan.csv" (...) which will be used later on.
+
+2. script_2_reactions.py frameworks.txt 
+<frameworks.txt> contains the name of each framework. This script will read each framework.csv file and run all RDKit reactions for that framework.
+The resulting .csv will be written to the products folder. 
+
+3. script_3_clean_repeated_smiles.py products/
+This script will remove any duplicates in the products files. The cleaned files will be saved to "cleaned_products/" folder. 
+
+4. script_4_find_comparisons.py cleaned_products/
+This script will create a file containing the comparisons that will be done. 
+
+5. script_5_compare.py comparing.txt 
+This will compare product SMILES with compound SMILES in the original library and count the number of new compounds and known compounds.
+
+6. script_6_extracting_results.py
+This will extract all the important results and create a matrix to be plotted as a heatmap. 
+
+7.  script_7_heatmap.py
+This will plot the heatmap. 
+
+

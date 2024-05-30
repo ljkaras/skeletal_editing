@@ -1,0 +1,12 @@
+﻿NAME,SMARTS
+pyridine,[n;D2:1]1[c:2][c:3][c:4][c:5][c:6]1
+pyridazine,[n;D2:1]1[n;D2:2][c:3][c:4][c:5][c:6]1
+pyrimidine,[*!R][c:1]1[n;D2:2][c:3][c:4][c:5][n;D2:6]1
+pyrazine,[n;D2:1]1[c:2][c:3][n;D2:4][c:5][c:6]1
+pyrrole,[*!R][n:1]1[c:2][c:3][c:4][c:5]1
+pyrazole,[*!R][n:1]1[n;D2:2][c:3][c:4][c:5]1
+imidazole,[*!R][n:1]1[c:2][n;D2:3][c:4][c:5]1
+thiazole,[s:1]1[c:2][n;D2:3][c:4][c:5]1
+oxazole,[o:1]1[c:2][n;D2:3][c:4][c:5]1
+isoxazole,[o:1]1[n;D2:2][c:3][c:4][c:5]1
+furan,[o:1]1[c:2][c:3][c:4][c:5]1

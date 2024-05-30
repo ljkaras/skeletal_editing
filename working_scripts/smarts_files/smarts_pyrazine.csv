@@ -1,0 +1,11 @@
+﻿NAME,SMARTS
+pyrazine2pyridine,[n;D2:1]1[c:2][c:3][n;D2:4][c:5][c:6]1>>[n;D2:1]1[c:2][c:3][c][c:5][c:6]1.[n;D2:4]
+pyrazine2pyridazine,[n;D2:1]1[c:2][c:3][n;D2:4][c:5][c:6]1>>[n;D2:1]1[n;D2:4][c:2][c:3][c:5][c:6]1
+pyrazine2pyrimidine,[n;D2:1]1[c:2][c:3][n;D2:4][c:5][c:6]1>>[n;D2:1]1[c:2][n;D2:4][c:3][c:5][c:6]1
+pyrazine2pyrrole,[n;D2:1]1[c:2][c:3][n;D2:4][c:5][c:6]1>>[nH]1[c:2][c:3][c:5][c:6]1.[n;D2:1][n;D2:4]
+pyrazine2pyrazole,[n;D2:1]1[c:2][c:3][n;D2:4][c:5][c:6]1>>[c:3]1[n;D2:4][nH][c:5][c:6]1.[n;D2:1][c:2]
+pyrazine2imidazole,[n;D2:1]1[c:2][c:3][n;D2:4][c:5][c:6]1>>[c:3]1[n;D2:4][c:5][nH][c:6]1.[n;D2:1][c:2]
+pyrazine2thiazole,[n;D2:1]1[c:2][c:3][n;D2:4][c:5][c:6]1>>[c:3]1[n;D2:4][c:5][s][c:6]1.[n;D2:1][c:2]
+pyrazine2oxazole,[n;D2:1]1[c:2][c:3][n;D2:4][c:5][c:6]1>>[c:3]1[n;D2:4][c:5][o][c:6]1.[n;D2:1][c:2]
+pyrazine2isoxazole,[n;D2:1]1[c:2][c:3][n;D2:4][c:5][c:6]1>>[c:3]1[n;D2:4][o][c:5][c:6]1.[n;D2:1][c:2]
+pyrazine2furan,[n;D2:1]1[c:2][c:3][n;D2:4][c:5][c:6]1>>[o]1[c:3][c][c:5][c:6]1.[n;D2:1][c:2][n;D2:4]

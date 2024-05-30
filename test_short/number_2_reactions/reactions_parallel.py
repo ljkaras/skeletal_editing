@@ -111,7 +111,8 @@ if __name__ == '__main__':
         with open(f'smarts_{base_filename}.csv', 'r', encoding='utf-8-sig') as smarts_file:
             reader = csv.DictReader(smarts_file)
             for row in reader:
+                print(Chem.MolFromSmarts(row['SMARTS']))
                 smarts_dict[row['NAME']] = row['SMARTS']
         # Create output filenames based on the names in smarts_dict
         output_files = {name: f"{base_filename}_{name}.csv" for name in smarts_dict.keys()}
-        main(lines, smarts_dict, output_files)
+        # main(lines, smarts_dict, output_files)

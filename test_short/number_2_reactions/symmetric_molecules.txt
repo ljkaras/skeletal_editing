@@ -218,3 +218,13 @@ thiazole2imidazole: 406 / 407
 thiazole2oxazole: 406 / 407
 thiazole2isoxazole: 406 / 407
 thiazole2furan: 406 / 407
+furan2pyridine: 0 / 531
+furan2pyrimidine: 0 / 531
+furan2pyridazine: 531 / 531
+furan2pyrazine: 531 / 531
+furan2pyrrole: 531 / 531
+furan2oxazole: 55 / 531
+furan2isoxazole: 55 / 531
+furan2pyrazole: 55 / 531
+furan2imidazole: 55 / 531
+furan2thiazole: 55 / 531
