@@ -1,0 +1,11 @@
+NAME,SMARTS
+imidazole2pyridine,[n;D3:1]1[c:2][n;D2:3][c:4][c:5]1>>[n;D2]1[c:2][c][c:4][c:5][c]1.[n;D3:1][n;D2:3]
+imidazole2pyridazine,[n;D3:1]1[c:2][n;D2:3][c:4][c:5]1>>[n;D2]1[n;D2:3][c:2][c:4][c:5][c]1.[n;D3:1]
+imidazole2pyrimidine,[n;D3:1]1[c:2][n;D2:3][c:4][c:5]1>>[n;D2]1[c:2][n;D2:3][c:4][c:5][c]1.[n;D3:1]
+imidazole2pyrazine,[n;D3:1]1[c:2][n;D2:3][c:4][c:5]1>>[n;D2]1[c:2][c:4][n;D2:3][c:5][c]1.[n;D3:1]
+imidazole2pyrrole,[n;D3:1]1[c:2][n;D2:3][c:4][c:5]1>>[n;D3:1]1[c:2][c][c:4][c:5]1.[n;D2:3]
+imidazole2pyrazole,[n;D3:1]1[c:2][n;D2:3][c:4][c:5]1>>[n;D3:1]1[n;D2:3][c:2][c:4][c:5]1
+imidazole2oxazole,[n;D3:1]1[c:2][n;D2:3][c:4][c:5]1>>[o]1[c:2][n;D2:3][c:4][c:5]1.[n;D3:1]
+imidazole2isoxazole,[n;D3:1]1[c:2][n;D2:3][c:4][c:5]1>>[o]1[n;D2:3][c:2][c:4][c:5]1.[n;D3:1]
+imidazole2thiazole,[n;D3:1]1[c:2][n;D2:3][c:4][c:5]1>>[s]1[c:2][n;D2:3][c:4][c:5]1.[n;D3:1]
+imidazole2furan,[n;D3:1]1[c:2][n;D2:3][c:4][c:5]1>>[o]1[c:2][c][c:4][c:5]1.[n;D3:1][n;D2:3]

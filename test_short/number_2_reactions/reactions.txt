@@ -1,12 +1,1 @@
-../number_1_frameworks/aromatic_furan.csv
-../number_2_reactions/pyrazole_pyrazole2furan.csv
-../number_2_reactions/pyrrole_pyrrole2furan.csv
-../number_2_reactions/pyridine_pyridine2furan.csv
-../number_2_reactions/imidazole_imidazole2furan.csv
-../number_2_reactions/isoxazole_isoxazole2furan.csv
-../number_2_reactions/oxazole_oxazole2furan.csv
-../number_2_reactions/pyrazine_pyrazine2furan.csv
-../number_2_reactions/pyridazine_pyridazine2furan.csv
-../number_2_reactions/pyrimidine_pyrimidine2furan.csv
-../number_2_reactions/thiazole_thiazole2furan.csv
-
+../number_1_frameworks/aromatic_furan

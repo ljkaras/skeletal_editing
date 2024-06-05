@@ -1,0 +1,11 @@
+library_pyridine
+library_pyridazine
+library_pyrimidine
+library_pyrazine
+library_pyrrole
+library_pyrazole
+library_imidazole
+library_thiazole
+library_oxazole
+library_isoxazole
+library_furan

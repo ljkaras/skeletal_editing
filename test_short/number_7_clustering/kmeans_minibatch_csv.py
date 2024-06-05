@@ -30,6 +30,7 @@ def main(dataframe, output_filename):
         print(f"Processed batch {i // batch_size + 1}/{(n_samples + batch_size - 1) // batch_size}, Time taken: {batch_time:.2f} seconds")
 
     clusters = kmeans.predict(list(dataframe['Fingerprint']))
+    print("clusters dones")
     dataframe['Cluster'] = clusters
 
     closest, _ = pairwise_distances_argmin_min(kmeans.cluster_centers_, list(dataframe['Fingerprint']))
