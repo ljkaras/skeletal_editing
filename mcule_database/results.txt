@@ -1,0 +1,880 @@
+------------------------------------------------------
+Comparison between furan2imidazole and imidazole:
+Number of furan2imidazole molecules: 2035211
+Number of imidazole molecules: 1053328
+Number of common molecules in furan2imidazole: 10748
+Number of new molecules in furan2imidazole: 2024483
+Processing time: 6.89 s
+
+------------------------------------------------------
+Comparison between isoxazole2imidazole and imidazole:
+Number of isoxazole2imidazole molecules: 828558
+Number of imidazole molecules: 1053328
+Number of common molecules in isoxazole2imidazole: 2947
+Number of new molecules in isoxazole2imidazole: 825613
+Processing time: 4.12 s
+
+------------------------------------------------------
+Comparison between oxazole2imidazole and imidazole:
+Number of oxazole2imidazole molecules: 531956
+Number of imidazole molecules: 1053328
+Number of common molecules in oxazole2imidazole: 15676
+Number of new molecules in oxazole2imidazole: 516289
+Processing time: 3.07 s
+
+------------------------------------------------------
+Comparison between pyrazine2imidazole and imidazole:
+Number of pyrazine2imidazole molecules: 2016622
+Number of imidazole molecules: 1053328
+Number of common molecules in pyrazine2imidazole: 4435
+Number of new molecules in pyrazine2imidazole: 2012196
+Processing time: 6.48 s
+
+------------------------------------------------------
+Comparison between pyrazole2imidazole and imidazole:
+Number of pyrazole2imidazole molecules: 4147286
+Number of imidazole molecules: 1053328
+Number of common molecules in pyrazole2imidazole: 181588
+Number of new molecules in pyrazole2imidazole: 3965730
+Processing time: 12.80 s
+
+------------------------------------------------------
+Comparison between pyridazine2imidazole and imidazole:
+Number of pyridazine2imidazole molecules: 174400
+Number of imidazole molecules: 1053328
+Number of common molecules in pyridazine2imidazole: 3836
+Number of new molecules in pyridazine2imidazole: 170569
+Processing time: 2.22 s
+
+------------------------------------------------------
+Comparison between pyridine2imidazole and imidazole:
+Number of pyridine2imidazole molecules: 8939797
+Number of imidazole molecules: 1053328
+Number of common molecules in pyridine2imidazole: 17193
+Number of new molecules in pyridine2imidazole: 8922635
+Processing time: 23.80 s
+
+------------------------------------------------------
+Comparison between pyrimidine2imidazole and imidazole:
+Number of pyrimidine2imidazole molecules: 2170723
+Number of imidazole molecules: 1053328
+Number of common molecules in pyrimidine2imidazole: 5488
+Number of new molecules in pyrimidine2imidazole: 2165245
+Processing time: 7.17 s
+
+------------------------------------------------------
+Comparison between pyrrole2imidazole and imidazole:
+Number of pyrrole2imidazole molecules: 1138872
+Number of imidazole molecules: 1053328
+Number of common molecules in pyrrole2imidazole: 90032
+Number of new molecules in pyrrole2imidazole: 1048853
+Processing time: 4.94 s
+
+------------------------------------------------------
+Comparison between thiazole2imidazole and imidazole:
+Number of thiazole2imidazole molecules: 1379618
+Number of imidazole molecules: 1053328
+Number of common molecules in thiazole2imidazole: 18178
+Number of new molecules in thiazole2imidazole: 1361463
+Processing time: 5.41 s
+
+------------------------------------------------------
+Comparison between furan2isoxazole and isoxazole:
+Number of furan2isoxazole molecules: 960175
+Number of isoxazole molecules: 827429
+Number of common molecules in furan2isoxazole: 60269
+Number of new molecules in furan2isoxazole: 899910
+Processing time: 3.88 s
+
+------------------------------------------------------
+Comparison between imidazole2isoxazole and isoxazole:
+Number of imidazole2isoxazole molecules: 748150
+Number of isoxazole molecules: 827429
+Number of common molecules in imidazole2isoxazole: 55245
+Number of new molecules in imidazole2isoxazole: 692906
+Processing time: 3.11 s
+
+------------------------------------------------------
+Comparison between oxazole2isoxazole and isoxazole:
+Number of oxazole2isoxazole molecules: 531891
+Number of isoxazole molecules: 827429
+Number of common molecules in oxazole2isoxazole: 124178
+Number of new molecules in oxazole2isoxazole: 407715
+Processing time: 2.61 s
+
+------------------------------------------------------
+Comparison between pyrazine2isoxazole and isoxazole:
+Number of pyrazine2isoxazole molecules: 2016572
+Number of isoxazole molecules: 827429
+Number of common molecules in pyrazine2isoxazole: 151792
+Number of new molecules in pyrazine2isoxazole: 1864781
+Processing time: 6.05 s
+
+------------------------------------------------------
+Comparison between pyrazole2isoxazole and isoxazole:
+Number of pyrazole2isoxazole molecules: 2151170
+Number of isoxazole molecules: 827429
+Number of common molecules in pyrazole2isoxazole: 278792
+Number of new molecules in pyrazole2isoxazole: 1872382
+Processing time: 6.84 s
+
+------------------------------------------------------
+Comparison between pyridazine2isoxazole and isoxazole:
+Number of pyridazine2isoxazole molecules: 173559
+Number of isoxazole molecules: 827429
+Number of common molecules in pyridazine2isoxazole: 55659
+Number of new molecules in pyridazine2isoxazole: 117900
+Processing time: 1.72 s
+
+------------------------------------------------------
+Comparison between pyridine2isoxazole and isoxazole:
+Number of pyridine2isoxazole molecules: 5873725
+Number of isoxazole molecules: 827429
+Number of common molecules in pyridine2isoxazole: 259455
+Number of new molecules in pyridine2isoxazole: 5614279
+Processing time: 16.06 s
+
+------------------------------------------------------
+Comparison between pyrimidine2isoxazole and isoxazole:
+Number of pyrimidine2isoxazole molecules: 2170244
+Number of isoxazole molecules: 827429
+Number of common molecules in pyrimidine2isoxazole: 144572
+Number of new molecules in pyrimidine2isoxazole: 2025676
+Processing time: 6.68 s
+
+------------------------------------------------------
+Comparison between pyrrole2isoxazole and isoxazole:
+Number of pyrrole2isoxazole molecules: 849640
+Number of isoxazole molecules: 827429
+Number of common molecules in pyrrole2isoxazole: 34129
+Number of new molecules in pyrrole2isoxazole: 815512
+Processing time: 3.69 s
+
+------------------------------------------------------
+Comparison between thiazole2isoxazole and isoxazole:
+Number of thiazole2isoxazole molecules: 1379599
+Number of isoxazole molecules: 827429
+Number of common molecules in thiazole2isoxazole: 199596
+Number of new molecules in thiazole2isoxazole: 1180010
+Processing time: 4.94 s
+
+------------------------------------------------------
+Comparison between furan2oxazole and oxazole:
+Number of furan2oxazole molecules: 2035210
+Number of oxazole molecules: 532753
+Number of common molecules in furan2oxazole: 56599
+Number of new molecules in furan2oxazole: 1978618
+Processing time: 5.56 s
+
+------------------------------------------------------
+Comparison between imidazole2oxazole and oxazole:
+Number of imidazole2oxazole molecules: 748161
+Number of oxazole molecules: 532753
+Number of common molecules in imidazole2oxazole: 69246
+Number of new molecules in imidazole2oxazole: 678923
+Processing time: 2.68 s
+
+------------------------------------------------------
+Comparison between isoxazole2oxazole and oxazole:
+Number of isoxazole2oxazole molecules: 828517
+Number of oxazole molecules: 532753
+Number of common molecules in isoxazole2oxazole: 124177
+Number of new molecules in isoxazole2oxazole: 704342
+Processing time: 2.68 s
+
+------------------------------------------------------
+Comparison between pyrazine2oxazole and oxazole:
+Number of pyrazine2oxazole molecules: 2016548
+Number of oxazole molecules: 532753
+Number of common molecules in pyrazine2oxazole: 150216
+Number of new molecules in pyrazine2oxazole: 1866339
+Processing time: 5.39 s
+
+------------------------------------------------------
+Comparison between pyrazole2oxazole and oxazole:
+Number of pyrazole2oxazole molecules: 2151765
+Number of oxazole molecules: 532753
+Number of common molecules in pyrazole2oxazole: 113710
+Number of new molecules in pyrazole2oxazole: 2038060
+Processing time: 6.02 s
+
+------------------------------------------------------
+Comparison between pyridazine2oxazole and oxazole:
+Number of pyridazine2oxazole molecules: 174404
+Number of oxazole molecules: 532753
+Number of common molecules in pyridazine2oxazole: 30524
+Number of new molecules in pyridazine2oxazole: 143882
+Processing time: 1.21 s
+
+------------------------------------------------------
+Comparison between pyridine2oxazole and oxazole:
+Number of pyridine2oxazole molecules: 8939627
+Number of oxazole molecules: 532753
+Number of common molecules in pyridine2oxazole: 195214
+Number of new molecules in pyridine2oxazole: 8744419
+Processing time: 24.68 s
+
+------------------------------------------------------
+Comparison between pyrimidine2oxazole and oxazole:
+Number of pyrimidine2oxazole molecules: 2170729
+Number of oxazole molecules: 532753
+Number of common molecules in pyrimidine2oxazole: 150127
+Number of new molecules in pyrimidine2oxazole: 2020605
+Processing time: 6.18 s
+
+------------------------------------------------------
+Comparison between pyrrole2oxazole and oxazole:
+Number of pyrrole2oxazole molecules: 737558
+Number of oxazole molecules: 532753
+Number of common molecules in pyrrole2oxazole: 33496
+Number of new molecules in pyrrole2oxazole: 704064
+Processing time: 2.52 s
+
+------------------------------------------------------
+Comparison between thiazole2oxazole and oxazole:
+Number of thiazole2oxazole molecules: 1379603
+Number of oxazole molecules: 532753
+Number of common molecules in thiazole2oxazole: 153853
+Number of new molecules in thiazole2oxazole: 1225762
+Processing time: 4.34 s
+
+------------------------------------------------------
+Comparison between furan2pyrazine and pyrazine:
+Number of furan2pyrazine molecules: 1111838
+Number of pyrazine molecules: 1061731
+Number of common molecules in furan2pyrazine: 52339
+Number of new molecules in furan2pyrazine: 1059525
+Processing time: 4.80 s
+
+------------------------------------------------------
+Comparison between imidazole2pyrazine and pyrazine:
+Number of imidazole2pyrazine molecules: 687747
+Number of pyrazine molecules: 1061731
+Number of common molecules in imidazole2pyrazine: 37840
+Number of new molecules in imidazole2pyrazine: 649917
+Processing time: 3.83 s
+
+------------------------------------------------------
+Comparison between isoxazole2pyrazine and pyrazine:
+Number of isoxazole2pyrazine molecules: 744540
+Number of pyrazine molecules: 1061731
+Number of common molecules in isoxazole2pyrazine: 127774
+Number of new molecules in isoxazole2pyrazine: 616770
+Processing time: 3.97 s
+
+------------------------------------------------------
+Comparison between oxazole2pyrazine and pyrazine:
+Number of oxazole2pyrazine molecules: 478168
+Number of pyrazine molecules: 1061731
+Number of common molecules in oxazole2pyrazine: 105345
+Number of new molecules in oxazole2pyrazine: 372830
+Processing time: 2.94 s
+
+------------------------------------------------------
+Comparison between pyrazole2pyrazine and pyrazine:
+Number of pyrazole2pyrazine molecules: 1811956
+Number of pyrazine molecules: 1061731
+Number of common molecules in pyrazole2pyrazine: 253785
+Number of new molecules in pyrazole2pyrazine: 1558186
+Processing time: 6.54 s
+
+------------------------------------------------------
+Comparison between pyridazine2pyrazine and pyrazine:
+Number of pyridazine2pyrazine molecules: 290692
+Number of pyrazine molecules: 1061731
+Number of common molecules in pyridazine2pyrazine: 123038
+Number of new molecules in pyridazine2pyrazine: 167658
+Processing time: 2.51 s
+
+------------------------------------------------------
+Comparison between pyridine2pyrazine and pyrazine:
+Number of pyridine2pyrazine molecules: 7228456
+Number of pyrazine molecules: 1061731
+Number of common molecules in pyridine2pyrazine: 649232
+Number of new molecules in pyridine2pyrazine: 6579280
+Processing time: 22.82 s
+
+------------------------------------------------------
+Comparison between pyrimidine2pyrazine and pyrazine:
+Number of pyrimidine2pyrazine molecules: 4399743
+Number of pyrazine molecules: 1061731
+Number of common molecules in pyrimidine2pyrazine: 378447
+Number of new molecules in pyrimidine2pyrazine: 4021326
+Processing time: 13.37 s
+
+------------------------------------------------------
+Comparison between pyrrole2pyrazine and pyrazine:
+Number of pyrrole2pyrazine molecules: 967703
+Number of pyrazine molecules: 1061731
+Number of common molecules in pyrrole2pyrazine: 60260
+Number of new molecules in pyrrole2pyrazine: 907460
+Processing time: 4.39 s
+
+------------------------------------------------------
+Comparison between thiazole2pyrazine and pyrazine:
+Number of thiazole2pyrazine molecules: 1265173
+Number of pyrazine molecules: 1061731
+Number of common molecules in thiazole2pyrazine: 144554
+Number of new molecules in thiazole2pyrazine: 1120666
+Processing time: 5.18 s
+
+------------------------------------------------------
+Comparison between furan2pyrazole and pyrazole:
+Number of furan2pyrazole molecules: 960162
+Number of pyrazole molecules: 4008628
+Number of common molecules in furan2pyrazole: 66481
+Number of new molecules in furan2pyrazole: 893684
+Processing time: 10.94 s
+
+------------------------------------------------------
+Comparison between imidazole2pyrazole and pyrazole:
+Number of imidazole2pyrazole molecules: 1078285
+Number of pyrazole molecules: 4008628
+Number of common molecules in imidazole2pyrazole: 181634
+Number of new molecules in imidazole2pyrazole: 896689
+Processing time: 11.37 s
+
+------------------------------------------------------
+Comparison between isoxazole2pyrazole and pyrazole:
+Number of isoxazole2pyrazole molecules: 828543
+Number of pyrazole molecules: 4008628
+Number of common molecules in isoxazole2pyrazole: 58012
+Number of new molecules in isoxazole2pyrazole: 770531
+Processing time: 10.65 s
+
+------------------------------------------------------
+Comparison between oxazole2pyrazole and pyrazole:
+Number of oxazole2pyrazole molecules: 531932
+Number of pyrazole molecules: 4008628
+Number of common molecules in oxazole2pyrazole: 3814
+Number of new molecules in oxazole2pyrazole: 528119
+Processing time: 9.83 s
+
+------------------------------------------------------
+Comparison between pyrazine2pyrazole and pyrazole:
+Number of pyrazine2pyrazole molecules: 2016595
+Number of pyrazole molecules: 4008628
+Number of common molecules in pyrazine2pyrazole: 16690
+Number of new molecules in pyrazine2pyrazole: 1999909
+Processing time: 12.91 s
+
+------------------------------------------------------
+Comparison between pyridazine2pyrazole and pyrazole:
+Number of pyridazine2pyrazole molecules: 173561
+Number of pyrazole molecules: 4008628
+Number of common molecules in pyridazine2pyrazole: 2878
+Number of new molecules in pyridazine2pyrazole: 170683
+Processing time: 8.87 s
+
+------------------------------------------------------
+Comparison between pyridine2pyrazole and pyrazole:
+Number of pyridine2pyrazole molecules: 5869601
+Number of pyrazole molecules: 4008628
+Number of common molecules in pyridine2pyrazole: 119673
+Number of new molecules in pyridine2pyrazole: 5749932
+Processing time: 24.49 s
+
+------------------------------------------------------
+Comparison between pyrimidine2pyrazole and pyrazole:
+Number of pyrimidine2pyrazole molecules: 2170267
+Number of pyrazole molecules: 4008628
+Number of common molecules in pyrimidine2pyrazole: 35617
+Number of new molecules in pyrimidine2pyrazole: 2134653
+Processing time: 14.28 s
+
+------------------------------------------------------
+Comparison between pyrrole2pyrazole and pyrazole:
+Number of pyrrole2pyrazole molecules: 1160282
+Number of pyrazole molecules: 4008628
+Number of common molecules in pyrrole2pyrazole: 235639
+Number of new molecules in pyrrole2pyrazole: 924648
+Processing time: 11.43 s
+
+------------------------------------------------------
+Comparison between thiazole2pyrazole and pyrazole:
+Number of thiazole2pyrazole molecules: 1379605
+Number of pyrazole molecules: 4008628
+Number of common molecules in thiazole2pyrazole: 17040
+Number of new molecules in thiazole2pyrazole: 1362571
+Processing time: 11.85 s
+
+------------------------------------------------------
+Comparison between furan2pyridazine and pyridazine:
+Number of furan2pyridazine molecules: 1210374
+Number of pyridazine molecules: 320632
+Number of common molecules in furan2pyridazine: 2884
+Number of new molecules in furan2pyridazine: 1207495
+Processing time: 3.05 s
+
+------------------------------------------------------
+Comparison between imidazole2pyridazine and pyridazine:
+Number of imidazole2pyridazine molecules: 718261
+Number of pyridazine molecules: 320632
+Number of common molecules in imidazole2pyridazine: 1689
+Number of new molecules in imidazole2pyridazine: 716573
+Processing time: 2.16 s
+
+------------------------------------------------------
+Comparison between isoxazole2pyridazine and pyridazine:
+Number of isoxazole2pyridazine molecules: 828049
+Number of pyridazine molecules: 320632
+Number of common molecules in isoxazole2pyridazine: 29335
+Number of new molecules in isoxazole2pyridazine: 798714
+Processing time: 2.21 s
+
+------------------------------------------------------
+Comparison between oxazole2pyridazine and pyridazine:
+Number of oxazole2pyridazine molecules: 478892
+Number of pyridazine molecules: 320632
+Number of common molecules in oxazole2pyridazine: 29618
+Number of new molecules in oxazole2pyridazine: 449274
+Processing time: 1.52 s
+
+------------------------------------------------------
+Comparison between pyrazine2pyridazine and pyridazine:
+Number of pyrazine2pyridazine molecules: 2140483
+Number of pyridazine molecules: 320632
+Number of common molecules in pyrazine2pyridazine: 151511
+Number of new molecules in pyrazine2pyridazine: 1988977
+Processing time: 5.31 s
+
+------------------------------------------------------
+Comparison between pyrazole2pyridazine and pyridazine:
+Number of pyrazole2pyridazine molecules: 1927265
+Number of pyridazine molecules: 320632
+Number of common molecules in pyrazole2pyridazine: 38467
+Number of new molecules in pyrazole2pyridazine: 1888801
+Processing time: 5.13 s
+
+------------------------------------------------------
+Comparison between pyridine2pyridazine and pyridazine:
+Number of pyridine2pyridazine molecules: 11119557
+Number of pyridazine molecules: 320632
+Number of common molecules in pyridine2pyridazine: 225828
+Number of new molecules in pyridine2pyridazine: 10893747
+Processing time: 27.80 s
+
+------------------------------------------------------
+Comparison between pyrimidine2pyridazine and pyridazine:
+Number of pyrimidine2pyridazine molecules: 4622456
+Number of pyridazine molecules: 320632
+Number of common molecules in pyrimidine2pyridazine: 111557
+Number of new molecules in pyrimidine2pyridazine: 4510908
+Processing time: 11.32 s
+
+------------------------------------------------------
+Comparison between pyrrole2pyridazine and pyridazine:
+Number of pyrrole2pyridazine molecules: 1022380
+Number of pyridazine molecules: 320632
+Number of common molecules in pyrrole2pyridazine: 1784
+Number of new molecules in pyrrole2pyridazine: 1020599
+Processing time: 2.62 s
+
+------------------------------------------------------
+Comparison between thiazole2pyridazine and pyridazine:
+Number of thiazole2pyridazine molecules: 1344268
+Number of pyridazine molecules: 320632
+Number of common molecules in thiazole2pyridazine: 11388
+Number of new molecules in thiazole2pyridazine: 1332883
+Processing time: 3.89 s
+
+------------------------------------------------------
+Comparison between furan2pyridine and pyridine:
+Number of furan2pyridine molecules: 2319384
+Number of pyridine molecules: 9949130
+Number of common molecules in furan2pyridine: 754107
+Number of new molecules in furan2pyridine: 1565531
+Processing time: 27.94 s
+
+------------------------------------------------------
+Comparison between imidazole2pyridine and pyridine:
+Number of imidazole2pyridine molecules: 748074
+Number of pyridine molecules: 9949130
+Number of common molecules in imidazole2pyridine: 107870
+Number of new molecules in imidazole2pyridine: 640298
+Processing time: 24.03 s
+
+------------------------------------------------------
+Comparison between isoxazole2pyridine and pyridine:
+Number of isoxazole2pyridine molecules: 718933
+Number of pyridine molecules: 9949130
+Number of common molecules in isoxazole2pyridine: 156956
+Number of new molecules in isoxazole2pyridine: 561991
+Processing time: 24.33 s
+
+------------------------------------------------------
+Comparison between oxazole2pyridine and pyridine:
+Number of oxazole2pyridine molecules: 531894
+Number of pyridine molecules: 9949130
+Number of common molecules in oxazole2pyridine: 177394
+Number of new molecules in oxazole2pyridine: 354523
+Processing time: 23.57 s
+
+------------------------------------------------------
+Comparison between pyrazine2pyridine and pyridine:
+Number of pyrazine2pyridine molecules: 2130432
+Number of pyridine molecules: 9949130
+Number of common molecules in pyrazine2pyridine: 837078
+Number of new molecules in pyrazine2pyridine: 1293468
+Processing time: 27.67 s
+
+------------------------------------------------------
+Comparison between pyrazole2pyridine and pyridine:
+Number of pyrazole2pyridine molecules: 2137681
+Number of pyridine molecules: 9949130
+Number of common molecules in pyrazole2pyridine: 812782
+Number of new molecules in pyrazole2pyridine: 1325008
+Processing time: 28.25 s
+
+------------------------------------------------------
+Comparison between pyridazine2pyridine and pyridine:
+Number of pyridazine2pyridine molecules: 611257
+Number of pyridine molecules: 9949130
+Number of common molecules in pyridazine2pyridine: 286654
+Number of new molecules in pyridazine2pyridine: 324642
+Processing time: 23.66 s
+
+------------------------------------------------------
+Comparison between pyrimidine2pyridine and pyridine:
+Number of pyrimidine2pyridine molecules: 4559487
+Number of pyridine molecules: 9949130
+Number of common molecules in pyrimidine2pyridine: 1245099
+Number of new molecules in pyrimidine2pyridine: 3314531
+Processing time: 37.42 s
+
+------------------------------------------------------
+Comparison between pyrrole2pyridine and pyridine:
+Number of pyrrole2pyridine molecules: 2039647
+Number of pyridine molecules: 9949130
+Number of common molecules in pyrrole2pyridine: 286185
+Number of new molecules in pyrrole2pyridine: 1753552
+Processing time: 27.17 s
+
+------------------------------------------------------
+Comparison between thiazole2pyridine and pyridine:
+Number of thiazole2pyridine molecules: 1379250
+Number of pyridine molecules: 9949130
+Number of common molecules in thiazole2pyridine: 283636
+Number of new molecules in thiazole2pyridine: 1095753
+Processing time: 25.80 s
+
+------------------------------------------------------
+Comparison between furan2pyrimidine and pyrimidine:
+Number of furan2pyrimidine molecules: 2320985
+Number of pyrimidine molecules: 2997958
+Number of common molecules in furan2pyrimidine: 147503
+Number of new molecules in furan2pyrimidine: 2173515
+Processing time: 11.90 s
+
+------------------------------------------------------
+Comparison between imidazole2pyrimidine and pyrimidine:
+Number of imidazole2pyrimidine molecules: 748157
+Number of pyrimidine molecules: 2997958
+Number of common molecules in imidazole2pyrimidine: 92046
+Number of new molecules in imidazole2pyrimidine: 656138
+Processing time: 8.52 s
+
+------------------------------------------------------
+Comparison between isoxazole2pyrimidine and pyrimidine:
+Number of isoxazole2pyrimidine molecules: 828551
+Number of pyrimidine molecules: 2997958
+Number of common molecules in isoxazole2pyrimidine: 136422
+Number of new molecules in isoxazole2pyrimidine: 692132
+Processing time: 8.65 s
+
+------------------------------------------------------
+Comparison between oxazole2pyrimidine and pyrimidine:
+Number of oxazole2pyrimidine molecules: 531941
+Number of pyrimidine molecules: 2997958
+Number of common molecules in oxazole2pyrimidine: 115491
+Number of new molecules in oxazole2pyrimidine: 416454
+Processing time: 7.99 s
+
+------------------------------------------------------
+Comparison between pyrazine2pyrimidine and pyrimidine:
+Number of pyrazine2pyrimidine molecules: 3832815
+Number of pyrimidine molecules: 2997958
+Number of common molecules in pyrazine2pyrimidine: 506087
+Number of new molecules in pyrazine2pyrimidine: 3326780
+Processing time: 14.85 s
+
+------------------------------------------------------
+Comparison between pyrazole2pyrimidine and pyrimidine:
+Number of pyrazole2pyrimidine molecules: 2151066
+Number of pyrimidine molecules: 2997958
+Number of common molecules in pyrazole2pyrimidine: 277209
+Number of new molecules in pyrazole2pyrimidine: 1873884
+Processing time: 11.86 s
+
+------------------------------------------------------
+Comparison between pyridazine2pyrimidine and pyrimidine:
+Number of pyridazine2pyrimidine molecules: 610969
+Number of pyrimidine molecules: 2997958
+Number of common molecules in pyridazine2pyrimidine: 140928
+Number of new molecules in pyridazine2pyrimidine: 470052
+Processing time: 8.06 s
+
+------------------------------------------------------
+Comparison between pyridine2pyrimidine and pyrimidine:
+Number of pyridine2pyrimidine molecules: 9260322
+Number of pyrimidine molecules: 2997958
+Number of common molecules in pyridine2pyrimidine: 1131497
+Number of new molecules in pyridine2pyrimidine: 8128935
+Processing time: 32.14 s
+
+------------------------------------------------------
+Comparison between pyrrole2pyrimidine and pyrimidine:
+Number of pyrrole2pyrimidine molecules: 2039734
+Number of pyrimidine molecules: 2997958
+Number of common molecules in pyrrole2pyrimidine: 60603
+Number of new molecules in pyrrole2pyrimidine: 1979151
+Processing time: 11.09 s
+
+------------------------------------------------------
+Comparison between thiazole2pyrimidine and pyrimidine:
+Number of thiazole2pyrimidine molecules: 1379568
+Number of pyrimidine molecules: 2997958
+Number of common molecules in thiazole2pyrimidine: 126153
+Number of new molecules in thiazole2pyrimidine: 1253447
+Processing time: 9.80 s
+
+------------------------------------------------------
+Comparison between furan2pyrrole and pyrrole:
+Number of furan2pyrrole molecules: 1210357
+Number of pyrrole molecules: 1488257
+Number of common molecules in furan2pyrrole: 40546
+Number of new molecules in furan2pyrrole: 1169842
+Processing time: 5.82 s
+
+------------------------------------------------------
+Comparison between imidazole2pyrrole and pyrrole:
+Number of imidazole2pyrrole molecules: 1050225
+Number of pyrrole molecules: 1488257
+Number of common molecules in imidazole2pyrrole: 61852
+Number of new molecules in imidazole2pyrrole: 988380
+Processing time: 5.40 s
+
+------------------------------------------------------
+Comparison between isoxazole2pyrrole and pyrrole:
+Number of isoxazole2pyrrole molecules: 828083
+Number of pyrrole molecules: 1488257
+Number of common molecules in isoxazole2pyrrole: 1805
+Number of new molecules in isoxazole2pyrrole: 826278
+Processing time: 4.84 s
+
+------------------------------------------------------
+Comparison between oxazole2pyrrole and pyrrole:
+Number of oxazole2pyrrole molecules: 531780
+Number of pyrrole molecules: 1488257
+Number of common molecules in oxazole2pyrrole: 6677
+Number of new molecules in oxazole2pyrrole: 525103
+Processing time: 4.16 s
+
+------------------------------------------------------
+Comparison between pyrazine2pyrrole and pyrrole:
+Number of pyrazine2pyrrole molecules: 2140429
+Number of pyrrole molecules: 1488257
+Number of common molecules in pyrazine2pyrrole: 11587
+Number of new molecules in pyrazine2pyrrole: 2128853
+Processing time: 8.23 s
+
+------------------------------------------------------
+Comparison between pyrazole2pyrrole and pyrrole:
+Number of pyrazole2pyrrole molecules: 4056257
+Number of pyrrole molecules: 1488257
+Number of common molecules in pyrazole2pyrrole: 226428
+Number of new molecules in pyrazole2pyrrole: 3829837
+Processing time: 13.26 s
+
+------------------------------------------------------
+Comparison between pyridazine2pyrrole and pyrrole:
+Number of pyridazine2pyrrole molecules: 319307
+Number of pyrrole molecules: 1488257
+Number of common molecules in pyridazine2pyrrole: 1551
+Number of new molecules in pyridazine2pyrrole: 317759
+Processing time: 3.64 s
+
+------------------------------------------------------
+Comparison between pyridine2pyrrole and pyrrole:
+Number of pyridine2pyrrole molecules: 11118972
+Number of pyrrole molecules: 1488257
+Number of common molecules in pyridine2pyrrole: 47485
+Number of new molecules in pyridine2pyrrole: 11071524
+Processing time: 31.52 s
+
+------------------------------------------------------
+Comparison between pyrimidine2pyrrole and pyrrole:
+Number of pyrimidine2pyrrole molecules: 4621192
+Number of pyrrole molecules: 1488257
+Number of common molecules in pyrimidine2pyrrole: 3946
+Number of new molecules in pyrimidine2pyrrole: 4617255
+Processing time: 13.75 s
+
+------------------------------------------------------
+Comparison between thiazole2pyrrole and pyrrole:
+Number of thiazole2pyrrole molecules: 1335051
+Number of pyrrole molecules: 1488257
+Number of common molecules in thiazole2pyrrole: 10266
+Number of new molecules in thiazole2pyrrole: 1324799
+Processing time: 6.10 s
+
+------------------------------------------------------
+Comparison between furan2thiazole and thiazole:
+Number of furan2thiazole molecules: 2035144
+Number of thiazole molecules: 1376634
+Number of common molecules in furan2thiazole: 152085
+Number of new molecules in furan2thiazole: 1883142
+Processing time: 7.87 s
+
+------------------------------------------------------
+Comparison between imidazole2thiazole and thiazole:
+Number of imidazole2thiazole molecules: 748142
+Number of thiazole molecules: 1376634
+Number of common molecules in imidazole2thiazole: 113306
+Number of new molecules in imidazole2thiazole: 634884
+Processing time: 4.45 s
+
+------------------------------------------------------
+Comparison between isoxazole2thiazole and thiazole:
+Number of isoxazole2thiazole molecules: 828541
+Number of thiazole molecules: 1376634
+Number of common molecules in isoxazole2thiazole: 199589
+Number of new molecules in isoxazole2thiazole: 628959
+Processing time: 4.83 s
+
+------------------------------------------------------
+Comparison between oxazole2thiazole and thiazole:
+Number of oxazole2thiazole molecules: 531939
+Number of thiazole molecules: 1376634
+Number of common molecules in oxazole2thiazole: 153840
+Number of new molecules in oxazole2thiazole: 378114
+Processing time: 3.91 s
+
+------------------------------------------------------
+Comparison between pyrazine2thiazole and thiazole:
+Number of pyrazine2thiazole molecules: 2016168
+Number of thiazole molecules: 1376634
+Number of common molecules in pyrazine2thiazole: 247125
+Number of new molecules in pyrazine2thiazole: 1769115
+Processing time: 6.98 s
+
+------------------------------------------------------
+Comparison between pyrazole2thiazole and thiazole:
+Number of pyrazole2thiazole molecules: 2151591
+Number of thiazole molecules: 1376634
+Number of common molecules in pyrazole2thiazole: 217535
+Number of new molecules in pyrazole2thiazole: 1934105
+Processing time: 8.34 s
+
+------------------------------------------------------
+Comparison between pyridazine2thiazole and thiazole:
+Number of pyridazine2thiazole molecules: 174399
+Number of thiazole molecules: 1376634
+Number of common molecules in pyridazine2thiazole: 54843
+Number of new molecules in pyridazine2thiazole: 119563
+Processing time: 2.71 s
+
+------------------------------------------------------
+Comparison between pyridine2thiazole and thiazole:
+Number of pyridine2thiazole molecules: 8939170
+Number of thiazole molecules: 1376634
+Number of common molecules in pyridine2thiazole: 296611
+Number of new molecules in pyridine2thiazole: 8642651
+Processing time: 25.38 s
+
+------------------------------------------------------
+Comparison between pyrimidine2thiazole and thiazole:
+Number of pyrimidine2thiazole molecules: 2170717
+Number of thiazole molecules: 1376634
+Number of common molecules in pyrimidine2thiazole: 131948
+Number of new molecules in pyrimidine2thiazole: 2038804
+Processing time: 8.31 s
+
+------------------------------------------------------
+Comparison between pyrrole2thiazole and thiazole:
+Number of pyrrole2thiazole molecules: 737538
+Number of thiazole molecules: 1376634
+Number of common molecules in pyrrole2thiazole: 71810
+Number of new molecules in pyrrole2thiazole: 665760
+Processing time: 4.32 s
+
+------------------------------------------------------
+Comparison between imidazole2furan and furan:
+Number of imidazole2furan molecules: 719152
+Number of furan molecules: 1204466
+Number of common molecules in imidazole2furan: 65735
+Number of new molecules in imidazole2furan: 653467
+Processing time: 3.97 s
+
+------------------------------------------------------
+Comparison between isoxazole2furan and furan:
+Number of isoxazole2furan molecules: 828047
+Number of furan molecules: 1204466
+Number of common molecules in isoxazole2furan: 56666
+Number of new molecules in isoxazole2furan: 771387
+Processing time: 4.18 s
+
+------------------------------------------------------
+Comparison between oxazole2furan and furan:
+Number of oxazole2furan molecules: 531488
+Number of furan molecules: 1204466
+Number of common molecules in oxazole2furan: 55851
+Number of new molecules in oxazole2furan: 475648
+Processing time: 3.59 s
+
+------------------------------------------------------
+Comparison between pyrazine2furan and furan:
+Number of pyrazine2furan molecules: 1586266
+Number of furan molecules: 1204466
+Number of common molecules in pyrazine2furan: 108811
+Number of new molecules in pyrazine2furan: 1477505
+Processing time: 5.66 s
+
+------------------------------------------------------
+Comparison between pyrazole2furan and furan:
+Number of pyrazole2furan molecules: 4056257
+Number of furan molecules: 1204466
+Number of common molecules in pyrazole2furan: 2463
+Number of new molecules in pyrazole2furan: 4053794
+Processing time: 12.31 s
+
+------------------------------------------------------
+Comparison between pyridazine2furan and furan:
+Number of pyridazine2furan molecules: 319307
+Number of furan molecules: 1204466
+Number of common molecules in pyridazine2furan: 2888
+Number of new molecules in pyridazine2furan: 316426
+Processing time: 2.68 s
+
+------------------------------------------------------
+Comparison between pyridine2furan and furan:
+Number of pyridine2furan molecules: 11117822
+Number of furan molecules: 1204466
+Number of common molecules in pyridine2furan: 494967
+Number of new molecules in pyridine2furan: 10623011
+Processing time: 29.92 s
+
+------------------------------------------------------
+Comparison between pyrimidine2furan and furan:
+Number of pyrimidine2furan molecules: 4621008
+Number of furan molecules: 1204466
+Number of common molecules in pyrimidine2furan: 121771
+Number of new molecules in pyrimidine2furan: 4499282
+Processing time: 13.04 s
+
+------------------------------------------------------
+Comparison between pyrrole2furan and furan:
+Number of pyrrole2furan molecules: 1022247
+Number of furan molecules: 1204466
+Number of common molecules in pyrrole2furan: 137335
+Number of new molecules in pyrrole2furan: 884962
+Processing time: 4.68 s
+
+------------------------------------------------------
+Comparison between thiazole2furan and furan:
+Number of thiazole2furan molecules: 1335005
+Number of furan molecules: 1204466
+Number of common molecules in thiazole2furan: 93617
+Number of new molecules in thiazole2furan: 1241458
+Processing time: 5.53 s
+
