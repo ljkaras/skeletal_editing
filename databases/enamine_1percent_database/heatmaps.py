@@ -6,13 +6,14 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
+from matplotlib.colors import ListedColormap # makes nice colors for heatmap
+
 
 # import seaborn and matplotlib for heatmap generation
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-# changes the working directory to the Results subdirectory of the 
-# directory this script is located in
+# changes the working directory to the directory this script is located in
 import os
 path = str(__file__)
 os.chdir(os.path.dirname(os.path.abspath(path)))
@@ -255,26 +256,38 @@ def count_symmetric(frameworks, symmetric_filename):
 
 def GenerateHeatmap(dataframe, title, filename):
     # Define figure size
-    plt.figure(figsize=(32, 12))
+    plt.figure(figsize=(16, 9))
 
-    # Create heatmap
+    # Define the colors for the Spectral diverging colormap
+    spectral_colors = ['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b', '#e6f598', '#abdda4', '#66c2a5', '#3288bd']
+    
+    # Create a custom colormap using ListedColormap
+    cmap = ListedColormap(spectral_colors)
+
+    # Create heatmap using the custom colormap
     sns.heatmap(dataframe, 
                 annot=True, 
-                cmap='plasma', 
-                linewidths=0.5, 
+                cmap=cmap,  # Use the custom colormap
+                linewidths=0, 
                 fmt=".2f", 
-                annot_kws={"size": 14})
+                annot_kws={"size": 10})
+
+    # define font
+    fontfamily = 'Avenir'
+
+    # Remove ticks on both axes
+    plt.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False)
 
     # Add title
-    plt.title(title, fontsize = 20)
+    plt.title(title, fontsize=16, fontweight="bold", fontfamily=fontfamily)
     
     # Rotate the x-axis and y-axis labels for better readability
-    plt.xticks(rotation=45, fontsize = 16)
-    plt.yticks(rotation=0, fontsize = 16)
+    plt.xticks(rotation=45, fontsize=14, fontweight="bold", fontfamily=fontfamily)
+    plt.yticks(rotation=0, fontsize=14, fontweight="bold", fontfamily=fontfamily)
 
     # Add labels to the x-axis and y-axis
-    plt.xlabel('PDT Substructure', fontsize = 18)
-    plt.ylabel('SM Substructure', fontsize = 18)
+    plt.xlabel('PDT Substructure', fontsize=12, fontweight="bold", fontfamily=fontfamily)
+    plt.ylabel('SM Substructure', fontsize=12, fontweight="bold", fontfamily=fontfamily)
 
     # Adjust the layout to prevent cutoff of labels
     plt.tight_layout()
@@ -283,10 +296,11 @@ def GenerateHeatmap(dataframe, title, filename):
     plt.savefig(filename, dpi=300)
     plt.close()  # Close the plot to release memory
 
-results_filepath = '../enamine_1percent_database/results.txt' # change this for each database directory
-results_lines = load_file_as_list(results_filepath)
 
-symmetric_filepath = '../enamine_1percent_database/symmetric_molecules.txt' # change this for each database directory
+results_filename = 'results.txt'
+results_lines = load_file_as_list(results_filename)
+
+symmetric_filename = 'symmetric_molecules.txt'
 
 frameworks = ['pyridine',
         'pyridazine',
@@ -317,69 +331,24 @@ count_new_results = count_new(frameworks, results_lines)
 new_count_arr = count_new_results[0]
 new_count_df = count_new_results[1]
 
-count_symmetric_results = count_symmetric(frameworks, symmetric_filepath)
+count_symmetric_results = count_symmetric(frameworks, symmetric_filename)
 symmetric_count_arr = count_symmetric_results[0]
 symmetric_count_df = count_symmetric_results[1]
 
-
-# calculates results normalized to # of starting molecules
-normalized_unique_count_arr = unique_count_arr / sm_count_arr
-normalized_new_count_arr = new_count_arr  / sm_count_arr
-normalized_common_count_arr = common_count_arr / sm_count_arr
-
-# adjusts arrays based on symmetry metric
-adjusted_unique_count_arr = normalized_unique_count_arr / symmetric_count_arr
-adjusted_new_count_arr = normalized_new_count_arr / symmetric_count_arr
-adjusted_common_count_arr = normalized_common_count_arr / symmetric_count_arr
-
-'''
-# generates heatmaps for each basic dataframe
-GenerateHeatmap(sm_count_df, '# of Starting Molecules', filename = 'sm_count.png')
-GenerateHeatmap(unique_count_df, '# of Unique Molecules Generated', filename = 'unique_count.png')
-GenerateHeatmap(new_count_df, '# of Unknown Molecules Generated', filename = 'new_count.png')
-GenerateHeatmap(common_count_df, '# of Common Molecules Between Starting Molecules and Products', filename = 'common_count.png')
-GenerateHeatmap(symmetric_count_df, 'Symmetry Metric for Each Transformation', filename = 'symmetry_results.png')
-
-
-# normalized dataframes
-normalized_unique_count_df = pd.DataFrame(normalized_unique_count_arr, 
-                                      index = frameworks,
-                                      columns = frameworks)
-GenerateHeatmap(normalized_unique_count_df, 'Normalized # of Unique Molecules Generated', filename = 'normalized_unique_count.png')
-
-normalized_new_count_df = pd.DataFrame(normalized_new_count_arr, 
-                                      index = frameworks,
-                                      columns = frameworks)
-GenerateHeatmap(normalized_new_count_df, 'Normalized # of New Molecules Generated', filename = 'normalized_new_count.png')
-
-normalized_common_count_df = pd.DataFrame(normalized_common_count_arr, 
-                                      index = frameworks,
-                                      columns = frameworks)
-GenerateHeatmap(normalized_common_count_df, 'Normalized # of Common Molecules Generated', filename = 'normalized_common_count.png')
-
-# generates symmetry adjusted, normalized common and new molecules heatmaps
-adjusted_common_count_df = pd.DataFrame(adjusted_common_count_arr, 
-                                      index = frameworks,
-                                      columns = frameworks)
-GenerateHeatmap(adjusted_common_count_df, 'Symmetry-Adjusted, Normalized # of Common Molecules',  filename = 'adjusted_common_count.png')
-
-adjusted_new_count_df = pd.DataFrame(adjusted_new_count_arr, 
-                                      index = frameworks,
-                                      columns = frameworks)
-GenerateHeatmap(adjusted_new_count_df, 'Symmetry-Adjusted, Normalized # of New Molecules',  filename = 'adjusted_new_count.png')
-'''
+# specify which database you're generating heatmaps for here
+database = 'Enamine 1%'
 
 # %new dataframe
 percent_new_arr = new_count_arr / unique_count_arr
 percent_new_df = pd.DataFrame(percent_new_arr,
                               index = frameworks,
                               columns = frameworks)
-GenerateHeatmap(percent_new_df, 'Percentage of Unique Compounds that are New (1/100 Enamine)', filename = 'percent_new_count.png')
+GenerateHeatmap(percent_new_df, f'Percent Unknown Compounds: {database}', filename = f'percent_new_count_{database}.png')
 
 # %common dataframe
 percent_common_arr = common_count_arr / unique_count_arr
 percent_common_df = pd.DataFrame(percent_common_arr,
                               index = frameworks,
                               columns = frameworks)
-GenerateHeatmap(percent_common_df, 'Percentage of Unique Compounds that are Know (1/100 Enamine)', filename = 'percent_common_count.png')
+GenerateHeatmap(percent_common_df, f'Percent Known Compounds: {database}', filename = f'percent_common_count_{database}.png')
 
