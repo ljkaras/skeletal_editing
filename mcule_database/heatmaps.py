@@ -371,12 +371,12 @@ percent_new_arr = new_count_arr / unique_count_arr
 percent_new_df = pd.DataFrame(percent_new_arr,
                               index = frameworks,
                               columns = frameworks)
-GenerateHeatmap(percent_new_df, 'Percentage of Unique Compounds that are New', filename = 'percent_new_count.png')
+GenerateHeatmap(percent_new_df, 'Percentage of Unique Compounds that are New (mCule)', filename = 'percent_new_count.png')
 
 # %common dataframe
 percent_common_arr = common_count_arr / unique_count_arr
 percent_common_df = pd.DataFrame(percent_common_arr,
                               index = frameworks,
                               columns = frameworks)
-GenerateHeatmap(percent_common_df, 'Percentage of Unique Compounds that are Known', filename = 'percent_common_count.png')
+GenerateHeatmap(percent_common_df, 'Percentage of Unique Compounds that are Know (mCule)', filename = 'percent_common_count.png')
 

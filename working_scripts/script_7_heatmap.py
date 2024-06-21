@@ -2,6 +2,14 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 
+
+''' 
+
+This needs some work. Currently, the user should 
+stop at the generation of 'results.txt.' and
+'symmetric_molecules.txt'.
+
+'''
 # Load the matrix from the CSV file
 df_matrix = pd.read_csv('matrix_total.csv', index_col=0)
 # Create a heatmap
