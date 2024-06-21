@@ -332,6 +332,7 @@ adjusted_unique_count_arr = normalized_unique_count_arr / symmetric_count_arr
 adjusted_new_count_arr = normalized_new_count_arr / symmetric_count_arr
 adjusted_common_count_arr = normalized_common_count_arr / symmetric_count_arr
 
+'''
 # generates heatmaps for each basic dataframe
 GenerateHeatmap(sm_count_df, '# of Starting Molecules', filename = 'sm_count.png')
 GenerateHeatmap(unique_count_df, '# of Unique Molecules Generated', filename = 'unique_count.png')
@@ -365,6 +366,7 @@ adjusted_new_count_df = pd.DataFrame(adjusted_new_count_arr,
                                       index = frameworks,
                                       columns = frameworks)
 GenerateHeatmap(adjusted_new_count_df, 'Symmetry-Adjusted, Normalized # of New Molecules',  filename = 'adjusted_new_count.png')
+'''
 
 # %new dataframe
 percent_new_arr = new_count_arr / unique_count_arr
