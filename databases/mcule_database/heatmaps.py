@@ -7,6 +7,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap # makes nice colors for heatmap
+from matplotlib.colors import LinearSegmentedColormap # makes nice colors for heatmap
 
 
 # import seaborn and matplotlib for heatmap generation
@@ -258,16 +259,14 @@ def GenerateHeatmap(dataframe, title, filename):
     # Define figure size
     plt.figure(figsize=(16, 9))
 
-    # Define the colors for the Spectral diverging colormap
-    spectral_colors = ['#9e0142', '#d53e4f', '#f46d43', '#fdae61', '#fee08b', '#e6f598', '#abdda4', '#66c2a5', '#3288bd']
-    
-    # Create a custom colormap using ListedColormap
-    cmap = ListedColormap(spectral_colors)
+    # define which colors to use
+    # see https://seaborn.pydata.org/tutorial/color_palettes.html for more info
+    cmap = sns.color_palette("Spectral", as_cmap=True)
 
     # Create heatmap using the custom colormap
     sns.heatmap(dataframe, 
-                annot=True, 
-                cmap=cmap,  # Use the custom colormap
+                annot=True,
+                cmap=cmap,
                 linewidths=0, 
                 fmt=".2f", 
                 annot_kws={"size": 10})
@@ -282,12 +281,12 @@ def GenerateHeatmap(dataframe, title, filename):
     plt.title(title, fontsize=16, fontweight="bold", fontfamily=fontfamily)
     
     # Rotate the x-axis and y-axis labels for better readability
-    plt.xticks(rotation=45, fontsize=14, fontweight="bold", fontfamily=fontfamily)
-    plt.yticks(rotation=0, fontsize=14, fontweight="bold", fontfamily=fontfamily)
+    plt.xticks(rotation=45, fontsize=12, fontweight="bold", fontfamily=fontfamily)
+    plt.yticks(rotation=0, fontsize=12, fontweight="bold", fontfamily=fontfamily)
 
     # Add labels to the x-axis and y-axis
-    plt.xlabel('PDT Substructure', fontsize=12, fontweight="bold", fontfamily=fontfamily)
-    plt.ylabel('SM Substructure', fontsize=12, fontweight="bold", fontfamily=fontfamily)
+    plt.xlabel('PDT Substructure', fontsize=14, fontweight="bold", fontfamily=fontfamily)
+    plt.ylabel('SM Substructure', fontsize=14, fontweight="bold", fontfamily=fontfamily)
 
     # Adjust the layout to prevent cutoff of labels
     plt.tight_layout()
