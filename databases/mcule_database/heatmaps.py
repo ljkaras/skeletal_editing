@@ -255,7 +255,7 @@ def count_symmetric(frameworks, symmetric_filename):
     return symmetric_count_arr, symmetric_count_df
 
 
-def GenerateHeatmap(dataframe, title, filename):
+def GenerateHeatmap(dataframe, title, filename, sm_df):
     # Define figure size
     plt.figure(figsize=(16, 9))
 
@@ -263,30 +263,51 @@ def GenerateHeatmap(dataframe, title, filename):
     # see https://seaborn.pydata.org/tutorial/color_palettes.html for more info
     cmap = sns.color_palette("Spectral", as_cmap=True)
 
-    # Create heatmap using the custom colormap
+    # Create a grid with different widths for subplots
+    gs = plt.GridSpec(1, 2, width_ratios=[12, 1])
+
+    # Create heatmap of results
+    ax1 = plt.subplot(gs[0])
     sns.heatmap(dataframe, 
                 annot=True,
                 cmap=cmap,
                 linewidths=0, 
                 fmt=".2f", 
-                annot_kws={"size": 10})
+                annot_kws={"size": 10},
+                cbar=False)
 
     # define font
-    fontfamily = 'Avenir'
+    fontfamily = 'Arial'
 
     # Remove ticks on both axes
-    plt.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False)
+    ax1.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False)
 
-    # Add title
-    plt.title(title, fontsize=16, fontweight="bold", fontfamily=fontfamily)
+    # Add title and adjust labels
+    ax1.set_title(title, fontsize=16, fontweight="bold", fontfamily=fontfamily)
+    ax1.set_xlabel('PDT Substructure', fontsize=14, fontweight="bold", fontfamily=fontfamily)
+    ax1.set_ylabel('SM Substructure', fontsize=14, fontweight="bold", fontfamily=fontfamily)
+    ax1.tick_params(axis='x', rotation=45, labelsize=12)
+
+    # Create SM count heatmap column plot
+    ax2 = plt.subplot(gs[1])
+    sns.heatmap(sm_df,
+                annot=True,
+                cmap=cmap,
+                linewidths=0,
+                fmt=".2f",
+                annot_kws={"size": 10},
+                cbar=False)
     
-    # Rotate the x-axis and y-axis labels for better readability
-    plt.xticks(rotation=45, fontsize=12, fontweight="bold", fontfamily=fontfamily)
-    plt.yticks(rotation=0, fontsize=12, fontweight="bold", fontfamily=fontfamily)
+    # Remove ticks and labels on both axes for the second heatmap
+    ax2.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False, labelleft=False, labelbottom=False)
 
-    # Add labels to the x-axis and y-axis
-    plt.xlabel('PDT Substructure', fontsize=14, fontweight="bold", fontfamily=fontfamily)
-    plt.ylabel('SM Substructure', fontsize=14, fontweight="bold", fontfamily=fontfamily)
+    '''
+    # Add title to the second heatmap
+    ax2.set_title('% of Total Dataset', fontsize=16, fontweight="bold", fontfamily=fontfamily)
+    '''
+
+    # Manually add a rotated title on the right side of the second heatmap
+    ax2.text(1.1, 0.5, '% of Total Dataset', fontsize=16, fontweight="bold", fontfamily='Avenir', rotation=-90, va='center', ha='center', transform=ax2.transAxes)
 
     # Adjust the layout to prevent cutoff of labels
     plt.tight_layout()
@@ -334,20 +355,36 @@ count_symmetric_results = count_symmetric(frameworks, symmetric_filename)
 symmetric_count_arr = count_symmetric_results[0]
 symmetric_count_df = count_symmetric_results[1]
 
+# counts total number of molecules
+# by summing first column of array with all of the SM counts
+total_molecule_count = np.sum(sm_count_arr[:, 0])
+
+# makes a single column of SM counts
+sm_column = (sm_count_arr[:,0] / total_molecule_count) * 100
+sm_column_df = pd.DataFrame(sm_column,
+                index = None, 
+                columns = None)
+
 # specify which database you're generating heatmaps for here
 database = 'mCule'
 
 # %new dataframe
-percent_new_arr = new_count_arr / unique_count_arr
+percent_new_arr = (new_count_arr / unique_count_arr) * 100
 percent_new_df = pd.DataFrame(percent_new_arr,
                               index = frameworks,
                               columns = frameworks)
-GenerateHeatmap(percent_new_df, f'Percent Unknown Compounds: {database}', filename = f'percent_new_count_{database}.png')
+GenerateHeatmap(percent_new_df,
+                f'Percent Unknown Compounds: {database} ({total_molecule_count} molecules)', 
+                f'percent_new_count_{database}.png',
+                sm_column_df)
 
 # %common dataframe
-percent_common_arr = common_count_arr / unique_count_arr
+percent_common_arr = (common_count_arr / unique_count_arr) * 100
 percent_common_df = pd.DataFrame(percent_common_arr,
                               index = frameworks,
                               columns = frameworks)
-GenerateHeatmap(percent_common_df, f'Percent Known Compounds: {database}', filename = f'percent_common_count_{database}.png')
+GenerateHeatmap(percent_common_df, 
+                f'Percent Known Compounds: {database} ({total_molecule_count} molecules)', 
+                f'percent_common_count_{database}.png',
+                sm_column_df)
 
