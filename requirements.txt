@@ -1,0 +1,13 @@
+Python 3.x
+RDKit
+matplotlib
+numpy
+pandas
+seaborn
+multiprocessing
+csv
+time
+sys
+os 
+glob
+re
