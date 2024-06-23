@@ -1,3 +1,0 @@
-﻿NAME,SMARTS
-pyrimidine2pyrazole,[n;D2:1]1[c:2][n;D2:3][c:4][c:5][c:6]1>>[n;D2:1]1[nH][c:2][c:4][c:5]1.[n;D2:3][c:6]
-pyrimidine2isoxazole,[n;D2:1]1[c:2][n;D2:3][c:4][c:5][c:6]1>>[n;D2:1]1[o][c:2][c:4][c:5]1.[n;D2:3][c:6]

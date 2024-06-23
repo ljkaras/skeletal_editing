@@ -1,1 +1,0 @@
-isoxazole2furan_unique_fps.h5 aromatic_furan_fps_clustered_fps.h5

@@ -1,5 +1,0 @@
-../reaction/pyrazine.csv
-../comparing/new_molecules_pyridine2pyrazine.csv
-../comparing/new_molecules_pyridazine2pyrazine.csv
-../comparing/new_molecules_pyrimidine2pyrazine.csv
-../comparing/new_molecules_pyrrole2pyrazine.csv
