@@ -27,9 +27,7 @@ def load_file_as_list(filename):
 
         lines = []
         for line in all_lines:
-            if line == 'SMILES,ID':
-                continue
-            elif line == None:
+            if line == None:
                 continue
             else:
                 lines.append(line)
@@ -197,65 +195,7 @@ def count_new(frameworks, results_lines):
     return new_count_arr, new_count_df
 
 
-def count_symmetric(frameworks, symmetric_filename):
-    # get the number of molecules classes
-    num_frameworks = len(frameworks)
-
-    # initiate blank array for collecting results
-    symmetric_count_arr = np.zeros((num_frameworks, num_frameworks), 
-                        dtype = float, 
-                        order = 'C')
-    
-    symmetric_file_lines = load_file_as_list(symmetric_filename)
-    
-    for idx1, framework1 in enumerate(frameworks):
-        for idx2, framework2 in enumerate(frameworks):
-            if framework1 != framework2:
-                line_prefix_match = f'{framework1}2{framework2}'
-                
-                for line in symmetric_file_lines:
-                    line_prefix = line.split(':')
-
-                    if line_prefix[0] == line_prefix_match and line_prefix[0] != f'pyrazine2{framework2}':
-                        # Split the string by '/' and extract the number of symmetric molecules
-                        parts = line.split('/')
-                        symmetric_molecules_number = parts[0].split(': ')[-1].strip()
-                        total_molecules_number = parts[1].strip()
-
-                        # calculate symmetry metric (since some heterocycle types generate 2 identical products)
-                        symmetric_metric = ((int(symmetric_molecules_number) / int(total_molecules_number))+ 1)
-
-                        # add to array
-                        symmetric_count_arr[idx1, idx2] = symmetric_metric
-
-                    elif line_prefix[0] == f'pyrazine2{framework2}':
-                        # Split the string by '/' and extract the number of symmetric molecules
-                        parts = line.split('/')
-                        symmetric_molecules_number = parts[0].split(': ')[-1].strip()
-                        total_molecules_number = parts[1].strip()
-
-                        # calculate symmetry metric specific to pyrazines (which can generate 4 molecules in each transformation, not just 2)
-                        symmetric_metric_1 = ((int(symmetric_molecules_number) / int(total_molecules_number))+ 1)
-                        symmetric_metric = symmetric_metric_1 * 2
-
-                        # add to array
-                        symmetric_count_arr[idx1, idx2] = symmetric_metric
-
-                    else:
-                        continue
-            else:
-                symmetric_count_arr[idx1, idx2] = None
-
-    # converts symmetry metric array to df
-    # SMs are listed on left side column, products are listed across the top
-    symmetric_count_df = pd.DataFrame(symmetric_count_arr,
-                    index = frameworks, 
-                    columns = frameworks)
-    
-    return symmetric_count_arr, symmetric_count_df
-
-
-def GenerateHeatmap(dataframe, title, filename, sm_df):
+def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
     # Define figure size
     plt.figure(figsize=(16, 9))
 
@@ -302,27 +242,19 @@ def GenerateHeatmap(dataframe, title, filename, sm_df):
     # Remove ticks and labels on both axes for the second heatmap
     ax2.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False, labelleft=False, labelbottom=False)
 
-    '''
-    # Add title to the second heatmap
-    ax2.set_title('% of Total Dataset', fontsize=16, fontweight="bold", fontfamily=fontfamily)
-    '''
-
     # Manually add a rotated title on the right side of the second heatmap
-    ax2.text(1.1, 0.5, '% of Total Dataset', fontsize=16, fontweight="bold", fontfamily='Avenir', rotation=-90, va='center', ha='center', transform=ax2.transAxes)
+    ax2.text(1.1, 0.5, '% of Total Dataset', fontsize=14, fontweight="bold", fontfamily=fontfamily, rotation=-90, va='center', ha='center', transform=ax2.transAxes)
 
     # Adjust the layout to prevent cutoff of labels
     plt.tight_layout()
 
     # Save the plot as a file
-    plt.savefig(filename, dpi=300)
+    save_path = f'{directory}/{filename}'
+    plt.savefig(save_path, dpi=300)
     plt.close()  # Close the plot to release memory
 
 
-results_filename = 'results.txt'
-results_lines = load_file_as_list(results_filename)
-
-symmetric_filename = 'symmetric_molecules.txt'
-
+# define which frameworks to use
 frameworks = ['pyridine',
         'pyridazine',
         'pyrimidine',
@@ -336,59 +268,74 @@ frameworks = ['pyridine',
         'furan'
         ]
 
-count_sm_results = count_sm(frameworks, results_lines)
-sm_count_arr = count_sm_results[0]
-sm_count_df = count_sm_results[1]
+# loads in list of database
+database_list = load_file_as_list('databases.txt')
 
-count_unique_results = count_unique(frameworks, results_lines)
-unique_count_arr = count_unique_results[0]
-unique_count_df = count_unique_results[1]
+for database in database_list:
+    results_filepath = f'../{database}/results.txt'
+    results_lines = load_file_as_list(results_filepath)
 
-count_common_results = count_common(frameworks, results_lines)
-common_count_arr = count_common_results[0]
-common_count_df = count_common_results[1]
+    frameworks = ['pyridine',
+            'pyridazine',
+            'pyrimidine',
+            'pyrazine',
+            'pyrrole',
+            'pyrazole',
+            'imidazole',
+            'thiazole',
+            'oxazole',
+            'isoxazole',
+            'furan'
+            ]
 
-count_new_results = count_new(frameworks, results_lines)
-new_count_arr = count_new_results[0]
-new_count_df = count_new_results[1]
+    count_sm_results = count_sm(frameworks, results_lines)
+    sm_count_arr = count_sm_results[0]
+    sm_count_df = count_sm_results[1]
 
-count_symmetric_results = count_symmetric(frameworks, symmetric_filename)
-symmetric_count_arr = count_symmetric_results[0]
-symmetric_count_df = count_symmetric_results[1]
+    count_unique_results = count_unique(frameworks, results_lines)
+    unique_count_arr = count_unique_results[0]
+    unique_count_df = count_unique_results[1]
 
-# counts total number of molecules
-# by summing first column of array with all of the SM counts
-total_molecule_count = np.sum(sm_count_arr[:, 0])
+    count_common_results = count_common(frameworks, results_lines)
+    common_count_arr = count_common_results[0]
+    common_count_df = count_common_results[1]
 
-# makes a single column of SM counts
-sm_column = (sm_count_arr[:,0] / total_molecule_count) * 100
-sm_column_df = pd.DataFrame(sm_column,
-                index = None, 
-                columns = None)
+    count_new_results = count_new(frameworks, results_lines)
+    new_count_arr = count_new_results[0]
+    new_count_df = count_new_results[1]
 
-# specify which database you're generating heatmaps for here
-database = 'ChEMBL'
+    # counts total number of molecules
+    # by summing first column of array with all of the SM counts
+    total_molecule_count = np.sum(sm_count_arr[:, 0])
 
-# %new dataframe
-percent_new_arr = (new_count_arr / unique_count_arr) * 100
-percent_new_df = pd.DataFrame(percent_new_arr,
-                              index = frameworks,
-                              columns = frameworks)
-GenerateHeatmap(percent_new_df,
-                f'Percent Unknown Compounds: {database} ({total_molecule_count} molecules)', 
-                f'percent_new_count_{database}.png',
-                sm_column_df)
+    # makes a single column of SM counts
+    sm_column = (sm_count_arr[:,0] / total_molecule_count) * 100
+    sm_column_df = pd.DataFrame(sm_column,
+                    index = None, 
+                    columns = None)
 
-# %common dataframe
-percent_common_arr = (common_count_arr / unique_count_arr) * 100
-percent_common_df = pd.DataFrame(percent_common_arr,
-                              index = frameworks,
-                              columns = frameworks)
-GenerateHeatmap(percent_common_df, 
-                f'Percent Known Compounds: {database} ({total_molecule_count} molecules)', 
-                f'percent_common_count_{database}.png',
-                sm_column_df)
+    # %new dataframe
+    percent_new_arr = (new_count_arr / unique_count_arr) * 100
+    percent_new_df = pd.DataFrame(percent_new_arr,
+                                index = frameworks,
+                                columns = frameworks)
+    GenerateHeatmap(percent_new_df,
+                    f'Percent Unknown Compounds: {database} ({total_molecule_count} molecules)', 
+                    f'percent_new_count_{database}.png',
+                    sm_column_df,
+                    'percent_new')
 
-# exports dfs to csvs for averaging
-percent_common_df.to_csv(f'percent_common_df_{database}.csv', index=True)
-sm_column_df.to_csv(f'sm_percentages_df_{database}.csv', index=True)
+    # %common dataframe
+    percent_common_arr = (common_count_arr / unique_count_arr) * 100
+    percent_common_df = pd.DataFrame(percent_common_arr,
+                                index = frameworks,
+                                columns = frameworks)
+    GenerateHeatmap(percent_common_df, 
+                    f'Percent Known Compounds: {database} ({total_molecule_count} molecules)', 
+                    f'percent_common_count_{database}.png',
+                    sm_column_df,
+                    'percent_common')
+    
+    # exports dfs to csvs for averaging
+    percent_common_df.to_csv(f'percent_common_dfs/percent_common_df_{database}.csv', index=True)
+    sm_column_df.to_csv(f'percent_new_dfs/sm_percentages_df_{database}.csv', index=True)
