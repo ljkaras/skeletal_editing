@@ -274,7 +274,8 @@ def GenerateHeatmap(dataframe, title, filename, sm_df):
                 linewidths=0, 
                 fmt=".2f", 
                 annot_kws={"size": 10},
-                cbar=False)
+                cbar=False,
+                cbar_kws={'orientation': 'horizontal'})  # Place color bar at the bottom if cbar=True
 
     # define font
     fontfamily = 'Arial'
@@ -366,7 +367,7 @@ sm_column_df = pd.DataFrame(sm_column,
                 columns = None)
 
 # specify which database you're generating heatmaps for here
-database = 'mCule'
+database = 'ChEMBL'
 
 # %new dataframe
 percent_new_arr = (new_count_arr / unique_count_arr) * 100

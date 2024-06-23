@@ -388,3 +388,7 @@ GenerateHeatmap(percent_common_df,
                 f'percent_common_count_{database}.png',
                 sm_column_df)
 
+# exports dfs to csvs for averaging
+percent_common_df.to_csv(f'percent_common_df_{database}.csv', index=True)
+sm_column_df.to_csv(f'sm_percentages_df_{database}.csv', index=True)
+
