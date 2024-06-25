@@ -201,7 +201,7 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
 
     # define which colors to use
     # see https://seaborn.pydata.org/tutorial/color_palettes.html for more info
-    cmap = sns.color_palette("Spectral", as_cmap=True)
+    cmap = sns.color_palette("plasma", as_cmap=True)
 
     # Create a grid with different widths for subplots
     gs = plt.GridSpec(1, 2, width_ratios=[12, 1])
@@ -252,6 +252,35 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
     save_path = f'{directory}/{filename}'
     plt.savefig(save_path, dpi=300)
     plt.close()  # Close the plot to release memory
+
+
+# function specifically for generated heatmaps showing # of starting materials by category
+def GenerateHeatmap2(dataframe, title, filename, directory):
+# Define figure size
+    plt.figure(figsize=(16, 4))
+
+    # Choose a color palette for the heatmap
+    cmap = "plasma"
+
+    # Create the heatmap
+    sns.heatmap(dataframe, 
+                annot=True,
+                cmap=cmap,
+                linewidths=0.0,
+                linecolor='white',
+                fmt=".2f",
+                annot_kws={"size": 10},
+                cbar=False
+                )       
+
+    # Set title and labels
+    plt.title(title, fontsize=16, fontweight="bold")
+
+    plt.xlabel('Heteroaromatic', fontsize=14)
+
+    # Save the plot as a file
+    save_path = f'{directory}/{filename}'
+    plt.savefig(save_path, dpi=300)
 
 
 # define which frameworks to use
@@ -339,3 +368,10 @@ for database in database_list:
     # exports dfs to csvs for averaging
     percent_common_df.to_csv(f'percent_common_dfs/percent_common_df_{database}.csv', index=True)
     sm_column_df.to_csv(f'percent_new_dfs/sm_percentages_df_{database}.csv', index=True)
+
+    # transposes SM set for representation as a row-shaped heatmap
+    sm_column_df_transposed = sm_column_df.transpose()
+    GenerateHeatmap2(sm_column_df_transposed,
+                     f'% of Total for Each Heterocycle Class: {database} ({total_molecule_count} molecules)',
+                     f'sm_percentages_{database}.png',
+                     'num_heterocycles')
