@@ -350,5 +350,10 @@ for database in database_list:
     
     # exports dfs to csvs for averaging
     percent_common_df.to_csv(f'percent_common_dfs/percent_common_df_{database}.csv', index=True)
-    sm_column_df.to_csv(f'percent_new_dfs/sm_percentages_df_{database}.csv', index=True)
+    sm_column_df.to_csv(f'percent_sms_dfs/sm_percentages_df_{database}.csv', index=True)
+
+    # grabs exact numbers of each SM as a 1 column dataframe
+    first_column = sm_count_df.iloc[:, 0] 
+    first_column_df = first_column.to_frame()
+    first_column_df.to_csv(f'count_sms_dfs/sm_counts_df_{database}.csv', index=True)
 
