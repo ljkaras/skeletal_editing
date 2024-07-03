@@ -68,8 +68,8 @@ This repository contains scripts and data used to analyze the potential utility 
 
 ## Contributors
 
-- [Your Name](https://github.com/gloganbart)
-- [Collaborator Name](https://github.com/ljkaras)
+- [Logan Bartholomew](https://github.com/gloganbart)
+- [Dr. Lucas Karas](https://github.com/ljkaras)
 
 ## License
 

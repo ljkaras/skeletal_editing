@@ -40,7 +40,7 @@ def count_sm(frameworks, results_lines):
     num_frameworks = len(frameworks)
 
     # initiate blank arrays for collecting results
-    sm_count_arr = np.zeros((num_frameworks, num_frameworks), 
+    sm_count_arr = np.zeros((num_frameworks, 1), 
                         dtype = int, 
                         order = 'C')
     
@@ -67,7 +67,7 @@ def count_sm(frameworks, results_lines):
     # SMs are listed on left side column, products are listed across the top
     sm_count_df = pd.DataFrame(sm_count_arr,
                     index = frameworks, 
-                    columns = None)
+                    columns = ['benzene'])
     
     return sm_count_arr, sm_count_df
 
@@ -77,38 +77,34 @@ def count_unique(frameworks, results_lines):
     num_frameworks = len(frameworks)
 
     # initiate blank arrays for collecting results
-    unique_count_arr = np.zeros((num_frameworks, num_frameworks), 
+    unique_count_arr = np.zeros((num_frameworks, 1), 
                         dtype = float, 
                         order = 'C')
     
     # count # of unique molecules generated in each transformation
-    for idx1, framework1 in enumerate(frameworks):
-        for idx2, framework2 in enumerate(frameworks):
-            if framework1 != framework2:
-                line_prefix_match = f'Number of {framework1}2{framework2} molecules'
+    for idx, framework in enumerate(frameworks):
+        line_prefix_match = f'Number of benzene2{framework} molecules'
 
-                for line in results_lines:
-                    line_parts = line.split(': ')
-                    line_prefix = line_parts[0]
+        for line in results_lines:
+            line_parts = line.split(': ')
+            line_prefix = line_parts[0]
 
-                    if line_prefix == line_prefix_match:
-                        # Extract the number of unique molecules
-                        line_count = line_parts[1]
-                        unique_molecules_number = line_count
+            if line_prefix == line_prefix_match:
+                # Extract the number of unique molecules
+                line_count = line_parts[1]
+                unique_molecules_number = line_count
 
-                        # add to array
-                        unique_count_arr[idx1, idx2] = int(unique_molecules_number)
+                # add to array
+                unique_count_arr[idx, 0:] = int(unique_molecules_number)
 
-                    else:
-                        continue
             else:
-                unique_count_arr[idx1, idx2] = None
+                continue
 
     # converts array to df
     # SMs are listed on left side column, products are listed across the top
     unique_count_df = pd.DataFrame(unique_count_arr,
                     index = frameworks, 
-                    columns = frameworks)
+                    columns = ['benzene'])
     
     return unique_count_arr, unique_count_df
 
@@ -118,38 +114,34 @@ def count_common(frameworks, results_lines):
     num_frameworks = len(frameworks)
 
     # initiate blank arrays for collecting results
-    common_count_arr = np.zeros((num_frameworks, num_frameworks), 
+    common_count_arr = np.zeros((num_frameworks, 1), 
                         dtype = float, 
                         order = 'C')
     
     # count # of common molecules generated in each transformation
-    for idx1, framework1 in enumerate(frameworks):
-        for idx2, framework2 in enumerate(frameworks):
-            if framework1 != framework2:
-                line_prefix_match = f'Number of common molecules in {framework1}2{framework2}'
+    for idx, framework in enumerate(frameworks):
+        line_prefix_match = f'Number of common molecules in benzene2{framework}'
 
-                for line in results_lines:
-                    line_parts = line.split(': ')
-                    line_prefix = line_parts[0]
+        for line in results_lines:
+            line_parts = line.split(': ')
+            line_prefix = line_parts[0]
 
-                    if line_prefix == line_prefix_match:
-                        # Extract the number of unique molecules
-                        line_count = line_parts[1]
-                        common_molecules_number = line_count
+            if line_prefix == line_prefix_match:
+                # Extract the number of unique molecules
+                line_count = line_parts[1]
+                common_molecules_number = line_count
 
-                        # add to array
-                        common_count_arr[idx1, idx2] = int(common_molecules_number)
+                # add to array
+                common_count_arr[idx, 0:] = int(common_molecules_number)
 
-                    else:
-                        continue
             else:
-                common_count_arr[idx1, idx2] = None
+                continue
 
     # converts array to df
     # SMs are listed on left side column, products are listed across the top
     common_count_df = pd.DataFrame(common_count_arr,
                     index = frameworks, 
-                    columns = frameworks)
+                    columns = ['benzene'])
     
     return common_count_arr, common_count_df
 
@@ -159,52 +151,48 @@ def count_new(frameworks, results_lines):
     num_frameworks = len(frameworks)
 
     # initiate blank arrays for collecting results
-    new_count_arr = np.zeros((num_frameworks, num_frameworks), 
+    new_count_arr = np.zeros((num_frameworks, 1), 
                         dtype = float, 
                         order = 'C')
     
     # count # of new molecules generated in each transformation
-    for idx1, framework1 in enumerate(frameworks):
-        for idx2, framework2 in enumerate(frameworks):
-            if framework1 != framework2:
-                line_prefix_match = f'Number of new molecules in {framework1}2{framework2}'
+    for idx, framework in enumerate(frameworks):
+        line_prefix_match = f'Number of new molecules in benzene2{framework}'
 
-                for line in results_lines:
-                    line_parts = line.split(': ')
-                    line_prefix = line_parts[0]
+        for line in results_lines:
+            line_parts = line.split(': ')
+            line_prefix = line_parts[0]
 
-                    if line_prefix == line_prefix_match:
-                        # Extract the number of unique molecules
-                        line_count = line_parts[1]
-                        new_molecules_number = line_count
+            if line_prefix == line_prefix_match:
+                # Extract the number of unique molecules
+                line_count = line_parts[1]
+                new_molecules_number = line_count
 
-                        # add to array
-                        new_count_arr[idx1, idx2] = int(new_molecules_number)
+                # add to array
+                new_count_arr[idx, 0:] = int(new_molecules_number)
 
-                    else:
-                        continue
             else:
-                new_count_arr[idx1, idx2] = None
+                continue
 
     # converts array to df
     # SMs are listed on left side column, products are listed across the top
     new_count_df = pd.DataFrame(new_count_arr,
                     index = frameworks, 
-                    columns = frameworks)
+                    columns = ['benzene'])
     
     return new_count_arr, new_count_df
 
 
 def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
     # Define figure size
-    plt.figure(figsize=(16, 9))
+    plt.figure(figsize=(4, 9))
 
     # define which colors to use
     # see https://seaborn.pydata.org/tutorial/color_palettes.html for more info
     cmap = sns.color_palette("plasma", as_cmap=True)
 
     # Create a grid with different widths for subplots
-    gs = plt.GridSpec(1, 2, width_ratios=[12, 1])
+    gs = plt.GridSpec(1, 2, width_ratios=[1, 1])
 
     # Create heatmap of results
     ax1 = plt.subplot(gs[0])
@@ -227,7 +215,7 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
     ax1.set_title(title, fontsize=16, fontweight="bold", fontfamily=fontfamily)
     ax1.set_xlabel('PDT Substructure', fontsize=14, fontweight="bold", fontfamily=fontfamily)
     ax1.set_ylabel('SM Substructure', fontsize=14, fontweight="bold", fontfamily=fontfamily)
-    ax1.tick_params(axis='x', rotation=45, labelsize=12)
+    ax1.tick_params(axis='x', rotation=0, labelsize=12)
 
     # Create SM count heatmap column plot
     ax2 = plt.subplot(gs[1])
@@ -254,7 +242,8 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
     plt.close()  # Close the plot to release memory
 
 # define which frameworks to use
-frameworks = ['pyridine',
+frameworks = ['benzene',
+        'pyridine',
         'pyridazine',
         'pyrimidine',
         'pyrazine',
@@ -267,14 +256,17 @@ frameworks = ['pyridine',
         'furan'
         ]
 
+benzene_index = ['benzene']
+
 # loads in list of database
-database_list = load_file_as_list('databases.txt')
+database_list = load_file_as_list('databases_benzene.txt')
 
 for database in database_list:
     results_filepath = f'../{database}/results.txt'
     results_lines = load_file_as_list(results_filepath)
 
-    frameworks = ['pyridine',
+    frameworks = ['benzene',
+            'pyridine',
             'pyridazine',
             'pyrimidine',
             'pyrazine',
@@ -288,34 +280,27 @@ for database in database_list:
             ]
 
 
-
     count_sm_results = count_sm(frameworks, results_lines)
     sm_count_arr = count_sm_results[0]
     sm_count_df = count_sm_results[1]
 
-
-
     count_unique_results = count_unique(frameworks, results_lines)
     unique_count_arr = count_unique_results[0]
-    unique_count_df = count_unique_results[1]
-
-
+    unique_count_df = count_unique_results[1]   
 
     count_common_results = count_common(frameworks, results_lines)
     common_count_arr = count_common_results[0]
     common_count_df = count_common_results[1]
-
-
 
     count_new_results = count_new(frameworks, results_lines)
     new_count_arr = count_new_results[0]
     new_count_df = count_new_results[1]
 
 
-
     # counts total number of molecules
     # by summing first column of array with all of the SM counts
     total_molecule_count = np.sum(sm_count_arr[:, 0])
+
 
     # makes a single column of SM counts
     sm_column = (sm_count_arr[:,0] / total_molecule_count) * 100
@@ -328,24 +313,26 @@ for database in database_list:
     percent_new_arr = (new_count_arr / unique_count_arr) * 100
     percent_new_df = pd.DataFrame(percent_new_arr,
                                 index = frameworks,
-                                columns = frameworks)
+                                columns = benzene_index)
     GenerateHeatmap(percent_new_df,
-                    f'Percent Unknown Compounds: {database} ({total_molecule_count} molecules)', 
+                    f'%New - Benzene to Heterocycles: ChEMBL', 
                     f'percent_new_count_{database}.png',
                     sm_column_df,
                     'percent_new')
+
 
     # %common dataframe
     percent_common_arr = (common_count_arr / unique_count_arr) * 100
     percent_common_df = pd.DataFrame(percent_common_arr,
                                 index = frameworks,
-                                columns = frameworks)
+                                columns = benzene_index)
     GenerateHeatmap(percent_common_df, 
-                    f'Percent Known Compounds: {database} ({total_molecule_count} molecules)', 
+                    f'%Known - Benzene to Heterocycles: ChEMBL', 
                     f'percent_common_count_{database}.png',
                     sm_column_df,
                     'percent_common')
     
+
     # exports dfs to csvs for averaging
     percent_common_df.to_csv(f'percent_common_dfs/percent_common_df_{database}.csv', index=True)
     sm_column_df.to_csv(f'percent_new_dfs/sm_percentages_df_{database}.csv', index=True)
