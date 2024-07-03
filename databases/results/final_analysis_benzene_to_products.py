@@ -8,6 +8,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap # makes nice colors for heatmap
 from matplotlib.colors import LinearSegmentedColormap # makes nice colors for heatmap
+import cmasher as cmr # for truncating colormaps for softer colors
 
 
 # import seaborn and matplotlib for heatmap generation
@@ -189,7 +190,8 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
 
     # define which colors to use
     # see https://seaborn.pydata.org/tutorial/color_palettes.html for more info
-    cmap = sns.color_palette("plasma", as_cmap=True)
+    # cmasher used to generated a sub-map so the colors aren't so harsh
+    cmap = cmr.get_sub_cmap('plasma', 0.2, 0.8)
 
     # Create a grid with different widths for subplots
     gs = plt.GridSpec(1, 2, width_ratios=[1, 1])
@@ -315,7 +317,7 @@ for database in database_list:
                                 index = frameworks,
                                 columns = benzene_index)
     GenerateHeatmap(percent_new_df,
-                    f'%New - Benzene to Heterocycles: ChEMBL', 
+                    f'%New: ChEMBL', 
                     f'percent_new_count_{database}.png',
                     sm_column_df,
                     'percent_new')
@@ -327,7 +329,7 @@ for database in database_list:
                                 index = frameworks,
                                 columns = benzene_index)
     GenerateHeatmap(percent_common_df, 
-                    f'%Known - Benzene to Heterocycles: ChEMBL', 
+                    f'%Known: ChEMBL', 
                     f'percent_common_count_{database}.png',
                     sm_column_df,
                     'percent_common')
