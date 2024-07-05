@@ -207,13 +207,15 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
 
     # Create a grid with different widths for subplots
     gs = plt.GridSpec(1, 2, width_ratios=[12, 1])
+    cmap.set_bad(color='lightgrey')  # Set color for missing data (None)
+
 
     # Create heatmap of results
     ax1 = plt.subplot(gs[0])
     sns.heatmap(dataframe, 
                 annot=True,
                 cmap=cmap,
-                linewidths=0, 
+                linewidths=0.5, 
                 fmt=".2f", 
                 annot_kws={"size": 10},
                 cbar=False,

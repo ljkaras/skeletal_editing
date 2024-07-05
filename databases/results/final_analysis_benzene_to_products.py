@@ -192,6 +192,8 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
     # see https://seaborn.pydata.org/tutorial/color_palettes.html for more info
     # cmasher used to generated a sub-map so the colors aren't so harsh
     cmap = cmr.get_sub_cmap('plasma', 0.2, 0.8)
+    cmap.set_bad(color='lightgrey')  # Set color for missing data (None)
+
 
     # Create a grid with different widths for subplots
     gs = plt.GridSpec(1, 2, width_ratios=[1, 1])
@@ -201,7 +203,7 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
     sns.heatmap(dataframe, 
                 annot=True,
                 cmap=cmap,
-                linewidths=0, 
+                linewidths=0.5, 
                 fmt=".2f", 
                 annot_kws={"size": 10},
                 cbar=False,
