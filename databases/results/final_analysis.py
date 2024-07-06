@@ -238,7 +238,7 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
     sns.heatmap(sm_df,
                 annot=True,
                 cmap=cmap,
-                linewidths=0,
+                linewidths=0.5,
                 fmt=".2f",
                 annot_kws={"size": 10},
                 cbar=False)

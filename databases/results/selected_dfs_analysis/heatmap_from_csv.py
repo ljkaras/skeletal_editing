@@ -58,12 +58,12 @@ def GenerateHeatmap(dataframe, title, filename, directory):
 
 
 # Specify the file path of the CSV file
-csv_file_name = 'percent_common_df_enamine_select.csv'
+csv_file_name = 'percent_common_df_ChEMBL_select.csv'
 
 # Read the CSV file into a DataFrame
 df = pd.read_csv(csv_file_name, index_col = 0)
 
 GenerateHeatmap(df,
-                'Selected Enamine 350/3 Library Results: %Known',
-                'selected_enamine_percent_known.png',
+                'Selected ChEMBL Library Results: %Known',
+                'selected_ChEMBL_percent_known.png',
                 'selected_heatmaps')
