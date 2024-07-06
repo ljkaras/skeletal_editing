@@ -56,14 +56,16 @@ def GenerateHeatmap(dataframe, title, filename, directory):
     plt.savefig(save_path, dpi=300)
     plt.close()  # Close the plot to release memory
 
+databases = ['enamine', 'mcule', 'ChEMBL']
 
-# Specify the file path of the CSV file
-csv_file_name = 'percent_common_df_ChEMBL_select.csv'
+for database in databases:
+    # Specify the file path of the CSV file
+    csv_file_name = f'percent_common_df_{database}_select.csv'
 
-# Read the CSV file into a DataFrame
-df = pd.read_csv(csv_file_name, index_col = 0)
+    # Read the CSV file into a DataFrame
+    df = pd.read_csv(csv_file_name, index_col = 0)
 
-GenerateHeatmap(df,
-                'Selected ChEMBL Library Results: %Known',
-                'selected_ChEMBL_percent_known.png',
-                'selected_heatmaps')
+    GenerateHeatmap(df,
+                    f'Selected {database} Library Results: %Known',
+                    f'selected_{database}_percent_known.png',
+                    'selected_heatmaps')
