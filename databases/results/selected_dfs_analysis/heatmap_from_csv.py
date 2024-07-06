@@ -22,7 +22,7 @@ os.chdir(os.path.dirname(os.path.abspath(path)))
 
 def GenerateHeatmap(dataframe, title, filename, directory):
     # Define figure size
-    plt.figure(figsize=(16, 9))
+    plt.figure(figsize=(16, 6))
 
     # Define colormap (adjust as needed)
     cmap = cmr.get_sub_cmap('plasma', 0.2, 0.8)
@@ -40,12 +40,12 @@ def GenerateHeatmap(dataframe, title, filename, directory):
                 cbar_kws={'orientation': 'horizontal'})  # Horizontal color bar
 
     # Define font family
-    fontfamily = 'Arial'
+    fontfamily = 'Helvetica'
 
     # Customize plot appearance
-    plt.title(title, fontsize=16, fontweight="bold", fontfamily=fontfamily)
-    plt.xlabel('PDT Substructure', fontsize=14, fontweight="bold", fontfamily=fontfamily)
-    plt.ylabel('SM Substructure', fontsize=14, fontweight="bold", fontfamily=fontfamily)
+    plt.title(title, fontsize=14, fontweight="bold", fontfamily=fontfamily)
+    plt.xlabel('PDT Substructure', fontsize=13, fontweight="bold", fontfamily=fontfamily)
+    plt.ylabel('SM Substructure', fontsize=13, fontweight="bold", fontfamily=fontfamily)
     plt.xticks(rotation=45, fontsize=12)
 
     # Adjust layout for better appearance

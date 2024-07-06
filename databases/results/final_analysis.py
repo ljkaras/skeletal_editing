@@ -198,7 +198,7 @@ def count_new(frameworks, results_lines):
 
 def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
     # Define figure size
-    plt.figure(figsize=(16, 9))
+    plt.figure(figsize=(16, 6))
 
     # define which colors to use
     # see https://seaborn.pydata.org/tutorial/color_palettes.html for more info
@@ -222,15 +222,15 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
                 cbar_kws={'orientation': 'horizontal'})  # Place color bar at the bottom if cbar=True
 
     # define font
-    fontfamily = 'Arial'
+    fontfamily = 'Helvetica'
 
     # Remove ticks on both axes
     ax1.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False)
 
     # Add title and adjust labels
-    ax1.set_title(title, fontsize=16, fontweight="bold", fontfamily=fontfamily)
-    ax1.set_xlabel('PDT Substructure', fontsize=14, fontweight="bold", fontfamily=fontfamily)
-    ax1.set_ylabel('SM Substructure', fontsize=14, fontweight="bold", fontfamily=fontfamily)
+    ax1.set_title(title, fontsize=14, fontweight="bold", fontfamily=fontfamily)
+    ax1.set_xlabel('PDT Substructure', fontsize=13, fontweight="bold", fontfamily=fontfamily)
+    ax1.set_ylabel('SM Substructure', fontsize=13, fontweight="bold", fontfamily=fontfamily)
     ax1.tick_params(axis='x', rotation=45, labelsize=12)
 
     # Create SM count heatmap column plot
