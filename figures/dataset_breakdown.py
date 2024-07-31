@@ -105,5 +105,5 @@ for bar, heterocycle, percentage in zip(bars, df['Heterocycle'], df['Percentage'
 plt.tight_layout()
 plt.subplots_adjust(left=0.07, right=0.93, top=0.9, bottom=0.15)  # Adjust margins
 
-plt.show()
 plt.savefig('dataset_composition.png',dpi=300)
+plt.show()
