@@ -46,14 +46,13 @@ def plot_heterocycles(df, database):
 
     # Normalize percentages to [0, 1] range for colormap
     norm = mcolors.Normalize(vmin=min(df['Percentage']), vmax=max(df['Percentage']))
-    # cmasher used to generate a sub-map so the colors aren't so harsh
     cmap = cmr.get_sub_cmap('plasma', 0.2, 0.8)
 
     # Get colors from colormap
     colors = [cmap(norm(value)) for value in df['Percentage']]
 
     # Plotting the Bar Chart
-    fig, ax1 = plt.subplots(figsize=(16, 6))
+    fig, ax1 = plt.subplots(figsize=(12, 6))  # Adjusted figure size
 
     # Define font
     fontfamily = 'Helvetica'
@@ -61,10 +60,10 @@ def plot_heterocycles(df, database):
     # Bar chart for percentages with colormap
     bars = ax1.bar(df['Heterocycle'], df['Percentage'], color=colors, alpha=1.0, zorder=3)
 
-    title = 'Dataset Composition'
-    ax1.set_title(title, fontsize=14, fontweight='bold', fontfamily=fontfamily)
-    ax1.set_xlabel('Heterocycle', fontsize=14, fontfamily=fontfamily)
-    ax1.set_ylabel('Percentage (%)', fontsize=14, fontfamily=fontfamily)
+    title = f'Dataset Composition: {database}'
+    ax1.set_title(title, fontsize=12, fontweight='bold', fontfamily=fontfamily)
+    ax1.set_xlabel('Heterocycle', fontsize=12, fontfamily=fontfamily)
+    ax1.set_ylabel('Percentage (%)', fontsize=12, fontfamily=fontfamily)
     ax1.tick_params(axis='y')
 
     # Increase y-axis limit to provide space for the molecular structures
@@ -83,12 +82,12 @@ def plot_heterocycles(df, database):
             mol_img = Draw.MolToImage(mol, size=(100, 100), kekulize=True, wedgeBonds=True, fitImage=True, options=options)
             imgbox = OffsetImage(mol_img, zoom=0.5, resample=True, alpha=1.0)  # Set alpha to 1.0 for full visibility
             ab = AnnotationBbox(imgbox, (bar.get_x() + bar.get_width() / 2, bar.get_height()), 
-                                xybox=(0, 50), 
+                                xybox=(0, 40), 
                                 xycoords='data', 
                                 boxcoords="offset points",
                                 frameon=False,
-                                pad=0.8,
-                                zorder=1)  # Set zorder for structures
+                                pad=0.4,
+                                zorder=1)  # Adjusted padding
             ax1.add_artist(ab)
         
         # Add percentage text on top of the bars
@@ -97,10 +96,11 @@ def plot_heterocycles(df, database):
 
     # Adjust layout to fit everything properly
     plt.tight_layout()
-    plt.subplots_adjust(left=0.07, right=0.93, top=0.9, bottom=0.15)  # Adjust margins
+    plt.subplots_adjust(left=0.05, right=0.95, top=0.85, bottom=0.2)  # Further adjusted margins
 
-    plt.savefig(f'{database}_sm_composition.png',dpi=300)
-    plt.show()
+    # Save the figure with tight bounding box to minimize white space
+    plt.savefig(f'{database}_sm_composition.png', dpi=300, bbox_inches='tight')
+
 
 
 # Load data from CSV
@@ -125,7 +125,7 @@ def load_file_as_list(filename):
     return lines
 
 
-# Example usage
+# usage
 databases = load_file_as_list('databases.txt')
 for database in databases:
     csv_file_path = f'../figures/count_sms_dfs/{database}.csv'
