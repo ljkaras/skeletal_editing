@@ -1,0 +1,11 @@
+pyridine
+pyridazine
+pyrimidine
+pyrazine
+pyrrole
+pyrazole
+imidazole
+thiazole
+oxazole
+isoxazole
+furan
