@@ -90,26 +90,7 @@ def apply_pca(similarity_matrix, n_components=2):
     return pca_result
 
 
-# Function to plot PCA points on the left subplot
-def plot_pca_points(ax, points1, points2, color1, color2, label1, label2):
-    ax.scatter(points1[:, 0], points1[:, 1], color=color1, s=10, marker='o', alpha=0.5, label=label1)
-    ax.scatter(points2[:, 0], points2[:, 1], color=color2, s=10, marker='o', alpha=0.5, label=label2)
-    
-    # sets tick marks & labels
-    plt.tick_params(axis='both', which='both', 
-                    bottom=True, top=False, left=True, right=False)
-    
-    ax.legend()
-    
-    # Add title below the plot
-    ax.text(0.5, -0.05, 'PCA Points', ha='center', va='center', transform=ax.transAxes, fontsize=14, bbox=None)
-    
-    # Return axis limits for consistent scaling
-    return ax.get_xlim(), ax.get_ylim()
-
-
-
-# Function to plot KDE contours on the right subplot, using consistent axes
+# Function to plot only KDE contours, using consistent axes
 def plot_kde_contours(ax, points1, points2, color1, color2, label1, label2, xlim, ylim):
     # Standardize the data together
     scaler = StandardScaler()
@@ -137,7 +118,7 @@ def plot_kde_contours(ax, points1, points2, color1, color2, label1, label2, xlim
     ax.contourf(X, Y, Z2, levels=[0.1, 0.2, 0.3, 0.4, 0.5], colors=[color2], alpha=0.3)
     ax.contour(X, Y, Z2, levels=[0.1, 0.2, 0.3, 0.4, 0.5], colors=[color2], linewidths=1, label=label2)
     
-    # Use the same axis limits as PCA plot
+    # Use the same axis limits
     ax.set_xlim(xlim)
     ax.set_ylim(ylim)
     
@@ -180,8 +161,8 @@ def compute_kde_overlap(points1, points2, bandwidth=0.15, grid_size=100):
     return jaccard_index
 
 
-# Function to process two SMILES lists and plot their PCA points and KDE contours
-def smiles_to_combined_kde(smiles_list1, smiles_list2, library1, library2):
+# Function to process two SMILES lists and plot only their KDE contours
+def smiles_to_kde(smiles_list1, smiles_list2, library1, library2):
     # Step 1: Compute fingerprints for both lists
     fingerprints1 = compute_fingerprints(smiles_list1)
     fingerprints2 = compute_fingerprints(smiles_list2)
@@ -202,32 +183,32 @@ def smiles_to_combined_kde(smiles_list1, smiles_list2, library1, library2):
     # Step 6: Compute KDE overlap
     overlap = compute_kde_overlap(pca_result1, pca_result2)
     
-    # Create subplots: one for PCA points, one for KDE contours
-    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(20, 8))
+    # Create a single subplot for KDE contours
+    fig, ax = plt.subplots(figsize=(10, 8))
     
-    # Plot PCA points and retrieve axis limits
-    xlim, ylim = plot_pca_points(ax1, pca_result1, pca_result2, 'skyblue', 'indianred', f'{library1}', f'{library2}')
+    # Use consistent axis limits
+    xlim = [-5, 5]
+    ylim = [-5, 5]
     
     # Plot KDE contours using the same axis limits
-    plot_kde_contours(ax2, pca_result1, pca_result2, 'skyblue', 'indianred', library1, library2, xlim, ylim)
+    plot_kde_contours(ax, pca_result1, pca_result2, 'skyblue', 'indianred', library1, library2, xlim, ylim)
     
     # Add overlap text to the KDE plot
-    ax2.text(0.05, 0.95, f'Overlap = {overlap:.4f}', transform=ax2.transAxes,
+    ax.text(0.05, 0.95, f'Overlap = {overlap:.4f}', transform=ax.transAxes,
              fontsize=12, verticalalignment='top', bbox=dict(boxstyle='round,pad=0.5', edgecolor='none', facecolor='lightgrey'))
     
     # Capitalize library names and add title
     library1 = library1.capitalize()
     library2 = library2.capitalize()
     
-    plt.suptitle(f'PCA and KDE Contours: {library1} to {library2}', y=0.93, fontsize=14)
+    plt.suptitle(f'KDE Contours: {library1} to {library2}', y=0.93, fontsize=14)
     plt.tight_layout(rect=[0, 0, 1, 0.95])
     
-    plt.savefig(f'../overlap/plots/{library1}2{library2}.png', dpi=300)
+    plt.savefig(f'../overlap/combined_plots/{library1}2{library2}.png', dpi=300)
     plt.show()
     plt.close()  # Close the figure to avoid overlapping plots
     
     return overlap
-
 
 # Initialize a DataFrame to store overlap values
 libraries = load_file_as_list('libraries.txt')
@@ -247,7 +228,7 @@ for library1 in libraries:
         smiles_list2 = extract_smiles_from_csv(file_path2)
     
         # Calculate overlap and store in DataFrame
-        overlap = smiles_to_combined_kde(smiles_list1, smiles_list2, library1, library2)
+        overlap = smiles_to_kde(smiles_list1, smiles_list2, library1, library2)
         overlap_df.loc[library1, library2] = overlap
 
 # Save overlap DF to a CSV file

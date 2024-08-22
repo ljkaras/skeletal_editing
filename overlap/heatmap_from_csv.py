@@ -30,8 +30,9 @@ def GenerateHeatmap(dataframe, title, filename, directory):
     # cmap.set_bad(color='lightgrey')  # Set color for missing data (None)
 
     # Define custom colormap
-    colors = ["indianred", "white", "skyblue"]
+    colors = ["white", "#2F72B4"]
     cmap = LinearSegmentedColormap.from_list("custom_cmap", colors)
+    cmap = cmr.get_sub_cmap(cmap, 0.20, 1.00)
     cmap.set_bad(color='lightgrey')  # Set color for missing data (None)
 
 
@@ -42,8 +43,7 @@ def GenerateHeatmap(dataframe, title, filename, directory):
                 linewidths=0.5,
                 fmt=".2f",
                 annot_kws={"size": 10},
-                cbar=False,  # Add color bar or not
-                cbar_kws={'orientation': 'horizontal'})  # Horizontal color bar
+                cbar=True)  # Add color bar or not
 
     # Define font family
     fontfamily = 'Helvetica'
@@ -70,6 +70,6 @@ csv_file_name = f'kde_overlap_values.csv'
 df = pd.read_csv(csv_file_name, index_col = 0)
 
 GenerateHeatmap(df,
-                f'Overlap Values',
+                f'PCA-Derived KDE Contour Overlap',
                 f'overlap_heatmap.png',
                 'overlap_heatmaps')
