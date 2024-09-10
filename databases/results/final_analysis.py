@@ -200,10 +200,16 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
     # Define figure size
     plt.figure(figsize=(16, 6))
 
-    # define which colors to use
+    # define which colors to use from the plasma colormap
     # see https://seaborn.pydata.org/tutorial/color_palettes.html for more info
     # cmasher used to generated a sub-map so the colors aren't so harsh
-    cmap = cmr.get_sub_cmap('plasma', 0.2, 0.8)
+    # cmap = cmr.get_sub_cmap('plasma', 0.2, 0.8)
+
+    # generate a custom blue-to-white-to-red color map
+    colors = ["indianred", "white", "skyblue"]
+    cmap = LinearSegmentedColormap.from_list("custom_cmap", colors)
+    cmap = cmr.get_sub_cmap(cmap, 0.05, 1.00)
+    cmap.set_bad(color='lightgrey')  # Set color for missing data (None)
 
     # Create a grid with different widths for subplots
     gs = plt.GridSpec(1, 2, width_ratios=[12, 1])
@@ -218,7 +224,7 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
                 linewidths=0.5, 
                 fmt=".2f", 
                 annot_kws={"size": 10},
-                cbar=False,
+                cbar=False, # change this to False if you don't want the colorbar
                 cbar_kws={'orientation': 'horizontal'})  # Place color bar at the bottom if cbar=True
 
     # define font
@@ -229,9 +235,9 @@ def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
 
     # Add title and adjust labels
     ax1.set_title(title, fontsize=14, fontweight="bold", fontfamily=fontfamily)
-    ax1.set_xlabel('PDT Substructure', fontsize=13, fontweight="bold", fontfamily=fontfamily)
-    ax1.set_ylabel('SM Substructure', fontsize=13, fontweight="bold", fontfamily=fontfamily)
-    ax1.tick_params(axis='x', rotation=45, labelsize=12)
+    ax1.set_xlabel('PDT Substructure', fontsize=12, fontweight="bold", fontfamily=fontfamily)
+    ax1.set_ylabel('SM Substructure', fontsize=12, fontweight="bold", fontfamily=fontfamily)
+    ax1.tick_params(axis='x', rotation=0)
 
     # Create SM count heatmap column plot
     ax2 = plt.subplot(gs[1])

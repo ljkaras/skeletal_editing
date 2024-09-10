@@ -7,6 +7,7 @@ from PIL import Image
 import io
 import matplotlib.colors as mcolors
 import cmasher as cmr
+from matplotlib.colors import LinearSegmentedColormap # makes nice colors for heatmap
 import os
 
 # changes the working directory to the directory this script is located in

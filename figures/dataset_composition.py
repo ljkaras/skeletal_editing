@@ -6,6 +6,7 @@ from matplotlib.offsetbox import OffsetImage, AnnotationBbox
 import matplotlib.cm as cm
 import matplotlib.colors as mcolors
 import cmasher as cmr # for truncating colormaps for softer colors
+from matplotlib.colors import LinearSegmentedColormap # makes nice colors for heatmap
 import os
 
 # changes the working directory to the directory this script is located in
@@ -46,7 +47,15 @@ def plot_heterocycles(df, database):
 
     # Normalize percentages to [0, 1] range for colormap
     norm = mcolors.Normalize(vmin=min(df['Percentage']), vmax=max(df['Percentage']))
-    cmap = cmr.get_sub_cmap('plasma', 0.2, 0.8)
+    
+    # Definte custom colormap using plasma cmap
+    # cmap = cmr.get_sub_cmap('plasma', 0.2, 0.8)
+
+    # Define custom colormap
+    colors = ["white", "#2F72B4"]
+    cmap = LinearSegmentedColormap.from_list("custom_cmap", colors)
+    cmap = cmr.get_sub_cmap(cmap, 0.20, 1.00)
+    cmap.set_bad(color='lightgrey')  # Set color for missing data (None)
 
     # Get colors from colormap
     colors = [cmap(norm(value)) for value in df['Percentage']]
