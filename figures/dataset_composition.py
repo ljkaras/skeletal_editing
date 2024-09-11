@@ -13,6 +13,9 @@ import os
 path = str(__file__)
 os.chdir(os.path.dirname(os.path.abspath(path)))
 
+# sets universal matplotlib font
+plt.rcParams['font.family'] = 'Avenir'
+
 
 def plot_heterocycles(df, database):
     # Calculate the percentage for each heterocycle
@@ -61,22 +64,22 @@ def plot_heterocycles(df, database):
     colors = [cmap(norm(value)) for value in df['Percentage']]
 
     # Plotting the Bar Chart
-    fig, ax1 = plt.subplots(figsize=(12, 6))  # Adjusted figure size
+    fig, ax1 = plt.subplots(figsize=(12, 4))  # Adjusted figure size
 
     # Define font
-    fontfamily = 'Helvetica'
+    fontfamily = 'Avenir'
 
     # Bar chart for percentages with colormap
     bars = ax1.bar(df['Heterocycle'], df['Percentage'], color=colors, alpha=1.0, zorder=3)
 
     title = f'Dataset Composition: {database}'
-    ax1.set_title(title, fontsize=12, fontweight='bold', fontfamily=fontfamily)
-    ax1.set_xlabel('Heterocycle', fontsize=12, fontfamily=fontfamily)
-    ax1.set_ylabel('Percentage (%)', fontsize=12, fontfamily=fontfamily)
+    ax1.set_title(title, fontsize=10, fontweight='bold', fontfamily=fontfamily)
+    ax1.set_xlabel('Heterocycle', fontsize=9, fontfamily=fontfamily)
+    ax1.set_ylabel('Percentage (%)', fontsize=9, fontfamily=fontfamily)
     ax1.tick_params(axis='y')
 
     # Increase y-axis limit to provide space for the molecular structures
-    ax1.set_ylim(0, max(df['Percentage']) * 1.3)
+    ax1.set_ylim(0, max(df['Percentage']) * 1.5)
 
     # Set grid behind bars and structures
     ax1.grid(True, zorder=2, alpha=0.25)
@@ -88,27 +91,27 @@ def plot_heterocycles(df, database):
             options = Draw.MolDrawOptions()
             options.bgColor = (0, 0, 0, 0)  # RGBA (0,0,0,0) for transparent
             
-            mol_img = Draw.MolToImage(mol, size=(100, 100), kekulize=True, wedgeBonds=True, fitImage=True, options=options)
+            mol_img = Draw.MolToImage(mol, size=(75, 75), kekulize=True, wedgeBonds=True, fitImage=True, options=options)
             imgbox = OffsetImage(mol_img, zoom=0.5, resample=True, alpha=1.0)  # Set alpha to 1.0 for full visibility
             ab = AnnotationBbox(imgbox, (bar.get_x() + bar.get_width() / 2, bar.get_height()), 
                                 xybox=(0, 40), 
                                 xycoords='data', 
                                 boxcoords="offset points",
                                 frameon=False,
-                                pad=0.4,
+                                pad=0.3,
                                 zorder=1)  # Adjusted padding
             ax1.add_artist(ab)
         
         # Add percentage text on top of the bars
         ax1.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.5, f'{percentage:.2f}%', 
-                 ha='center', va='bottom', fontsize=10, color='black', fontweight='bold', zorder=4)
+                 ha='center', va='bottom', fontsize=8, color='black', fontweight='bold', zorder=4)
 
     # Adjust layout to fit everything properly
     plt.tight_layout()
     plt.subplots_adjust(left=0.05, right=0.95, top=0.85, bottom=0.2)  # Further adjusted margins
 
     # Save the figure with tight bounding box to minimize white space
-    plt.savefig(f'{database}_sm_composition.png', dpi=300, bbox_inches='tight')
+    plt.savefig(f'./composition_plots/{database}_sm_composition.png', dpi=300, bbox_inches='tight')
 
 
 

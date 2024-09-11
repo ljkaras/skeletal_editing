@@ -14,6 +14,9 @@ import os
 path = str(__file__)
 os.chdir(os.path.dirname(os.path.abspath(path)))
 
+# sets universal matplotlib font
+plt.rcParams['font.family'] = 'Avenir'
+
 
 def load_data_from_csv(file_path):
     """Load data from a CSV file."""
@@ -50,12 +53,11 @@ def normalize_percentages(df):
 def plot_heterocycles(df, structures, output_file):
     """Plot heterocycles with their percentages and save to a file."""
     mols = create_molecule_dict(structures)
-    norm, cmap = normalize_percentages(df)
 
     fig, ax = plt.subplots(figsize=(16, 8))
     ax.axis('off')
 
-    fontfamily = 'Helvetica'
+    fontfamily = 'Avenir'
     num_cols = len(df)
 
     ax.text(-0.1, 0.7, 'Structure', ha='center', va='center', fontsize=14, fontweight='bold', fontfamily=fontfamily, rotation='horizontal', transform=ax.transAxes)
@@ -87,12 +89,14 @@ def plot_heterocycles(df, structures, output_file):
                                 zorder=2)
             ax.add_artist(ab)
         
-        color = cmap(norm(percentage))
+        # Set percentage text color to blue
+        blue_color = "#2F72B4"
         ax.text((i + 0.5) / num_cols, 0.6, f'{percentage:.2f}%',
-                ha='center', va='center', fontsize=12, color=color, fontweight='bold', fontfamily=fontfamily, zorder=4)
+                ha='center', va='center', fontsize=12, color=blue_color, fontweight='bold', fontfamily=fontfamily, zorder=4)
 
     plt.tight_layout()
     plt.savefig(output_file, dpi=300)
+
 
 
 # Define the heterocycle structures
@@ -129,7 +133,7 @@ def load_file_as_list(filename):
 databases = load_file_as_list('databases.txt')
 for database in databases:
     csv_file_path = f'../figures/count_sms_dfs/{database}.csv'
-    output_file = f'heterocycle_percentages{database}.png'
+    output_file = f'./heterocycle_percentages/heterocycle_percentages{database}.png'
     
     df = load_data_from_csv(csv_file_path)
     df = calculate_percentages(df)
