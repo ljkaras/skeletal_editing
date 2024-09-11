@@ -19,34 +19,46 @@ import os
 path = str(__file__)
 os.chdir(os.path.dirname(os.path.abspath(path)))
 
+# sets universal matplotlib font
+plt.rcParams['font.family'] = 'Avenir'
+
 
 def GenerateHeatmap(dataframe, title, filename, directory):
     # Define figure size
-    plt.figure(figsize=(16, 6))
+    plt.figure(figsize=(14, 4))
 
-    # Define colormap (adjust as needed)
-    cmap = cmr.get_sub_cmap('plasma', 0.2, 0.8)
-    cmap.set_bad(color='lightgrey')  # Set color for missing data (None)
+    # Generate a custom color map
+    colors = ["#2F72B4", "white"]
+    cmap = LinearSegmentedColormap.from_list("custom_cmap", colors)
+    cmap.set_bad(color='#F6F2E6')  # Set color for missing data (None)
 
+    # Create the heatmap
+    ax = sns.heatmap(dataframe, 
+                     annot=True,
+                     cmap=cmap,
+                     linewidths=0.5, 
+                     fmt=".2f", 
+                     annot_kws={"size": 8},  # Change the font size of the heatmap numbers
+                     cbar=False,  # Enable color bar
+                     cbar_kws={
+                         'orientation': 'horizontal',  # Horizontal color bar
+                         'aspect': 100,   # Aspect ratio of the color bar
+                         'pad': 0.2,      # Padding between the color bar and the heatmap
+                     })
 
-    # Create heatmap of the dataframe
-    sns.heatmap(dataframe,
-                annot=True,
-                cmap=cmap,
-                linewidths=0.5,
-                fmt=".2f",
-                annot_kws={"size": 10},
-                cbar=False,  # Add color bar or not
-                cbar_kws={'orientation': 'horizontal'})  # Horizontal color bar
+    # Define font
+    fontfamily = 'Avenir'
 
-    # Define font family
-    fontfamily = 'Helvetica'
+    # Remove ticks on both axes
+    ax.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False)
 
-    # Customize plot appearance
-    plt.title(title, fontsize=14, fontweight="bold", fontfamily=fontfamily)
-    plt.xlabel('PDT Substructure', fontsize=13, fontweight="bold", fontfamily=fontfamily)
-    plt.ylabel('SM Substructure', fontsize=13, fontweight="bold", fontfamily=fontfamily)
-    plt.xticks(rotation=45, fontsize=12)
+    # Add title and adjust labels
+    ax.set_title(title, fontsize=10, fontweight="extra bold", family=fontfamily, loc='left')
+    ax.set_xlabel('PDT Substructure', fontsize=9, fontweight="heavy", family=fontfamily)
+    ax.set_ylabel('SM Substructure', fontsize=9, fontweight="heavy", family=fontfamily)
+    ax.set_xticklabels(ax.get_xticklabels(), fontsize=8, family=fontfamily)
+    ax.set_yticklabels(ax.get_yticklabels(), fontsize=8, family=fontfamily)
+    ax.tick_params(axis='x', rotation=0)
 
     # Adjust layout for better appearance
     plt.tight_layout()
@@ -55,6 +67,7 @@ def GenerateHeatmap(dataframe, title, filename, directory):
     save_path = f'{directory}/{filename}'
     plt.savefig(save_path, dpi=300)
     plt.close()  # Close the plot to release memory
+
 
 databases = ['enamine', 'mcule', 'ChEMBL']
 

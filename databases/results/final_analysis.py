@@ -1,7 +1,4 @@
 import os
-import time
-import multiprocessing
-import sys
 import numpy as np
 import pandas as pd
 import seaborn as sns
@@ -9,6 +6,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap # makes nice colors for heatmap
 from matplotlib.colors import LinearSegmentedColormap # makes nice colors for heatmap
 import cmasher as cmr # for truncating colormaps for softer colors
+
 
 
 # import seaborn and matplotlib for heatmap generation
@@ -19,6 +17,9 @@ import matplotlib.pyplot as plt
 import os
 path = str(__file__)
 os.chdir(os.path.dirname(os.path.abspath(path)))
+
+# sets universal matplotlib font
+plt.rcParams['font.family'] = 'Avenir'
 
 
 def load_file_as_list(filename):
@@ -196,72 +197,57 @@ def count_new(frameworks, results_lines):
     return new_count_arr, new_count_df
 
 
-def GenerateHeatmap(dataframe, title, filename, sm_df, directory):
+def GenerateHeatmap(dataframe, title, filename, directory, database, total_molecule_count):
     # Define figure size
-    plt.figure(figsize=(16, 6))
+    plt.figure(figsize=(12, 4))
 
-    # define which colors to use from the plasma colormap
-    # see https://seaborn.pydata.org/tutorial/color_palettes.html for more info
-    # cmasher used to generated a sub-map so the colors aren't so harsh
-    # cmap = cmr.get_sub_cmap('plasma', 0.2, 0.8)
-
-    # generate a custom blue-to-white-to-red color map
-    colors = ["indianred", "white", "skyblue"]
+    # Generate a custom color map
+    colors = ["#2F72B4", "white"]
     cmap = LinearSegmentedColormap.from_list("custom_cmap", colors)
-    cmap = cmr.get_sub_cmap(cmap, 0.05, 1.00)
-    cmap.set_bad(color='lightgrey')  # Set color for missing data (None)
+    cmap.set_bad(color='#F6F2E6')  # Set color for missing data (None)
 
-    # Create a grid with different widths for subplots
-    gs = plt.GridSpec(1, 2, width_ratios=[12, 1])
-    cmap.set_bad(color='lightgrey')  # Set color for missing data (None)
+    # Create the heatmap
+    ax = sns.heatmap(dataframe, 
+                     annot=True,
+                     cmap=cmap,
+                     linewidths=0.5, 
+                     fmt=".2f", 
+                     annot_kws={"size": 8},  # Change the font size of the heatmap numbers
+                     cbar=False,  # Enable color bar
+                     cbar_kws={
+                         'orientation': 'horizontal',  # Horizontal color bar
+                         'aspect': 100,   # Aspect ratio of the color bar
+                         'pad': 0.2,      # Padding between the color bar and the heatmap
+                     })
 
-
-    # Create heatmap of results
-    ax1 = plt.subplot(gs[0])
-    sns.heatmap(dataframe, 
-                annot=True,
-                cmap=cmap,
-                linewidths=0.5, 
-                fmt=".2f", 
-                annot_kws={"size": 10},
-                cbar=False, # change this to False if you don't want the colorbar
-                cbar_kws={'orientation': 'horizontal'})  # Place color bar at the bottom if cbar=True
-
-    # define font
-    fontfamily = 'Helvetica'
+    # Define font
+    fontfamily = 'Avenir'
 
     # Remove ticks on both axes
-    ax1.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False)
+    ax.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False)
 
     # Add title and adjust labels
-    ax1.set_title(title, fontsize=14, fontweight="bold", fontfamily=fontfamily)
-    ax1.set_xlabel('PDT Substructure', fontsize=12, fontweight="bold", fontfamily=fontfamily)
-    ax1.set_ylabel('SM Substructure', fontsize=12, fontweight="bold", fontfamily=fontfamily)
-    ax1.tick_params(axis='x', rotation=0)
+    ax.set_title(title, fontsize=10, fontweight="extra bold", family=fontfamily, loc='left')
+    ax.set_xlabel('PDT Substructure', fontsize=9, fontweight="heavy", family=fontfamily)
+    ax.set_ylabel('SM Substructure', fontsize=9, fontweight="heavy", family=fontfamily)
+    ax.set_xticklabels(ax.get_xticklabels(), fontsize=8, family=fontfamily)
+    ax.set_yticklabels(ax.get_yticklabels(), fontsize=8, family=fontfamily)
+    ax.tick_params(axis='x', rotation=0)
 
-    # Create SM count heatmap column plot
-    ax2 = plt.subplot(gs[1])
-    sns.heatmap(sm_df,
-                annot=True,
-                cmap=cmap,
-                linewidths=0.5,
-                fmt=".2f",
-                annot_kws={"size": 10},
-                cbar=False)
-    
-    # Remove ticks and labels on both axes for the second heatmap
-    ax2.tick_params(axis='both', which='both', bottom=False, top=False, left=False, right=False, labelleft=False, labelbottom=False)
-
-    # Manually add a rotated title on the right side of the second heatmap
-    ax2.text(1.1, 0.5, '% of Total Dataset', fontsize=14, fontweight="bold", fontfamily=fontfamily, rotation=-90, va='center', ha='center', transform=ax2.transAxes)
+    # Add text box with database and total molecules info
+    textstr = f'Database: {database} [{total_molecule_count} molecules]'
+    props = dict(boxstyle='square,pad=0.3', facecolor='none', edgecolor='none', alpha=1.0)
+    # Place the text box in the upper right corner
+    plt.gcf().text(0.982, 0.95, textstr, fontsize=8, verticalalignment='top', horizontalalignment='right', bbox=props, family=fontfamily)
 
     # Adjust the layout to prevent cutoff of labels
     plt.tight_layout()
 
     # Save the plot as a file
-    save_path = f'{directory}/{filename}'
+    save_path = os.path.join(directory, filename)
     plt.savefig(save_path, dpi=300)
     plt.close()  # Close the plot to release memory
+
 
 # define which frameworks to use
 frameworks = ['pyridine',
@@ -298,24 +284,17 @@ for database in database_list:
             ]
 
 
-
     count_sm_results = count_sm(frameworks, results_lines)
     sm_count_arr = count_sm_results[0]
     sm_count_df = count_sm_results[1]
-
-
 
     count_unique_results = count_unique(frameworks, results_lines)
     unique_count_arr = count_unique_results[0]
     unique_count_df = count_unique_results[1]
 
-
-
     count_common_results = count_common(frameworks, results_lines)
     common_count_arr = count_common_results[0]
     common_count_df = count_common_results[1]
-
-
 
     count_new_results = count_new(frameworks, results_lines)
     new_count_arr = count_new_results[0]
@@ -339,22 +318,27 @@ for database in database_list:
     percent_new_df = pd.DataFrame(percent_new_arr,
                                 index = frameworks,
                                 columns = frameworks)
+    
     GenerateHeatmap(percent_new_df,
-                    f'%New: {database} ({total_molecule_count} molecules)', 
+                    'Percent of New Products Relative to Initial Molecules',
                     f'percent_new_count_{database}.png',
-                    sm_column_df,
-                    'percent_new')
+                      'percent_new',
+                      database,
+                      total_molecule_count)
 
     # %common dataframe
     percent_common_arr = (common_count_arr / unique_count_arr) * 100
     percent_common_df = pd.DataFrame(percent_common_arr,
-                                index = frameworks,
-                                columns = frameworks)
-    GenerateHeatmap(percent_common_df, 
-                    f'%Known: {database} ({total_molecule_count} molecules)', 
+                                    index = frameworks,
+                                    columns = frameworks)
+    
+    GenerateHeatmap(percent_common_df,
+                    'Percent of Known Products Relative to Initial Molecules',
                     f'percent_common_count_{database}.png',
-                    sm_column_df,
-                    'percent_common')
+                    'percent_common',
+                    database,
+                    total_molecule_count)
+
     
     # exports dfs to csvs for averaging
     percent_common_df.to_csv(f'percent_common_dfs/percent_common_df_{database}.csv', index=True)
