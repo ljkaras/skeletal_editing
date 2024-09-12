@@ -25,7 +25,7 @@ plt.rcParams['font.family'] = 'Avenir'
 
 def GenerateHeatmap(dataframe, title, filename, directory):
     # Define figure size
-    plt.figure(figsize=(14, 4))
+    plt.figure(figsize=(12, 4))
 
     # Generate a custom color map
     colors = ["#2F72B4", "white"]
@@ -79,6 +79,6 @@ for database in databases:
     df = pd.read_csv(csv_file_name, index_col = 0)
 
     GenerateHeatmap(df,
-                    f'Selected {database} Library Results: %Known',
+                    f'Truncated Percent of Known Products: {database}',
                     f'selected_{database}_percent_known.png',
                     'selected_heatmaps')

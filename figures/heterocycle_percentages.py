@@ -54,25 +54,25 @@ def plot_heterocycles(df, structures, output_file):
     """Plot heterocycles with their percentages and save to a file."""
     mols = create_molecule_dict(structures)
 
-    fig, ax = plt.subplots(figsize=(16, 8))
+    fig, ax = plt.subplots(figsize=(12, 2))
     ax.axis('off')
 
     fontfamily = 'Avenir'
     num_cols = len(df)
 
-    ax.text(-0.1, 0.7, 'Structure', ha='center', va='center', fontsize=14, fontweight='bold', fontfamily=fontfamily, rotation='horizontal', transform=ax.transAxes)
-    ax.text(-0.1, 0.6, 'Percentage', ha='center', va='center', fontsize=14, fontweight='bold', fontfamily=fontfamily, rotation='horizontal', transform=ax.transAxes)
-    ax.text(-0.1, 0.8, 'Heterocycle', ha='center', va='center', fontsize=14, fontweight='bold', fontfamily=fontfamily, rotation='horizontal', transform=ax.transAxes)
+    ax.text(-0.1, 0.9, 'Structure', ha='center', va='center', fontsize=10, fontweight='bold', fontfamily=fontfamily, rotation='horizontal', transform=ax.transAxes)
+    ax.text(-0.1, 0.45, 'Percentage', ha='center', va='center', fontsize=10, fontweight='bold', fontfamily=fontfamily, rotation='horizontal', transform=ax.transAxes)
+    ax.text(-0.1, 0.0, 'Heterocycle', ha='center', va='center', fontsize=10, fontweight='bold', fontfamily=fontfamily, rotation='horizontal', transform=ax.transAxes)
 
     for i, heterocycle in enumerate(df['Heterocycle']):
-        ax.text((i + 0.5) / num_cols, 0.8, heterocycle, ha='center', va='center', fontsize=12, fontweight='bold', fontfamily=fontfamily)
+        ax.text((i + 0.5) / num_cols, 0.9, heterocycle, ha='center', va='center', fontsize=9, fontweight='bold', fontfamily=fontfamily)
 
     for i, (heterocycle, percentage) in enumerate(zip(df['Heterocycle'], df['Percentage'])):
         if (mol := mols.get(heterocycle)):
             options = Draw.MolDrawOptions()
             options.bgColor = (0, 0, 0, 0)
 
-            mol_img = Draw.MolToImage(mol, size=(100, 100), kekulize=True, wedgeBonds=True, fitImage=True, options=options)
+            mol_img = Draw.MolToImage(mol, size=(75, 75), kekulize=True, wedgeBonds=True, fitImage=True, options=options)
             
             buffer = io.BytesIO()
             mol_img.save(buffer, format='PNG')
@@ -80,7 +80,7 @@ def plot_heterocycles(df, structures, output_file):
             img = Image.open(buffer)
             
             imgbox = OffsetImage(img, zoom=0.5, resample=True, alpha=1.0)
-            ab = AnnotationBbox(imgbox, ((i + 0.5) / num_cols, 0.7),
+            ab = AnnotationBbox(imgbox, ((i + 0.5) / num_cols, 0.45),
                                 xybox=(0, 0), 
                                 xycoords='axes fraction', 
                                 boxcoords="offset points",
@@ -91,7 +91,7 @@ def plot_heterocycles(df, structures, output_file):
         
         # Set percentage text color to blue
         blue_color = "#2F72B4"
-        ax.text((i + 0.5) / num_cols, 0.6, f'{percentage:.2f}%',
+        ax.text((i + 0.5) / num_cols, 0.00, f'{percentage:.2f}%',
                 ha='center', va='center', fontsize=12, color=blue_color, fontweight='bold', fontfamily=fontfamily, zorder=4)
 
     plt.tight_layout()
