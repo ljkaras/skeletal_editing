@@ -197,6 +197,9 @@ def count_new(frameworks, results_lines):
     return new_count_arr, new_count_df
 
 
+
+
+
 def GenerateHeatmap(dataframe, title, filename, directory, database, total_molecule_count):
     # Define figure size
     plt.figure(figsize=(12, 4))
@@ -306,6 +309,12 @@ for database in database_list:
     # by summing first column of array with all of the SM counts
     total_molecule_count = np.sum(sm_count_arr[:, 0])
 
+    # makes a full SM count dataframe for PDT/SM ratio analysis
+    sm_count_df = pd.DataFrame(sm_count_arr,
+                                index = frameworks,
+                                columns = frameworks)
+    
+
     # makes a single column of SM counts
     sm_column = (sm_count_arr[:,0] / total_molecule_count) * 100
     sm_column_df = pd.DataFrame(sm_column,
@@ -320,7 +329,7 @@ for database in database_list:
                                 columns = frameworks)
     
     GenerateHeatmap(percent_new_df,
-                    'Percent of New Products Relative to Initial Molecules',
+                    'Percent of Products that are New',
                     f'percent_new_count_{database}.png',
                       'percent_new',
                       database,
@@ -331,18 +340,36 @@ for database in database_list:
     percent_common_df = pd.DataFrame(percent_common_arr,
                                     index = frameworks,
                                     columns = frameworks)
+
     
     GenerateHeatmap(percent_common_df,
-                    'Percent of Known Products Relative to Initial Molecules',
+                    'Percent of Products that are Known',
                     f'percent_common_count_{database}.png',
                     'percent_common',
                     database,
                     total_molecule_count)
+    
+
+    # relative %common dataframe
+    percent_rel_common_arr = (common_count_arr / sm_count_arr) * 100
+    percent_rel_common_df = pd.DataFrame(percent_rel_common_arr,
+                                    index = frameworks,
+                                    columns = frameworks)
+    
+    GenerateHeatmap(percent_rel_common_df,
+                '# of Known Compounds Relative to # of SMs',
+                f'percent_rel_common_count_{database}.png',
+                'percent_rel_common',
+                database,
+                total_molecule_count)
 
     
     # exports dfs to csvs for averaging
     percent_common_df.to_csv(f'percent_common_dfs/percent_common_df_{database}.csv', index=True)
     sm_column_df.to_csv(f'percent_sms_dfs/sm_percentages_df_{database}.csv', index=True)
+    percent_rel_common_df.to_csv(f'percent_rel_common_dfs/percent_rel_common_df_{database}.csv', index=True)
+    sm_count_df.to_csv(f'products_vs_sms/full_sm_dfs/sm_df_{database}.csv')
+    unique_count_df.to_csv(f'products_vs_sms/unique_dfs/unique_df_{database}.csv')
 
     # grabs exact numbers of each SM as a 1 column dataframe
     first_column = sm_count_df.iloc[:, 0] 

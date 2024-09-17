@@ -28,10 +28,10 @@ def GenerateHeatmap(dataframe, title, filename, directory):
     plt.figure(figsize=(12, 4))
 
     # Generate a custom color map
-    colors = ["#2F72B4", "white"]
-    cmap = LinearSegmentedColormap.from_list("custom_cmap", colors)
-    cmap.set_bad(color='#F6F2E6')  # Set color for missing data (None)
-    
+    # colors = ["#2F72B4", "#F6F2E6"]
+    # cmap = LinearSegmentedColormap.from_list("custom_cmap", colors)
+    # cmap.set_bad(color='#F6F2E6')  # Set color for missing data (None)
+    cmap = 'viridis'
 
     # Create the heatmap
     ax = sns.heatmap(dataframe, 
@@ -74,12 +74,12 @@ databases = ['enamine', 'mcule', 'ChEMBL']
 
 for database in databases:
     # Specify the file path of the CSV file
-    csv_file_name = f'selected_heatmaps/normalized_dfs/normalized_common_df_{database}.csv'
+    csv_file_name = f'max_common_df_{database}.csv'
 
     # Read the CSV file into a DataFrame
     df = pd.read_csv(csv_file_name, index_col = 0)
 
     GenerateHeatmap(df,
-                    f'Truncated Percent of Known Products: {database}',
-                    f'selected_{database}_percent_known.png',
-                    'selected_heatmaps')
+                    f'Maximum %Common: {database}',
+                    f'maximum_{database}_percent_known.png',
+                    'max_common_heatmaps')
