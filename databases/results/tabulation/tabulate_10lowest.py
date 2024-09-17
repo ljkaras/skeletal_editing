@@ -7,9 +7,9 @@ os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 # Step 1: Read the CSV file into a DataFrame
 directory = 'selected_dfs_analysis'
-csv = 'percent_common_df_ChEMBL_select.csv'
-library = 'ChEMBL'
-df = pd.read_csv(f'../../results/{directory}/{csv}', index_col=0)
+csv = 'normalized_common_df_enamine.csv'
+library = 'enamine'
+df = pd.read_csv(f'../../results/{directory}/selected_heatmaps/normalized_dfs/{csv}', index_col=0)
 
 # Initialize lists to store the results
 sm_substructures = []

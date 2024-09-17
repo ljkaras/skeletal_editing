@@ -1,11 +1,11 @@
 SM Substructure,PDT Substructure,#
-pyridine,pyrrole,8.551330926
-pyrimidine,pyrrole,11.50980571
-pyrazine,imidazole,13.20013085
-thiazole,imidazole,13.93832946
-pyrrole,pyrimidine,15.33359648
-pyrazole,pyrrole,15.47514473
-imidazole,pyrazine,21.48346534
-isoxazole,pyrrole,21.58174678
-furan,oxazole,22.91283131
-oxazole,pyrrole,28.1229618
+pyrimidine,imidazole,11.80112378
+thiazole,pyrrole,13.71463489
+imidazole,pyrimidine,18.401491725859273
+isoxazole,pyrrole,20.88871839
+pyrrole,thiazole,22.563348613379212
+pyridine,pyrrole,26.02873155912103
+oxazole,pyrrole,27.97131673
+pyrazine,imidazole,30.38598654
+furan,isoxazole,32.440511519701914
+pyrazole,pyrimidine,34.14715133967093

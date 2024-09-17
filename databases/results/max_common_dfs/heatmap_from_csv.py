@@ -28,10 +28,9 @@ def GenerateHeatmap(dataframe, title, filename, directory):
     plt.figure(figsize=(12, 4))
 
     # Generate a custom color map
-    # colors = ["#2F72B4", "#F6F2E6"]
-    # cmap = LinearSegmentedColormap.from_list("custom_cmap", colors)
-    # cmap.set_bad(color='#F6F2E6')  # Set color for missing data (None)
-    cmap = 'viridis'
+    colors = ["#2F72B4", "#F6F2E6"]
+    cmap = LinearSegmentedColormap.from_list("custom_cmap", colors)
+    cmap.set_bad(color='#F6F2E6')  # Set color for missing data (None)
 
     # Create the heatmap
     ax = sns.heatmap(dataframe, 

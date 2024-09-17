@@ -6,9 +6,9 @@ import os
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 # Step 1: Read the CSV file into a DataFrame
-directory = 'percent_common_dfs'
-csv = 'percent_common_df_ChEMBL.csv'
-library = 'ChEMBL'
+directory = 'normalized_common_dfs'
+csv = 'normalized_common_df_Mcule.csv'
+library = 'Mcule'
 df = pd.read_csv(f'../../results/{directory}/{csv}', index_col=0)
 
 # Initialize lists to store the results
