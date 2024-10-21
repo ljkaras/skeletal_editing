@@ -69,7 +69,7 @@ def GenerateHeatmap(dataframe, title, filename, directory):
     plt.close()  # Close the plot to release memory
 
 
-databases = ['enamine', 'mcule', 'ChEMBL']
+databases = ['Enamine', 'Mcule', 'ChEMBL', 'Merck']
 
 for database in databases:
     # Specify the file path of the CSV file
@@ -79,6 +79,6 @@ for database in databases:
     df = pd.read_csv(csv_file_name, index_col = 0)
 
     GenerateHeatmap(df,
-                    f'Maximum %Common: {database}',
+                    f'Maximum Percent of Products that are Known: {database}',
                     f'maximum_{database}_percent_known.png',
                     'max_common_heatmaps')

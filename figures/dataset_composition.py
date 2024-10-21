@@ -20,6 +20,9 @@ plt.rcParams['font.family'] = 'Avenir'
 def plot_heterocycles(df, database):
     # Calculate the percentage for each heterocycle
     df['Percentage'] = (df['Count'] / df['Count'].sum()) * 100
+    
+    # Calculate total number of compounds
+    total_compounds = df['Count'].sum()
 
     # Sort DataFrame by 'Percentage' in descending order
     df = df.sort_values(by='Percentage', ascending=False).reset_index(drop=True)
@@ -105,6 +108,19 @@ def plot_heterocycles(df, database):
         # Add percentage text on top of the bars
         ax1.text(bar.get_x() + bar.get_width() / 2, bar.get_height() + 0.5, f'{percentage:.2f}%', 
                  ha='center', va='bottom', fontsize=8, color='black', fontweight='bold', zorder=4)
+
+    # After setting up the plot
+    ax1.set_title(title, fontsize=10, fontweight='bold', fontfamily=fontfamily)
+    ax1.set_xlabel('Heterocycle', fontsize=9, fontfamily=fontfamily)
+    ax1.set_ylabel('Percentage (%)', fontsize=9, fontfamily=fontfamily)
+    ax1.tick_params(axis='y')
+
+    # Add total compounds text at the top right
+    ax1.text(0.996, 0.98, f'Total Compound Count: {total_compounds}', 
+             ha='right', va='top', fontsize=10, 
+             color='black', fontweight='bold', 
+             transform=ax1.transAxes,
+             bbox=dict(facecolor='lightgray', alpha=0.5, edgecolor='none'))
 
     # Adjust layout to fit everything properly
     plt.tight_layout()

@@ -240,6 +240,7 @@ def GenerateHeatmap(dataframe, title, filename, directory, database, total_molec
     # Add text box with database and total molecules info
     textstr = f'Database: {database} [{total_molecule_count} molecules]'
     props = dict(boxstyle='square,pad=0.3', facecolor='none', edgecolor='none', alpha=1.0)
+    
     # Place the text box in the upper right corner
     plt.gcf().text(0.982, 0.95, textstr, fontsize=8, verticalalignment='top', horizontalalignment='right', bbox=props, family=fontfamily)
 

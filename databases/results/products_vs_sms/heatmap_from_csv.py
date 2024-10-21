@@ -69,7 +69,7 @@ def GenerateHeatmap(dataframe, title, filename, directory):
     plt.close()  # Close the plot to release memory
 
 
-databases = ['enamine', 'mcule', 'ChEMBL']
+databases = ['Enamine', 'Mcule', 'ChEMBL', 'Merck']
 
 for database in databases:
     # Specify the file path of the CSV file

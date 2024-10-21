@@ -1,0 +1,11 @@
+X,Y,Value
+pyrazole,furan,0.0293058695470149
+pyrimidine,pyrrole,0.0567007264780579
+pyrrole,pyrimidine,0.0962731084992026
+isoxazole,pyrrole,0.1004237391922012
+pyrimidine,pyrazole,0.2065062427096383
+isoxazole,pyrimidine,0.2253410733093296
+isoxazole,imidazole,0.2547333872192421
+imidazole,pyrimidine,0.2634589907262435
+furan,pyrimidine,0.2899187808758268
+pyrimidine,furan,0.2909654190739345
