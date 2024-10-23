@@ -1,0 +1,12 @@
+SM Substructure,PDT Substructure,Value
+pyridine,imidazole,1.632255100025822
+pyridazine,pyrrole,0.4837321290451358
+pyrimidine,pyrrole,0.2651423779629457
+pyrazine,imidazole,0.4210464356781553
+pyrrole,pyridazine,0.5564011078120711
+pyrazole,furan,0.2044889602529251
+imidazole,pyridazine,0.5267721250530201
+thiazole,pyrrole,0.7457319810494293
+oxazole,pyrazole,0.7159039930324184
+isoxazole,pyrrole,0.2181456052422624
+furan,pyridazine,0.8994735397589761

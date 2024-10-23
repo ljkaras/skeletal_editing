@@ -28,9 +28,10 @@ def GenerateHeatmap(dataframe, title, filename, directory):
     plt.figure(figsize=(12, 4))
 
     # Generate a custom color map
-    colors = ["#2F72B4", "#F6F2E6", "#7DBCBD"]
+    colors = ["#2F72B4", "white"]
     cmap = LinearSegmentedColormap.from_list("custom_cmap", colors)
-    cmap.set_bad(color='#F0F0F0')  # Set color for missing data (None)
+    cmap.set_bad(color='#F6F2E6')  # Set color for missing data (None)
+    
 
     # Create the heatmap
     ax = sns.heatmap(dataframe, 
@@ -73,12 +74,12 @@ databases = ['Enamine', 'Mcule', 'ChEMBL', 'Merck']
 
 for database in databases:
     # Specify the file path of the CSV file
-    csv_file_name = f'normalized_common_df_{database}.csv'
+    csv_file_name = f'single_atom_dfs/{database}_single_atom_edits.csv'
 
     # Read the CSV file into a DataFrame
     df = pd.read_csv(csv_file_name, index_col = 0)
 
     GenerateHeatmap(df,
-                    f'Normalized Percent of Products that are Known: {database}',
-                    f'normalized_{database}_percent_known.png',
-                    'normalized_common_heatmaps')
+                    f'Percent of Products from Single Atom Edits that Are Known: {database}',
+                    f'single_atom_{database}_percent_known.png',
+                    'single_atom_heatmaps')

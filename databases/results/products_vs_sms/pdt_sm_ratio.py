@@ -64,9 +64,6 @@ for database in database_list:
                 pdt_sm_ratios_arr[i, j] = None
                 continue
 
-    # converts everything to percentages (out of 100)
-    pdt_sm_ratios_arr = pdt_sm_ratios_arr * 100
-
     # converts arr to df
     pdt_sm_ratios_df = pd.DataFrame(pdt_sm_ratios_arr,
                                     index = frameworks,

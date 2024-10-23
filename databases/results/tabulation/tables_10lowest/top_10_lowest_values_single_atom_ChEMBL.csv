@@ -1,0 +1,11 @@
+X,Y,Value
+pyrimidine,pyrrole,0.0567007264780579
+pyrrole,pyrimidine,0.0962731084992026
+isoxazole,pyrrole,0.1004237391922012
+pyrimidine,pyrazole,0.2065062427096383
+imidazole,pyrimidine,0.2634589907262435
+pyrazole,pyrimidine,0.2980947855013608
+pyrimidine,imidazole,0.3161507888714921
+pyridazine,pyrrole,0.3428310223982934
+pyrrole,isoxazole,0.3698532833663995
+thiazole,pyrrole,0.3784165326849927

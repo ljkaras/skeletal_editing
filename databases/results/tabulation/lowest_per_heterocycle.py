@@ -35,6 +35,12 @@ result_df = pd.DataFrame({
     '#': min_values
 })
 
-# Step 4: Display or save the resulting DataFrame
-print(result_df)
-result_df.to_csv(f'../../results/tabulation/tables/{library}_tabulated_select.csv', index=False)
+# Step 4: Group by 'SM Substructure' and get the row with the lowest percentage transformation for each group
+final_result_df = result_df.loc[result_df.groupby('SM Substructure')['#'].idxmin()]
+
+# Step 5: Reset index for clarity
+final_result_df.reset_index(drop=True, inplace=True)
+
+# Step 6: Display or save the resulting DataFrame
+print(final_result_df)
+final_result_df.to_csv(f'../../results/tabulation/tables/{library}_tabulated_select.csv', index=False)
