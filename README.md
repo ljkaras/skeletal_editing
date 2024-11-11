@@ -71,6 +71,13 @@ This repository contains scripts and data used to analyze the potential utility 
 - [Logan Bartholomew](https://github.com/gloganbart)
 - [Dr. Lucas Karas](https://github.com/ljkaras)
 
+## Zenodo
+
+skeletal editing v1.0
+version: v1.0
+date-released: 2024-11-11
+DOI: 10.5281/zenodo.14077417
+
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit).
