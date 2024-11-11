@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains scripts and data used to analyze the potential utility of (virtual or true) chemical reactions for core atom transformations of heteroaromatic compounds. The analysis utilizes the RDKit library's Chemical Reaction functionality and employs the SMARTS language to transform each molecule in given datasets into different heterocyclic types. Subsequently, new datasets of reaction products are generated and compared against known molecule datasets to identify the amount of novel and reported compounds generated for each transformation as a percentage of the number of starting heteroaromatics of a given type.
+This repository contains scripts and data used to analyze the potential utility of (virtual or true) chemical reactions for core atom transformations of heteroaromatic compounds. The analysis utilizes the RDKit library's Chemical Reaction functionality and employs the SMARTS language to transform each molecule in given datasets into different heterocyclic types. Subsequently, new datasets of reaction products are generated and compared against known molecule datasets to identify the amount of novel and reported compounds generated for each transformation.
 
 ## Methodology
 
