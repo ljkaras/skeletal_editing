@@ -23,7 +23,7 @@ This repository contains scripts and data used to analyze the potential utility 
    - The newly generated molecules are compared against databases of known molecules to identify previously unknown compounds.
 
 6. **Normalization and Visualization**:
-   - To quantify the discovery of unknown compounds objectively, metrics are normalized relative to the number of starting molecules.
+   - To quantify the number unknown compounds generated in each transformation objectively, metrics are normalized relative to the number of knownn comparison molecules.
    - Results are visualized as heatmaps to illustrate the distribution and density of novel compounds across different transformations.
    – Results are also exported as dataframes for later handling.
 
