@@ -81,7 +81,3 @@ DOI: 10.5281/zenodo.14077417
 ## License
 
 This project is licensed under the [MIT License](https://opensource.org/license/mit).
-
-## Acknowledgments
-
-- Placeholder
