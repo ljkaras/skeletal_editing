@@ -7,7 +7,7 @@ from PIL import Image
 import io
 import matplotlib.colors as mcolors
 import cmasher as cmr
-from matplotlib.colors import LinearSegmentedColormap # makes nice colors for heatmap
+from matplotlib.colors import LinearSegmentedColormap  # makes nice colors for heatmap
 import os
 
 # changes the working directory to the directory this script is located in
@@ -15,7 +15,7 @@ path = str(__file__)
 os.chdir(os.path.dirname(os.path.abspath(path)))
 
 # sets universal matplotlib font
-plt.rcParams['font.family'] = 'Avenir'
+plt.rcParams["font.family"] = "Avenir"
 
 
 def load_data_from_csv(file_path):
@@ -26,8 +26,8 @@ def load_data_from_csv(file_path):
 
 def calculate_percentages(df):
     """Calculate percentages from the Count column."""
-    total_count = df['Count'].sum()
-    df['Percentage'] = (df['Count'] / total_count) * 100
+    total_count = df["Count"].sum()
+    df["Percentage"] = (df["Count"] / total_count) * 100
     return df
 
 
@@ -45,8 +45,8 @@ def create_molecule_dict(structures):
 
 def normalize_percentages(df):
     """Normalize percentages to [0, 1] range for colormap."""
-    norm = mcolors.Normalize(vmin=min(df['Percentage']), vmax=max(df['Percentage']))
-    cmap = cmr.get_sub_cmap('plasma', 0.2, 0.8)
+    norm = mcolors.Normalize(vmin=min(df["Percentage"]), vmax=max(df["Percentage"]))
+    cmap = cmr.get_sub_cmap("plasma", 0.2, 0.8)
     return norm, cmap
 
 
@@ -55,68 +55,132 @@ def plot_heterocycles(df, structures, output_file):
     mols = create_molecule_dict(structures)
 
     fig, ax = plt.subplots(figsize=(12, 2))
-    ax.axis('off')
+    ax.axis("off")
 
-    fontfamily = 'Avenir'
+    fontfamily = "Avenir"
     num_cols = len(df)
 
-    ax.text(-0.1, 0.9, 'Structure', ha='center', va='center', fontsize=10, fontweight='bold', fontfamily=fontfamily, rotation='horizontal', transform=ax.transAxes)
-    ax.text(-0.1, 0.45, 'Percentage', ha='center', va='center', fontsize=10, fontweight='bold', fontfamily=fontfamily, rotation='horizontal', transform=ax.transAxes)
-    ax.text(-0.1, 0.0, 'Heterocycle', ha='center', va='center', fontsize=10, fontweight='bold', fontfamily=fontfamily, rotation='horizontal', transform=ax.transAxes)
+    ax.text(
+        -0.1,
+        0.9,
+        "Structure",
+        ha="center",
+        va="center",
+        fontsize=10,
+        fontweight="bold",
+        fontfamily=fontfamily,
+        rotation="horizontal",
+        transform=ax.transAxes,
+    )
+    ax.text(
+        -0.1,
+        0.45,
+        "Percentage",
+        ha="center",
+        va="center",
+        fontsize=10,
+        fontweight="bold",
+        fontfamily=fontfamily,
+        rotation="horizontal",
+        transform=ax.transAxes,
+    )
+    ax.text(
+        -0.1,
+        0.0,
+        "Heterocycle",
+        ha="center",
+        va="center",
+        fontsize=10,
+        fontweight="bold",
+        fontfamily=fontfamily,
+        rotation="horizontal",
+        transform=ax.transAxes,
+    )
 
-    for i, heterocycle in enumerate(df['Heterocycle']):
-        ax.text((i + 0.5) / num_cols, 0.9, heterocycle, ha='center', va='center', fontsize=9, fontweight='bold', fontfamily=fontfamily)
+    for i, heterocycle in enumerate(df["Heterocycle"]):
+        ax.text(
+            (i + 0.5) / num_cols,
+            0.9,
+            heterocycle,
+            ha="center",
+            va="center",
+            fontsize=9,
+            fontweight="bold",
+            fontfamily=fontfamily,
+        )
 
-    for i, (heterocycle, percentage) in enumerate(zip(df['Heterocycle'], df['Percentage'])):
-        if (mol := mols.get(heterocycle)):
+    for i, (heterocycle, percentage) in enumerate(
+        zip(df["Heterocycle"], df["Percentage"])
+    ):
+        if mol := mols.get(heterocycle):
             options = Draw.MolDrawOptions()
             options.bgColor = (0, 0, 0, 0)
 
-            mol_img = Draw.MolToImage(mol, size=(75, 75), kekulize=True, wedgeBonds=True, fitImage=True, options=options)
-            
+            mol_img = Draw.MolToImage(
+                mol,
+                size=(75, 75),
+                kekulize=True,
+                wedgeBonds=True,
+                fitImage=True,
+                options=options,
+            )
+
             buffer = io.BytesIO()
-            mol_img.save(buffer, format='PNG')
+            mol_img.save(buffer, format="PNG")
             buffer.seek(0)
             img = Image.open(buffer)
-            
+
             imgbox = OffsetImage(img, zoom=0.5, resample=True, alpha=1.0)
-            ab = AnnotationBbox(imgbox, ((i + 0.5) / num_cols, 0.45),
-                                xybox=(0, 0), 
-                                xycoords='axes fraction', 
-                                boxcoords="offset points",
-                                frameon=False,
-                                pad=0.8,
-                                zorder=2)
+            ab = AnnotationBbox(
+                imgbox,
+                ((i + 0.5) / num_cols, 0.45),
+                xybox=(0, 0),
+                xycoords="axes fraction",
+                boxcoords="offset points",
+                frameon=False,
+                pad=0.8,
+                zorder=2,
+            )
             ax.add_artist(ab)
-        
+
         # Set percentage text color to blue
         blue_color = "#2F72B4"
-        ax.text((i + 0.5) / num_cols, 0.00, f'{percentage:.2f}%',
-                ha='center', va='center', fontsize=12, color=blue_color, fontweight='bold', fontfamily=fontfamily, zorder=4)
+        ax.text(
+            (i + 0.5) / num_cols,
+            0.00,
+            f"{percentage:.2f}%",
+            ha="center",
+            va="center",
+            fontsize=12,
+            color=blue_color,
+            fontweight="bold",
+            fontfamily=fontfamily,
+            zorder=4,
+        )
 
     plt.tight_layout()
     plt.savefig(output_file, dpi=300)
 
 
-
 # Define the heterocycle structures
 structures = {
-    'pyridine': 'C1=CC=CC=N1',
-    'pyridazine': 'C1=CC=CN=N1',
-    'pyrimidine': 'C1=CC=NC=N1',
-    'pyrazine': 'C1=CN=CC=N1',
-    'pyrrole': 'C1=CNC=C1',
-    'pyrazole': 'C1=CNN=C1',
-    'imidazole': 'C1=CNC=N1',
-    'thiazole': 'C1=CSC=N1',
-    'oxazole': 'C1=COC=N1',
-    'isoxazole': 'C1=CON=C1',
-    'furan': 'C1=COC=C1'
+    "pyridine": "C1=CC=CC=N1",
+    "pyridazine": "C1=CC=CN=N1",
+    "pyrimidine": "C1=CC=NC=N1",
+    "pyrazine": "C1=CN=CC=N1",
+    "pyrrole": "C1=CNC=C1",
+    "pyrazole": "C1=CNN=C1",
+    "imidazole": "C1=CNC=N1",
+    "thiazole": "C1=CSC=N1",
+    "oxazole": "C1=COC=N1",
+    "isoxazole": "C1=CON=C1",
+    "furan": "C1=COC=C1",
 }
+
 
 # Load .txt file as list
 def load_file_as_list(filename):
-    with open(filename, 'r') as file:
+    with open(filename, "r") as file:
         all_lines = file.readlines()
         all_lines = [line.strip() for line in all_lines]
 
@@ -129,12 +193,13 @@ def load_file_as_list(filename):
 
     return lines
 
+
 # start databases list
-databases = load_file_as_list('databases.txt')
+databases = load_file_as_list("databases.txt")
 for database in databases:
-    csv_file_path = f'../figures/count_sms_dfs/{database}.csv'
-    output_file = f'./heterocycle_percentages/heterocycle_percentages{database}.png'
-    
+    csv_file_path = f"../figures/count_sms_dfs/{database}.csv"
+    output_file = f"./heterocycle_percentages/heterocycle_percentages{database}.png"
+
     df = load_data_from_csv(csv_file_path)
     df = calculate_percentages(df)
     plot_heterocycles(df, structures, output_file)
